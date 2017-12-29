@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <div class="layui-header">
     <div class="layui-logo">后台管理系统</div>

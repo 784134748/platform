@@ -5,7 +5,7 @@
   Time: 下午3:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/pages/inc/taglibs.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -28,6 +28,10 @@
         var element = layui.element;
 
     });
+    //iframe主体变更
+    function iframeByUrl(url) {
+        document.getElementById('iframe').src = url;
+    }
 </script>
 </body>
 </html>

@@ -6,12 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="operation-platform" />
         <module name="platform" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="operation-platform" target="1.6" />
       <module name="platform" target="1.7" />
     </bytecodeTargetLevel>
   </component>

@@ -53,8 +53,6 @@ public class RbacController {
             } else {
                 System.out.println("未知错误");
             }
-        }else {
-            System.out.println("登录成功");
         }
     }
 
