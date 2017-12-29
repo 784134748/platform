@@ -54,34 +54,9 @@
     <context:component-scan base-package="com.iflytek.operation.dao"/>
     <context:component-scan base-package="com.iflytek.operation.service"/>
 
-    <!--==========================shiro filter==============================-->
-    <!--====================================================================-->
-    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <property name="loginUrl" value="/rbac/login.do"/>
-        <property name="successUrl" value="/frame.do"/>
-        <property name="unauthorizedUrl" value="/rbac/unauthorized.do"/>
 
-        <property name="securityManager" ref="securityManager"/>
-        <property name="filterChainDefinitions">
-            <value>
-                /example/** = anon
-                /get/** = anon
-                /rbac/login.do = authc
-                /rbac/logout.do = logout
-                /** = user
-            </value>
-        </property>
-    </bean>
-    <bean id="UserRealm" class="com.iflytek.operation.common.secret.UserRealm"/>
-    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="UserRealm"/>
-    </bean>
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-        <property name="securityManager" ref="securityManager"/>
-    </bean>
-    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
-          depends-on="lifecycleBeanPostProcessor"/>
-
+    <!--=============================导入第三方==============================-->
+    <!--===================================================================-->
+    <import resource="shiro-config.xml"/>
 
 </beans>
