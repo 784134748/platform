@@ -2,6 +2,7 @@ package com.iflytek.operation.entity.data;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -16,6 +17,7 @@ import java.util.Set;
  * @see [相关类/方法]
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Node {
 
     @Id
@@ -80,27 +82,16 @@ public class Node {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
-        Node treeNode = (Node) o;
-
-        if (id != null ? !id.equals(treeNode.id) : treeNode.id != null) {
-            return false;
-        }
-        if (name != null ? !name.equals(treeNode.name) : treeNode.name != null) {
-            return false;
-        }
-        if (parent != null ? !parent.equals(treeNode.parent) : treeNode.parent != null) {
-            return false;
-        }
-        return children != null ? children.equals(treeNode.children) : treeNode.children == null;
+        Node node = (Node) o;
+        return Objects.equals(id, node.id) &&
+                Objects.equals(name, node.name) &&
+                Objects.equals(parent, node.parent) &&
+                Objects.equals(children, node.children);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (parent != null ? parent.hashCode() : 0);
-        result = 31 * result + (children != null ? children.hashCode() : 0);
-        return result;
+
+        return Objects.hash(id, name, parent, children);
     }
 }

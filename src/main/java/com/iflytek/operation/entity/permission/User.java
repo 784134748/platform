@@ -3,8 +3,10 @@ package com.iflytek.operation.entity.permission;
 import javax.persistence.*;
 import java.util.*;
 
+import static javax.persistence.CascadeType.ALL;
+
 /**
- * <p>《一句话功能简述》
+ * <p>《用户》
  * <p><功能详细描述>
  * <p>
  * <p>Copyright (c) 2017, listener@iflytek.com All Rights Reserve</p>
@@ -37,10 +39,15 @@ public class User {
      */
     private Boolean locked = Boolean.FALSE;
     /**
-     * user --> role 多对多处理
+     * role --> user
      */
-    @ManyToMany
-    @JoinTable(name = "USER_ROLES")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="role_id", nullable=false)
+    private Role role;
+    /**
+     * user --> role
+     */
+    @OneToMany(cascade=ALL, mappedBy="user")
     private Set<Role> roles = new HashSet<>();
 
     public Long getId() {
@@ -67,14 +74,6 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
     public String getSalt() {
         return salt;
     }
@@ -91,43 +90,44 @@ public class User {
         this.locked = locked;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public boolean equals(Object o) {
+
         if (this == o) {
             return true;
         }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         User user = (User) o;
-
-        if (id != null ? !id.equals(user.id) : user.id != null) {
-            return false;
-        }
-        if (username != null ? !username.equals(user.username) : user.username != null) {
-            return false;
-        }
-        if (password != null ? !password.equals(user.password) : user.password != null) {
-            return false;
-        }
-        if (salt != null ? !salt.equals(user.salt) : user.salt != null) {
-            return false;
-        }
-        if (locked != null ? !locked.equals(user.locked) : user.locked != null) {
-            return false;
-        }
-        return roles != null ? roles.equals(user.roles) : user.roles == null;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(salt, user.salt) &&
+                Objects.equals(locked, user.locked) &&
+                Objects.equals(role, user.role) &&
+                Objects.equals(roles, user.roles);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (salt != null ? salt.hashCode() : 0);
-        result = 31 * result + (locked != null ? locked.hashCode() : 0);
-        result = 31 * result + (roles != null ? roles.hashCode() : 0);
-        return result;
+
+        return Objects.hash(id, username, password, salt, locked, role, roles);
     }
 }

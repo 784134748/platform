@@ -2,10 +2,13 @@ package com.iflytek.operation.entity.permission;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.ALL;
+
 /**
- * <p>《一句话功能简述》
+ * <p>《权限》
  * <p><功能详细描述>
  * <p>
  * <p>Copyright (c) 2017, listener@iflytek.com All Rights Reserve</p>
@@ -27,9 +30,15 @@ public class Permission {
      */
     private String permission;
     /**
-     * permission --> role 多对多处理
+     * role --> permission
      */
-    @ManyToMany(mappedBy = "permissions")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="role_id", nullable=false)
+    private Role role;
+    /**
+     * permission --> role
+     */
+    @OneToMany(cascade=ALL, mappedBy="permission")
     private Set<Role> roles = new HashSet<>();
 
     public Long getId() {
@@ -48,6 +57,14 @@ public class Permission {
         this.permission = permission;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
@@ -64,23 +81,16 @@ public class Permission {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Permission that = (Permission) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) {
-            return false;
-        }
-        if (permission != null ? !permission.equals(that.permission) : that.permission != null) {
-            return false;
-        }
-        return roles != null ? roles.equals(that.roles) : that.roles == null;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(permission, that.permission) &&
+                Objects.equals(role, that.role) &&
+                Objects.equals(roles, that.roles);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (permission != null ? permission.hashCode() : 0);
-        result = 31 * result + (roles != null ? roles.hashCode() : 0);
-        return result;
+
+        return Objects.hash(id, permission, role, roles);
     }
 }

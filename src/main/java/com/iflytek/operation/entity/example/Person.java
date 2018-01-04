@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.*;
 
 /**
- * <p>《一句话功能简述》
+ * <p>《数据字典目录》
  * <p><功能详细描述>
  * <p>
  * <p>Copyright (c) 2017, listener@iflytek.com All Rights Reserve</p>
