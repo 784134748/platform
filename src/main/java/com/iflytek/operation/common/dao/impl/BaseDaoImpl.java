@@ -68,11 +68,13 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
 
     @Override
     public T get(Serializable id) {
+        Assert.notNull(id, "id is null");
         return (T) this.getCurrentSession().get(entityClass, id);
     }
 
     @Override
     public T load(Serializable id) {
+        Assert.notNull(id, "id is null");
         return (T) this.getCurrentSession().load(entityClass, id);
     }
 
