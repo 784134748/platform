@@ -1,4 +1,4 @@
-package com.iflytek.operation.common.base.enumstatus;
+package com.iflytek.operation.enumstatus;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
