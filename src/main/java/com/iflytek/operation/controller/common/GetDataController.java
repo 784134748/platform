@@ -41,7 +41,7 @@ public class GetDataController {
             return null;
         }
         try {
-            Class<Enum> clazz = (Class<Enum>) Class.forName(GlobalParam.ENUMPATH + className);
+            Class<Enum> clazz = (Class<Enum>) Class.forName(GlobalParam.ENUM_PATH + className);
             Enum[] enums = clazz.getEnumConstants();
             return enums;
         } catch (ClassNotFoundException e) {

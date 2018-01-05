@@ -21,7 +21,7 @@ public class GlobalParam {
     /**
      * 枚举类型存储位置
      */
-    public static String ENUMPATH = "com.iflytek.operation.enumstatus.";
+    public static String ENUM_PATH = "com.iflytek.operation.enumstatus.";
     /**
      * 用于在session中存放当前用户信息的key
      */
