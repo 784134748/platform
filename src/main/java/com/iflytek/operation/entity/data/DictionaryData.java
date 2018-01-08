@@ -1,7 +1,6 @@
 package com.iflytek.operation.entity.data;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 /**
  * <p>《数据字典数据》
@@ -65,26 +64,5 @@ public class DictionaryData {
 
     public void setDictionaryMenu(DictionaryMenu dictionaryMenu) {
         this.dictionaryMenu = dictionaryMenu;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        DictionaryData that = (DictionaryData) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(optionType, that.optionType) &&
-                Objects.equals(dataType, that.dataType) &&
-                Objects.equals(dictionaryMenu, that.dictionaryMenu);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, optionType, dataType, dictionaryMenu);
     }
 }

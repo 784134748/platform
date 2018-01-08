@@ -38,6 +38,10 @@ public class Person {
     @MapKeyEnumerated(EnumType.STRING)
     private Map<AddressType, String> addresses = new HashMap<>();
 
+    @Convert(converter = SexType.SexTypeConvert.class)
+    @Column(name = "sex")
+    private SexType sex;
+
     @Version
     private int version;
 
@@ -103,5 +107,13 @@ public class Person {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public SexType getSex() {
+        return sex;
+    }
+
+    public void setSex(SexType sex) {
+        this.sex = sex;
     }
 }

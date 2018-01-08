@@ -1,8 +1,7 @@
 package com.iflytek.operation.entity.permission;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * <p>《权限》
@@ -30,7 +29,7 @@ public class Permission {
      * permission --> role 多对多处理
      */
     @ManyToMany(mappedBy = "permissions")
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -48,39 +47,11 @@ public class Permission {
         this.permission = permission;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Permission that = (Permission) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) {
-            return false;
-        }
-        if (permission != null ? !permission.equals(that.permission) : that.permission != null) {
-            return false;
-        }
-        return roles != null ? roles.equals(that.roles) : that.roles == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (permission != null ? permission.hashCode() : 0);
-        result = 31 * result + (roles != null ? roles.hashCode() : 0);
-        return result;
     }
 }

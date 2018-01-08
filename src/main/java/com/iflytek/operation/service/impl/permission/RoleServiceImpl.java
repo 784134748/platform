@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +30,26 @@ public class RoleServiceImpl implements RoleServiceI {
     private RoleDaoI roleDaoI;
 
     @Override
+    public Role get(Serializable id) {
+        return roleDaoI.get(id);
+    }
+
+    @Override
+    public Set<String> getRolesByUid(Long id) {
+        String hql = "select r.role from User u, Role r where u.id = u.roles.id and u.id = ? ";
+        List<String> roles = roleDaoI.getParamsByHql(hql, id);
+        Set<String> result = new HashSet<>(16);
+        result.addAll(roles);
+        return result;
+    }
+
+    @Override
     public void saveOrUpdate(Role role) {
         roleDaoI.saveOrUpdate(role);
+    }
+
+    @Override
+    public void delete(Role role) {
+        roleDaoI.delete(role);
     }
 }

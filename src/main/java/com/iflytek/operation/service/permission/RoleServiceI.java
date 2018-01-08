@@ -2,6 +2,8 @@ package com.iflytek.operation.service.permission;
 
 import com.iflytek.operation.entity.permission.Role;
 
+import java.io.Serializable;
+import java.util.Set;
 
 /**
  * <p>《一句话功能简述》
@@ -15,10 +17,31 @@ import com.iflytek.operation.entity.permission.Role;
  * @see [相关类/方法]
  */
 public interface RoleServiceI {
+
+    /**
+     * 通过id获取角色
+     * @param id
+     * @return
+     */
+    public Role get(Serializable id);
+
+    /**
+     * 通过用户id获取用户角色信息
+     * @param uid
+     * @return
+     */
+    public Set<String> getRolesByUid(Long uid);
+
     /**
      * 新增/更新角色
      * @param role
      */
     public void saveOrUpdate(Role role);
+
+    /**
+     * 删除角色
+     * @param role
+     */
+    public void delete(Role role);
 
 }

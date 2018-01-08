@@ -1,5 +1,7 @@
 package com.iflytek.operation.entity.permission;
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -23,6 +25,8 @@ public class User {
     /**
      * 邮箱 | 登录帐号
      */
+    @NaturalId(mutable=true)
+    @Column(unique = true)
     private String username;
     /**
      * 密码
@@ -39,14 +43,34 @@ public class User {
     /**
      * user --> role 多对多处理
      */
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "USER_ROLES",
-            joinColumns=
-            @JoinColumn(name="user_id", referencedColumnName="ID"),
-            inverseJoinColumns=
-            @JoinColumn(name="role_id", referencedColumnName="ID")
+            joinColumns =
+            @JoinColumn(name = "user_id", referencedColumnName = "ID"),
+            inverseJoinColumns =
+            @JoinColumn(name = "role_id", referencedColumnName = "ID")
     )
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
+
+    /**
+     * 添加角色
+     *
+     * @param role
+     */
+    public void addRole(Role role) {
+        roles.add(role);
+        role.getUsers().add(this);
+    }
+
+    /**
+     * 删除角色
+     *
+     * @param role
+     */
+    public void removeRole(Role role) {
+        roles.remove(role);
+        role.getUsers().remove(role);
+    }
 
     public Long getId() {
         return id;
@@ -72,11 +96,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
@@ -97,42 +121,7 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        User user = (User) o;
-
-        if (id != null ? !id.equals(user.id) : user.id != null) {
-            return false;
-        }
-        if (username != null ? !username.equals(user.username) : user.username != null) {
-            return false;
-        }
-        if (password != null ? !password.equals(user.password) : user.password != null) {
-            return false;
-        }
-        if (salt != null ? !salt.equals(user.salt) : user.salt != null) {
-            return false;
-        }
-        if (locked != null ? !locked.equals(user.locked) : user.locked != null) {
-            return false;
-        }
-        return roles != null ? roles.equals(user.roles) : user.roles == null;
-    }
-
-    @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (salt != null ? salt.hashCode() : 0);
-        result = 31 * result + (locked != null ? locked.hashCode() : 0);
-        result = 31 * result + (roles != null ? roles.hashCode() : 0);
-        return result;
+        return Objects.hash(username);
     }
 }

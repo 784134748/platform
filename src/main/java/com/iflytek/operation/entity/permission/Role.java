@@ -27,19 +27,39 @@ public class Role {
     /**
      * role --> permission 多对多处理
      */
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "ROLE_PERMISSIONS",
-            joinColumns=
-            @JoinColumn(name="role_id", referencedColumnName="ID"),
-            inverseJoinColumns=
-            @JoinColumn(name="permission_id", referencedColumnName="ID")
+            joinColumns =
+            @JoinColumn(name = "role_id", referencedColumnName = "ID"),
+            inverseJoinColumns =
+            @JoinColumn(name = "permission_id", referencedColumnName = "ID")
     )
-    private Set<Permission> permissions = new HashSet<>();
+    private List<Permission> permissions = new ArrayList<>();
     /**
      * role --> user 多对多处理
      */
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users = new HashSet<>();
+    private List<User> users = new ArrayList<>();
+
+    /**
+     * 添加权限
+     *
+     * @param permission
+     */
+    public void addPermission(Permission permission) {
+        permissions.add(permission);
+        permission.getRoles().add(this);
+    }
+
+    /**
+     * 删除权限
+     *
+     * @param permission
+     */
+    public void removeRole(Permission permission) {
+        permissions.remove(permission);
+        permission.getRoles().remove(permission);
+    }
 
     public Long getId() {
         return id;
@@ -57,51 +77,19 @@ public class Role {
         this.role = role;
     }
 
-    public Set<Permission> getPermissions() {
+    public List<Permission> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(Set<Permission> permissions) {
+    public void setPermissions(List<Permission> permissions) {
         this.permissions = permissions;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Role role1 = (Role) o;
-
-        if (id != null ? !id.equals(role1.id) : role1.id != null) {
-            return false;
-        }
-        if (role != null ? !role.equals(role1.role) : role1.role != null) {
-            return false;
-        }
-        if (permissions != null ? !permissions.equals(role1.permissions) : role1.permissions != null) {
-            return false;
-        }
-        return users != null ? users.equals(role1.users) : role1.users == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (permissions != null ? permissions.hashCode() : 0);
-        result = 31 * result + (users != null ? users.hashCode() : 0);
-        return result;
     }
 }

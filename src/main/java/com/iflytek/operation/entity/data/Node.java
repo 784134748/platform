@@ -1,9 +1,7 @@
 package com.iflytek.operation.entity.data;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * <p>《一句话功能简述》
@@ -40,7 +38,7 @@ public class Node {
      * 子节点
      */
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Node> children = new LinkedHashSet<>();
+    private List<Node> children = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -66,32 +64,11 @@ public class Node {
         this.parent = parent;
     }
 
-    public Set<Node> getChildren() {
+    public List<Node> getChildren() {
         return children;
     }
 
-    public void setChildren(Set<Node> children) {
+    public void setChildren(List<Node> children) {
         this.children = children;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Node node = (Node) o;
-        return Objects.equals(id, node.id) &&
-                Objects.equals(name, node.name) &&
-                Objects.equals(parent, node.parent) &&
-                Objects.equals(children, node.children);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, name, parent, children);
     }
 }

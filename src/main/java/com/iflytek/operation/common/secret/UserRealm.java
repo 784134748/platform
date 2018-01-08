@@ -26,7 +26,10 @@ import java.util.Set;
  * @see [相关类/方法]
  */
 public class UserRealm extends AuthorizingRealm {
-
+    @Autowired
+    private UserServiceI userServiceI;
+    @Autowired
+    private RoleServiceI roleServiceI;
     @Autowired
     private PermissionServiceI permissionServiceI;
 
@@ -60,7 +63,7 @@ public class UserRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String username = token.getUsername();
         String password = String.valueOf(token.getPassword());
-        User user = permissionServiceI.getUserByUsername(username);
+        User user = userServiceI.getUserByUsername(username);
         //UnknownAccountException
         if (null == user) {
             throw new UnknownAccountException();
@@ -87,7 +90,7 @@ public class UserRealm extends AuthorizingRealm {
      * 通过登录账号获取用户信息
      */
     public User getUserByUsername(String username){
-        User user = permissionServiceI.getUserByUsername(username);
+        User user = userServiceI.getUserByUsername(username);
         return user;
     }
 
@@ -95,7 +98,7 @@ public class UserRealm extends AuthorizingRealm {
      * 通过用户id获取角色信息
      */
     public Set<String> getRolesByUid(Long uid){
-        Set<String> roles = permissionServiceI.getRolesByUid(uid);
+        Set<String> roles = roleServiceI.getRolesByUid(uid);
         return roles;
     }
     /**

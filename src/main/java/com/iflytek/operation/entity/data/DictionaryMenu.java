@@ -34,7 +34,7 @@ public class DictionaryMenu {
      * dictionaryMenu --> dictionaryData
      */
     @OneToMany(cascade=ALL, mappedBy="dictionaryMenu")
-    private Set<DictionaryData> dictionaryDatas = new HashSet<>();
+    private List<DictionaryData> dictionaryDatas = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -60,32 +60,11 @@ public class DictionaryMenu {
         this.dictionaryAlise = dictionaryAlise;
     }
 
-    public Set<DictionaryData> getDictionaryDatas() {
+    public List<DictionaryData> getDictionaryDatas() {
         return dictionaryDatas;
     }
 
-    public void setDictionaryDatas(Set<DictionaryData> dictionaryDatas) {
+    public void setDictionaryDatas(List<DictionaryData> dictionaryDatas) {
         this.dictionaryDatas = dictionaryDatas;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        DictionaryMenu that = (DictionaryMenu) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(dictionaryName, that.dictionaryName) &&
-                Objects.equals(dictionaryAlise, that.dictionaryAlise) &&
-                Objects.equals(dictionaryDatas, that.dictionaryDatas);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, dictionaryName, dictionaryAlise, dictionaryDatas);
     }
 }

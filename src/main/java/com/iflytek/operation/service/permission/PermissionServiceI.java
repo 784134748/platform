@@ -1,9 +1,8 @@
 package com.iflytek.operation.service.permission;
 
-import com.iflytek.operation.common.base.Page;
 import com.iflytek.operation.entity.permission.Permission;
-import com.iflytek.operation.entity.permission.User;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -20,24 +19,11 @@ import java.util.Set;
 public interface PermissionServiceI {
 
     /**
-     * 新增/更新权限
-     * @param permission
-     */
-    public void saveOrUpdate(Permission permission);
-
-    /**
-     * 通过用户名获取用户
-     * @param username
+     * 通过id获取权限
+     * @param id
      * @return
      */
-    public User getUserByUsername(String username);
-
-    /**
-     * 通过用户id获取用户角色信息
-     * @param uid
-     * @return
-     */
-    public Set<String> getRolesByUid(Long uid);
+    public Permission get(Serializable id);
 
     /**
      * 通过用户id获取用户权限信息
@@ -45,5 +31,17 @@ public interface PermissionServiceI {
      * @return
      */
     public Set<String> getPermissionsByUid(Long uid);
+
+    /**
+     * 新增/更新权限
+     * @param permission
+     */
+    public void saveOrUpdate(Permission permission);
+
+    /**
+     * 删除权限
+     * @param permission
+     */
+    public void delete(Permission permission);
 
 }

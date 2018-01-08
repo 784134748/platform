@@ -1,15 +1,13 @@
 package com.iflytek.operation.service.impl.permission;
 
 import com.iflytek.operation.dao.permission.PermissionDaoI;
-import com.iflytek.operation.dao.permission.RoleDaoI;
-import com.iflytek.operation.dao.permission.UserDaoI;
 import com.iflytek.operation.entity.permission.Permission;
-import com.iflytek.operation.entity.permission.User;
 import com.iflytek.operation.service.permission.PermissionServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,30 +27,11 @@ import java.util.Set;
 @Transactional(rollbackFor = Exception.class)
 public class PermissionServiceImpl implements PermissionServiceI {
     @Autowired
-    private UserDaoI userDaoI;
-    @Autowired
-    private RoleDaoI roleDaoI;
-    @Autowired
     private PermissionDaoI permissionDaoI;
 
     @Override
-    public void saveOrUpdate(Permission permission) {
-        permissionDaoI.saveOrUpdate(permission);
-    }
-
-    @Override
-    public User getUserByUsername(String username) {
-        String hql = "from User where username = ?";
-        return userDaoI.getEntityByHql(hql, username);
-    }
-
-    @Override
-    public Set<String> getRolesByUid(Long id) {
-        String hql = "select r.role from User u, Role r where u.id = u.roles.id and u.id = ? ";
-        List<String> roles = roleDaoI.getParamsByHql(hql, id);
-        Set<String> result = new HashSet<>(16);
-        result.addAll(roles);
-        return result;
+    public Permission get(Serializable id) {
+        return permissionDaoI.get(id);
     }
 
     @Override
@@ -62,6 +41,16 @@ public class PermissionServiceImpl implements PermissionServiceI {
         Set<String> result = new HashSet<>(16);
         result.addAll(permissions);
         return result;
+    }
+
+    @Override
+    public void saveOrUpdate(Permission permission) {
+        permissionDaoI.saveOrUpdate(permission);
+    }
+
+    @Override
+    public void delete(Permission permission) {
+        permissionDaoI.delete(permission);
     }
 
 }
