@@ -60,7 +60,7 @@ public class RbacController {
      * 新增/修改用户
      * @param user
      */
-    @RequestMapping(value = "/user.do")
+    @RequestMapping(value = "/user/saveOrUpdate.do")
     public void saveOrUpdateUser(User user){
         userServiceI.saveOrUpdate(user);
     }
@@ -69,7 +69,7 @@ public class RbacController {
      * 新增/修改角色
      * @param role
      */
-    @RequestMapping(value = "/role.do")
+    @RequestMapping(value = "/role/saveOrUpdate.do")
     public void saveOrUpdateRole(Role role){
         roleServiceI.saveOrUpdate(role);
     }
@@ -78,7 +78,7 @@ public class RbacController {
      * 新增/修改权限
      * @param permission
      */
-    @RequestMapping(value = "/permission.do")
+    @RequestMapping(value = "/permission/saveOrUpdate.do")
     public void saveOrUpdatePermission(Permission permission){
         permissionServiceI.saveOrUpdate(permission);
     }

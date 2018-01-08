@@ -48,8 +48,8 @@ public class PermissionServiceImpl implements PermissionServiceI {
 
     @Override
     public Set<String> getRolesByUid(Long id) {
-        String hql = "select r.role from User u left join u.roles r where u.id = ? ";
-        List<String> roles = roleDaoI.getParamsByHql(hql,id);
+        String hql = "select r.role from User u, Role r where u.id = u.roles.id and u.id = ? ";
+        List<String> roles = roleDaoI.getParamsByHql(hql, id);
         Set<String> result = new HashSet<>(16);
         result.addAll(roles);
         return result;
@@ -57,8 +57,8 @@ public class PermissionServiceImpl implements PermissionServiceI {
 
     @Override
     public Set<String> getPermissionsByUid(Long id) {
-        String hql = "select p.permission from User u left join u.roles r left join r.permissions p where u.id = ? ";
-        List<String> permissions = permissionDaoI.getParamsByHql(hql,id);
+        String hql = "select p.permission from User u, Role r, Permission p where u.id = u.roles.id and r.id = r.permissions.id and u.id = ? ";
+        List<String> permissions = permissionDaoI.getParamsByHql(hql, id);
         Set<String> result = new HashSet<>(16);
         result.addAll(permissions);
         return result;

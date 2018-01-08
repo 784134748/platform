@@ -3,8 +3,6 @@ package com.iflytek.operation.entity.permission;
 import javax.persistence.*;
 import java.util.*;
 
-import static javax.persistence.CascadeType.ALL;
-
 /**
  * <p>《角色》
  * <p><功能详细描述>
@@ -27,26 +25,15 @@ public class Role {
      */
     private String role;
     /**
-     * permission --> role
+     * role --> permission 多对多处理
      */
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="permission_id", nullable=false)
-    private Permission permission;
-    /**
-     * role --> permission
-     */
-    @OneToMany(cascade=ALL, mappedBy="role")
+    @ManyToMany
+    @JoinTable(name = "ROLE_PERMISSIONS")
     private Set<Permission> permissions = new HashSet<>();
     /**
-     * user --> role
+     * role --> user 多对多处理
      */
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable=false)
-    private User user;
-    /**
-     * role --> user
-     */
-    @OneToMany(cascade=ALL, mappedBy="role")
+    @ManyToMany(mappedBy = "roles")
     private Set<User> users = new HashSet<>();
 
     public Long getId() {
@@ -65,28 +52,12 @@ public class Role {
         this.role = role;
     }
 
-    public Permission getPermission() {
-        return permission;
-    }
-
-    public void setPermission(Permission permission) {
-        this.permission = permission;
-    }
-
     public Set<Permission> getPermissions() {
         return permissions;
     }
 
     public void setPermissions(Set<Permission> permissions) {
         this.permissions = permissions;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Set<User> getUsers() {
@@ -105,18 +76,27 @@ public class Role {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         Role role1 = (Role) o;
-        return Objects.equals(id, role1.id) &&
-                Objects.equals(role, role1.role) &&
-                Objects.equals(permission, role1.permission) &&
-                Objects.equals(permissions, role1.permissions) &&
-                Objects.equals(user, role1.user) &&
-                Objects.equals(users, role1.users);
+
+        if (id != null ? !id.equals(role1.id) : role1.id != null) {
+            return false;
+        }
+        if (role != null ? !role.equals(role1.role) : role1.role != null) {
+            return false;
+        }
+        if (permissions != null ? !permissions.equals(role1.permissions) : role1.permissions != null) {
+            return false;
+        }
+        return users != null ? users.equals(role1.users) : role1.users == null;
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, role, permission, permissions, user, users);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (permissions != null ? permissions.hashCode() : 0);
+        result = 31 * result + (users != null ? users.hashCode() : 0);
+        return result;
     }
 }
