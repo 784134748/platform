@@ -28,7 +28,12 @@ public class Role {
      * role --> permission 多对多处理
      */
     @ManyToMany
-    @JoinTable(name = "ROLE_PERMISSIONS")
+    @JoinTable(name = "ROLE_PERMISSIONS",
+            joinColumns=
+            @JoinColumn(name="role_id", referencedColumnName="ID"),
+            inverseJoinColumns=
+            @JoinColumn(name="permission_id", referencedColumnName="ID")
+    )
     private Set<Permission> permissions = new HashSet<>();
     /**
      * role --> user 多对多处理

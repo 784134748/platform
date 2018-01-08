@@ -40,7 +40,12 @@ public class User {
      * user --> role 多对多处理
      */
     @ManyToMany
-    @JoinTable(name = "USER_ROLES")
+    @JoinTable(name = "USER_ROLES",
+            joinColumns=
+            @JoinColumn(name="user_id", referencedColumnName="ID"),
+            inverseJoinColumns=
+            @JoinColumn(name="role_id", referencedColumnName="ID")
+    )
     private Set<Role> roles = new HashSet<>();
 
     public Long getId() {
