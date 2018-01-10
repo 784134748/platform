@@ -18,6 +18,7 @@ import java.util.*;
 public class Phone {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,15 +32,15 @@ public class Phone {
     private PhoneType type;
 
     @OneToMany(mappedBy = "phone", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Call> calls = new ArrayList<>(  );
+    private List<Call> calls = new ArrayList<>();
 
     @OneToMany(mappedBy = "phone")
     @MapKey(name = "timestamp")
-    @MapKeyTemporal(TemporalType.TIMESTAMP )
+    @MapKeyTemporal(TemporalType.TIMESTAMP)
     private Map<Date, Call> callHistory = new HashMap<>();
 
     @ElementCollection
-    private List<Date> repairTimestamps = new ArrayList<>(  );
+    private List<Date> repairTimestamps = new ArrayList<>();
 
     public Long getId() {
         return id;

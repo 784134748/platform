@@ -32,6 +32,16 @@ public class UserServiceImpl implements UserServiceI {
     }
 
     @Override
+    public void save(User user) {
+        userDaoI.save(user);
+    }
+
+    @Override
+    public void update(User user) {
+        userDaoI.update(user);
+    }
+
+    @Override
     public User getUserByUsername(String username) {
         String hql = "from User where username = ?";
         return userDaoI.getEntityByHql(hql, username);

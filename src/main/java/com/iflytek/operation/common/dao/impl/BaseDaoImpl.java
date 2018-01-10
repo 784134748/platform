@@ -3,7 +3,10 @@ package com.iflytek.operation.common.dao.impl;
 import com.iflytek.operation.common.base.Page;
 import com.iflytek.operation.common.dao.BaseDaoI;
 import com.iflytek.operation.common.util.ReflectionUtil;
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -113,7 +116,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public <E> E getDtoBySql(Class clazz, String sql) {
         Assert.hasText(sql, "sql is null");
-        Query query = createSqlQuery(clazz, sql);
+        Query query = createNativeQuery(clazz, sql);
         List<E> list = query.list();
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -121,7 +124,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public <E> E getDtoBySql(Class clazz, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        Query query = createSqlQuery(clazz, sql, params);
+        Query query = createNativeQuery(clazz, sql, params);
         List<E> list = query.list();
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -129,7 +132,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public <E> E getDtoBySql(Class clazz, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        Query query = createSqlQuery(clazz, sql, params);
+        Query query = createNativeQuery(clazz, sql, params);
         List<E> list = query.list();
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -137,7 +140,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public <E> E getDtoBySql(Class clazz, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        Query query = createSqlQuery(clazz, sql, params);
+        Query query = createNativeQuery(clazz, sql, params);
         List<E> list = query.list();
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -145,7 +148,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public T getEntityBySql(String sql) {
         Assert.hasText(sql, "hql is null");
-        Query query = createSqlQuery(sql);
+        Query query = createNativeQuery(sql);
         List<T> list = query.list();
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -153,7 +156,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public T getEntityBySql(String sql, Object... params) {
         Assert.hasText(sql, "hql is null");
-        Query query = createSqlQuery(sql, params);
+        Query query = createNativeQuery(sql, params);
         List<T> list = query.list();
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -161,7 +164,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public T getEntityBySql(String sql, List<Object> params) {
         Assert.hasText(sql, "hql is null");
-        Query query = createSqlQuery(sql, params);
+        Query query = createNativeQuery(sql, params);
         List<T> list = query.list();
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -169,7 +172,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public T getEntityBySql(String sql, Map<String, Object> params) {
         Assert.hasText(sql, "hql is null");
-        Query query = createSqlQuery(sql, params);
+        Query query = createNativeQuery(sql, params);
         List<T> list = query.list();
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -305,52 +308,52 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public List<T> findListBySql(String sql) {
         Assert.hasText(sql, "sql is null");
-        return createSqlQuery(sql).list();
+        return createNativeQuery(sql).list();
     }
 
     @Override
     public List<T> findListBySql(String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        return createSqlQuery(sql, params).list();
+        return createNativeQuery(sql, params).list();
     }
 
     @Override
     public List<T> findListBySql(String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        return createSqlQuery(sql, params).list();
+        return createNativeQuery(sql, params).list();
     }
 
     @Override
     public List<T> findListBySql(String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        return createSqlQuery(sql, params).list();
+        return createNativeQuery(sql, params).list();
     }
 
     @Override
     public Page<T> findPageBySql(Page<T> page, String sql) {
         Assert.hasText(sql, "sql is null");
-        page.setResult(createSqlQuery(page, sql).list());
+        page.setResult(createNativeQuery(page, sql).list());
         return page;
     }
 
     @Override
     public Page<T> findPageBySql(Page<T> page, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        page.setResult(createSqlQuery(page, sql, params).list());
+        page.setResult(createNativeQuery(page, sql, params).list());
         return page;
     }
 
     @Override
     public Page<T> findPageBySql(Page<T> page, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        page.setResult(createSqlQuery(page, sql, params).list());
+        page.setResult(createNativeQuery(page, sql, params).list());
         return page;
     }
 
     @Override
     public Page<T> findPageBySql(Page<T> page, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        page.setResult(createSqlQuery(page, sql, params).list());
+        page.setResult(createNativeQuery(page, sql, params).list());
         return page;
     }
 
@@ -409,52 +412,52 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public <E> List<E> findDtoListBySql(Class clazz, String sql) {
         Assert.hasText(sql, "sql is null");
-        return createSqlQuery(clazz, sql).list();
+        return createNativeQuery(clazz, sql).list();
     }
 
     @Override
     public <E> List<E> findDtoListBySql(Class clazz, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        return createSqlQuery(clazz, sql, params).list();
+        return createNativeQuery(clazz, sql, params).list();
     }
 
     @Override
     public <E> List<E> findDtoListBySql(Class clazz, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        return createSqlQuery(clazz, sql, params).list();
+        return createNativeQuery(clazz, sql, params).list();
     }
 
     @Override
     public <E> List<E> findDtoListBySql(Class clazz, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        return createSqlQuery(clazz, sql, params).list();
+        return createNativeQuery(clazz, sql, params).list();
     }
 
     @Override
     public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql) {
         Assert.hasText(sql, "sql is null");
-        page.setResult(createSqlQuery(clazz, page, sql).list());
+        page.setResult(createNativeQuery(clazz, page, sql).list());
         return page;
     }
 
     @Override
     public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        page.setResult(createSqlQuery(clazz, page, sql, params).list());
+        page.setResult(createNativeQuery(clazz, page, sql, params).list());
         return page;
     }
 
     @Override
     public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        page.setResult(createSqlQuery(clazz, page, sql, params).list());
+        page.setResult(createNativeQuery(clazz, page, sql, params).list());
         return page;
     }
 
     @Override
     public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        page.setResult(createSqlQuery(clazz, page, sql, params).list());
+        page.setResult(createNativeQuery(clazz, page, sql, params).list());
         return page;
     }
 
@@ -517,261 +520,261 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public Integer executeSql(String sql) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery query = createSqlQuery(sql);
+        NativeQuery query = createNativeQuery(sql);
         return query.executeUpdate();
     }
 
     @Override
     public Integer executeSql(String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery query = createSqlQuery(sql, params);
+        NativeQuery query = createNativeQuery(sql, params);
         return query.executeUpdate();
     }
 
     @Override
     public Integer executeSql(String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery query = createSqlQuery(sql, params);
+        NativeQuery query = createNativeQuery(sql, params);
         return query.executeUpdate();
     }
 
     @Override
     public Integer executeSql(String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery query = createSqlQuery(sql, params);
+        NativeQuery query = createNativeQuery(sql, params);
         return query.executeUpdate();
     }
 
     @Override
-    public SQLQuery createSqlQuery(String sql) {
+    public NativeQuery createNativeQuery(String sql) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        return sqlQuery;
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(String sql, Object... params) {
+    public NativeQuery createNativeQuery(String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
-                sqlQuery.setParameter(i, params[i]);
+                nativeQuery.setParameter(i, params[i]);
             }
         }
-        return sqlQuery;
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(String sql, List<Object> params) {
+    public NativeQuery createNativeQuery(String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
         if (params != null && !params.isEmpty()) {
             for (int i = 0; i < params.size(); i++) {
-                sqlQuery.setParameter(i, params.get(i));
+                nativeQuery.setParameter(i, params.get(i));
             }
         }
-        return sqlQuery;
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(String sql, Map<String, Object> params) {
+    public NativeQuery createNativeQuery(String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
         if (params == null || params.isEmpty()) {
-            return sqlQuery;
+            return nativeQuery;
         }
         for (String key : params.keySet()) {
             if (sql.contains(":" + key)) {
                 if (params.get(key) instanceof Collection) {
-                    sqlQuery.setParameterList(key, (Collection<?>) params.get(key));
+                    nativeQuery.setParameterList(key, (Collection<?>) params.get(key));
                 } else if (params.get(key) instanceof Object[]) {
-                    sqlQuery.setParameterList(key, (Object[]) params.get(key));
+                    nativeQuery.setParameterList(key, (Object[]) params.get(key));
                 } else {
-                    sqlQuery.setParameter(key, params.get(key));
+                    nativeQuery.setParameter(key, params.get(key));
                 }
             }
         }
-        return sqlQuery;
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, String sql) {
+    public NativeQuery createNativeQuery(Class clazz, String sql) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setResultTransformer(Transformers.aliasToBean(clazz));
-        return sqlQuery;
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, String sql, Object... params) {
+    public NativeQuery createNativeQuery(Class clazz, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setResultTransformer(Transformers.aliasToBean(clazz));
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
-                sqlQuery.setParameter(i, params[i]);
+                nativeQuery.setParameter(i, params[i]);
             }
         }
-        return sqlQuery;
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, String sql, List<Object> params) {
+    public NativeQuery createNativeQuery(Class clazz, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setResultTransformer(Transformers.aliasToBean(clazz));
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params != null && !params.isEmpty()) {
             for (int i = 0; i < params.size(); i++) {
-                sqlQuery.setParameter(i, params.get(i));
+                nativeQuery.setParameter(i, params.get(i));
             }
         }
-        return sqlQuery;
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, String sql, Map<String, Object> params) {
+    public NativeQuery createNativeQuery(Class clazz, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setResultTransformer(Transformers.aliasToBean(clazz));
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params == null || params.isEmpty()) {
-            return sqlQuery;
+            return nativeQuery;
         }
         for (String key : params.keySet()) {
             if (sql.contains(":" + key)) {
                 if (params.get(key) instanceof Collection) {
-                    sqlQuery.setParameterList(key, (Collection<?>) params.get(key));
+                    nativeQuery.setParameterList(key, (Collection<?>) params.get(key));
                 } else if (params.get(key) instanceof Object[]) {
-                    sqlQuery.setParameterList(key, (Object[]) params.get(key));
+                    nativeQuery.setParameterList(key, (Object[]) params.get(key));
                 } else {
-                    sqlQuery.setParameter(key, params.get(key));
+                    nativeQuery.setParameter(key, params.get(key));
                 }
             }
         }
-        return sqlQuery;
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Page<T> page, String sql) {
+    public NativeQuery createNativeQuery(Page<T> page, String sql) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        sqlQuery.setMaxResults(page.getPageSize());
-        return sqlQuery;
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Page<T> page, String sql, Object... params) {
+    public NativeQuery createNativeQuery(Page<T> page, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
-                sqlQuery.setParameter(i, params[i]);
+                nativeQuery.setParameter(i, params[i]);
             }
         }
-        sqlQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        sqlQuery.setMaxResults(page.getPageSize());
-        return sqlQuery;
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Page<T> page, String sql, List<Object> params) {
+    public NativeQuery createNativeQuery(Page<T> page, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
         if (params != null && !params.isEmpty()) {
             for (int i = 0; i < params.size(); i++) {
-                sqlQuery.setParameter(i, params.get(i));
+                nativeQuery.setParameter(i, params.get(i));
             }
         }
-        sqlQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        sqlQuery.setMaxResults(page.getPageSize());
-        return sqlQuery;
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Page<T> page, String sql, Map<String, Object> params) {
+    public NativeQuery createNativeQuery(Page<T> page, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
         if (params == null || params.isEmpty()) {
-            return sqlQuery;
+            return nativeQuery;
         }
         for (String key : params.keySet()) {
             if (sql.contains(":" + key)) {
                 if (params.get(key) instanceof Collection) {
-                    sqlQuery.setParameterList(key, (Collection<?>) params.get(key));
+                    nativeQuery.setParameterList(key, (Collection<?>) params.get(key));
                 } else if (params.get(key) instanceof Object[]) {
-                    sqlQuery.setParameterList(key, (Object[]) params.get(key));
+                    nativeQuery.setParameterList(key, (Object[]) params.get(key));
                 } else {
-                    sqlQuery.setParameter(key, params.get(key));
+                    nativeQuery.setParameter(key, params.get(key));
                 }
             }
         }
-        sqlQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        sqlQuery.setMaxResults(page.getPageSize());
-        return sqlQuery;
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql) {
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setResultTransformer(Transformers.aliasToBean(clazz));
-        sqlQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        sqlQuery.setMaxResults(page.getPageSize());
-        return sqlQuery;
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql, Object... params) {
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setResultTransformer(Transformers.aliasToBean(clazz));
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
-                sqlQuery.setParameter(i, params[i]);
+                nativeQuery.setParameter(i, params[i]);
             }
         }
-        sqlQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        sqlQuery.setMaxResults(page.getPageSize());
-        return sqlQuery;
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql, List<Object> params) {
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setResultTransformer(Transformers.aliasToBean(clazz));
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params != null && !params.isEmpty()) {
             for (int i = 0; i < params.size(); i++) {
-                sqlQuery.setParameter(i, params.get(i));
+                nativeQuery.setParameter(i, params.get(i));
             }
         }
-        sqlQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        sqlQuery.setMaxResults(page.getPageSize());
-        return sqlQuery;
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
+        return nativeQuery;
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql, Map<String, Object> params) {
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
-        SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-        sqlQuery.setResultTransformer(Transformers.aliasToBean(clazz));
+        NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params == null || params.isEmpty()) {
-            return sqlQuery;
+            return nativeQuery;
         }
         for (String key : params.keySet()) {
             if (sql.contains(":" + key)) {
                 if (params.get(key) instanceof Collection) {
-                    sqlQuery.setParameterList(key, (Collection<?>) params.get(key));
+                    nativeQuery.setParameterList(key, (Collection<?>) params.get(key));
                 } else if (params.get(key) instanceof Object[]) {
-                    sqlQuery.setParameterList(key, (Object[]) params.get(key));
+                    nativeQuery.setParameterList(key, (Object[]) params.get(key));
                 } else {
-                    sqlQuery.setParameter(key, params.get(key));
+                    nativeQuery.setParameter(key, params.get(key));
                 }
             }
         }
-        sqlQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        sqlQuery.setMaxResults(page.getPageSize());
-        return sqlQuery;
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
+        return nativeQuery;
     }
 
     @Override

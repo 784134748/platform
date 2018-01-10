@@ -18,7 +18,7 @@ import java.util.*;
 public class Permission {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -28,7 +28,7 @@ public class Permission {
     /**
      * permission --> role 多对多处理
      */
-    @ManyToMany(mappedBy = "permissions")
+    @ManyToMany(mappedBy = "permissions", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Role> roles = new ArrayList<>();
 
     public Long getId() {

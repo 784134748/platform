@@ -1,9 +1,9 @@
 package com.iflytek.operation.common.dao;
 
 import com.iflytek.operation.common.base.Page;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.io.Serializable;
 import java.util.List;
@@ -276,37 +276,37 @@ public interface BaseDaoI<T> {
      * @param sql
      * @return
      */
-    public SQLQuery createSqlQuery(String sql);
+    public NativeQuery createNativeQuery(String sql);
 
-    public SQLQuery createSqlQuery(String sql, Object... params);
+    public NativeQuery createNativeQuery(String sql, Object... params);
 
-    public SQLQuery createSqlQuery(String sql, List<Object> params);
+    public NativeQuery createNativeQuery(String sql, List<Object> params);
 
-    public SQLQuery createSqlQuery(String sql, Map<String, Object> params);
+    public NativeQuery createNativeQuery(String sql, Map<String, Object> params);
 
-    public SQLQuery createSqlQuery(Class clazz, String sql);
+    public NativeQuery createNativeQuery(Class clazz, String sql);
 
-    public SQLQuery createSqlQuery(Class clazz, String sql, Object... params);
+    public NativeQuery createNativeQuery(Class clazz, String sql, Object... params);
 
-    public SQLQuery createSqlQuery(Class clazz, String sql, List<Object> params);
+    public NativeQuery createNativeQuery(Class clazz, String sql, List<Object> params);
 
-    public SQLQuery createSqlQuery(Class clazz, String sql, Map<String, Object> params);
+    public NativeQuery createNativeQuery(Class clazz, String sql, Map<String, Object> params);
 
-    public SQLQuery createSqlQuery(Page<T> page, String sql);
+    public NativeQuery createNativeQuery(Page<T> page, String sql);
 
-    public SQLQuery createSqlQuery(Page<T> page, String sql, Object... params);
+    public NativeQuery createNativeQuery(Page<T> page, String sql, Object... params);
 
-    public SQLQuery createSqlQuery(Page<T> page, String sql, List<Object> params);
+    public NativeQuery createNativeQuery(Page<T> page, String sql, List<Object> params);
 
-    public SQLQuery createSqlQuery(Page<T> page, String sql, Map<String, Object> params);
+    public NativeQuery createNativeQuery(Page<T> page, String sql, Map<String, Object> params);
 
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql);
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql);
 
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql, Object... params);
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, Object... params);
 
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql, List<Object> params);
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, List<Object> params);
 
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql, Map<String, Object> params);
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, Map<String, Object> params);
 
     /**
      * 创建hql查询

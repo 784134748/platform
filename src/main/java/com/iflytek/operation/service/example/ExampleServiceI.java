@@ -2,8 +2,8 @@ package com.iflytek.operation.service.example;
 
 import com.iflytek.operation.common.base.Page;
 import com.iflytek.operation.entity.example.Person;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.io.Serializable;
 import java.util.List;
@@ -175,13 +175,13 @@ public interface ExampleServiceI {
      * @param sql
      * @return
      */
-    public SQLQuery createSqlQuery(String sql);
+    public NativeQuery createNativeQuery(String sql);
 
-    public SQLQuery createSqlQuery(Class clazz, String sql);
+    public NativeQuery createNativeQuery(Class clazz, String sql);
 
-    public SQLQuery createSqlQuery(Page<Person> page, String sql);
+    public NativeQuery createNativeQuery(Page<Person> page, String sql);
 
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql);
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql);
 
     /**
      * 创建hql查询

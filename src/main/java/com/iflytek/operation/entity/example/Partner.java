@@ -1,9 +1,6 @@
 package com.iflytek.operation.entity.example;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 /**
  * <p>《一句话功能简述》
@@ -20,7 +17,7 @@ import javax.persistence.Version;
 public class Partner {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

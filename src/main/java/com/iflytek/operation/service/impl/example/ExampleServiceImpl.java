@@ -4,8 +4,8 @@ import com.iflytek.operation.common.base.Page;
 import com.iflytek.operation.dao.example.ExampleDaoI;
 import com.iflytek.operation.entity.example.Person;
 import com.iflytek.operation.service.example.ExampleServiceI;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -157,43 +157,43 @@ public class ExampleServiceImpl implements ExampleServiceI {
     }
 
     @Override
-    public SQLQuery createSqlQuery(String sql) {
-        return exampleDaoI.createSqlQuery(sql);
+    public NativeQuery createNativeQuery(String sql) {
+        return exampleDaoI.createNativeQuery(sql);
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, String sql) {
-        return exampleDaoI.createSqlQuery(clazz, sql);
+    public NativeQuery createNativeQuery(Class clazz, String sql) {
+        return exampleDaoI.createNativeQuery(clazz, sql);
     }
 
     @Override
-    public SQLQuery createSqlQuery(Page<Person> page, String sql) {
-        return exampleDaoI.createSqlQuery(page, sql);
+    public NativeQuery createNativeQuery(Page<Person> page, String sql) {
+        return exampleDaoI.createNativeQuery(page, sql);
     }
 
     @Override
-    public SQLQuery createSqlQuery(Class clazz, Page<?> page, String sql) {
-        return exampleDaoI.createSqlQuery(clazz, page, sql);
+    public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql) {
+        return exampleDaoI.createNativeQuery(clazz, page, sql);
     }
 
     @Override
     public Query createQuery(String hql) {
-        return exampleDaoI.createSqlQuery(hql);
+        return exampleDaoI.createNativeQuery(hql);
     }
 
     @Override
     public Query createQuery(Class clazz, String hql) {
-        return exampleDaoI.createSqlQuery(clazz, hql);
+        return exampleDaoI.createNativeQuery(clazz, hql);
     }
 
     @Override
     public Query createQuery(Page<Person> page, String hql) {
-        return exampleDaoI.createSqlQuery(page, hql);
+        return exampleDaoI.createNativeQuery(page, hql);
     }
 
     @Override
     public Query createQuery(Class clazz, Page<?> page, String hql) {
-        return exampleDaoI.createSqlQuery(clazz, page, hql);
+        return exampleDaoI.createNativeQuery(clazz, page, hql);
     }
 
 }

@@ -20,7 +20,7 @@ import java.util.*;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /**
      * 邮箱 | 登录帐号
@@ -43,12 +43,12 @@ public class User {
     /**
      * user --> role 多对多处理
      */
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "USER_ROLES",
             joinColumns =
-            @JoinColumn(name = "user_id", referencedColumnName = "ID"),
+            @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns =
-            @JoinColumn(name = "role_id", referencedColumnName = "ID")
+            @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private List<Role> roles = new ArrayList<>();
 

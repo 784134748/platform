@@ -20,7 +20,7 @@ import static javax.persistence.CascadeType.ALL;
 public class DictionaryMenu {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /**
      * 字典项名称（业务名称）
@@ -33,7 +33,7 @@ public class DictionaryMenu {
     /**
      * dictionaryMenu --> dictionaryData
      */
-    @OneToMany(cascade=ALL, mappedBy="dictionaryMenu")
+    @OneToMany(cascade=ALL, mappedBy="dictionaryMenu", orphanRemoval = true)
     private List<DictionaryData> dictionaryDatas = new ArrayList<>();
 
     public Long getId() {

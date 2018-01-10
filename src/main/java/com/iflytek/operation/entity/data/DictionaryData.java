@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class DictionaryData {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /**
      * 操作类型（前台展示）

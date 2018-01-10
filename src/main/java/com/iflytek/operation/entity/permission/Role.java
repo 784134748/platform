@@ -18,7 +18,7 @@ import java.util.*;
 public class Role {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /**
      * 角色标识
@@ -27,18 +27,18 @@ public class Role {
     /**
      * role --> permission 多对多处理
      */
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "ROLE_PERMISSIONS",
             joinColumns =
-            @JoinColumn(name = "role_id", referencedColumnName = "ID"),
+            @JoinColumn(name = "role_id", referencedColumnName = "id"),
             inverseJoinColumns =
-            @JoinColumn(name = "permission_id", referencedColumnName = "ID")
+            @JoinColumn(name = "permission_id", referencedColumnName = "id")
     )
     private List<Permission> permissions = new ArrayList<>();
     /**
      * role --> user 多对多处理
      */
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<User> users = new ArrayList<>();
 
     /**

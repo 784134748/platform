@@ -32,6 +32,18 @@ public interface UserServiceI {
     public User get(Serializable id);
 
     /**
+     * 新增用户
+     * @param user
+     */
+    public void save(User user);
+
+    /**
+     * 更新用户
+     * @param user
+     */
+    public void update(User user);
+
+    /**
      * 新增/更新用户
      * @param user
      */

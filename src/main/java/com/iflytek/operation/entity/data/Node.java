@@ -19,7 +19,7 @@ import java.util.*;
 public class Node {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -28,16 +28,10 @@ public class Node {
     private String name;
 
     /**
-     * 父节点
-     */
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id")
-    private Node parent;
-
-    /**
      * 子节点
      */
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
+    @JoinColumn(name="parent_id")
     private List<Node> children = new ArrayList<>();
 
     public Long getId() {
@@ -54,14 +48,6 @@ public class Node {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Node getParent() {
-        return parent;
-    }
-
-    public void setParent(Node parent) {
-        this.parent = parent;
     }
 
     public List<Node> getChildren() {
