@@ -1,5 +1,7 @@
 package com.iflytek.operation.entity.permission;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -27,18 +29,20 @@ public class Role {
     /**
      * role --> permission 多对多处理
      */
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinTable(name = "ROLE_PERMISSIONS",
+    @ManyToMany
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(name = "ROLE_PERMISSION",
             joinColumns =
-            @JoinColumn(name = "role_id", referencedColumnName = "id"),
+            @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID"),
             inverseJoinColumns =
-            @JoinColumn(name = "permission_id", referencedColumnName = "id")
+            @JoinColumn(name = "PERMISSION_ID", referencedColumnName = "ID")
     )
     private List<Permission> permissions = new ArrayList<>();
     /**
      * role --> user 多对多处理
      */
-    @ManyToMany(mappedBy = "roles", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(mappedBy = "roles")
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<User> users = new ArrayList<>();
 
     /**

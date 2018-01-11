@@ -3,6 +3,7 @@ package com.iflytek.operation.service.impl.permission;
 import com.iflytek.operation.entity.permission.Permission;
 import com.iflytek.operation.entity.permission.Role;
 import com.iflytek.operation.entity.permission.User;
+import com.iflytek.operation.service.permission.RoleServiceI;
 import com.iflytek.operation.service.permission.UserServiceI;
 import org.junit.Test;
 import org.junit.Before; 
@@ -35,8 +36,9 @@ import java.util.Set;
 //@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
 public class UserServiceImplTest { 
     @Autowired
-    // TODO autowired goes here...
     private UserServiceI userServiceI;
+    @Autowired
+    private RoleServiceI roleServiceI;
 
     //TODO Test Controller
     //private MockHttpServletRequest request;
@@ -104,28 +106,23 @@ public void testSaveOrUpdate() throws Exception {
     role2.setRole("admin2");
     //创建用户
     User user1 = new User();
-    user1.setUsername("admin9");
+    user1.setUsername("admin12");
     user1.setPassword("123456");
     user1.setSalt("1234");
     User user2 = new User();
-    user2.setUsername("admin10");
+    user2.setUsername("admin13");
     user2.setPassword("123456");
     user2.setSalt("1234");
-    //用户、角色、权限集合
-    List<Role> roles = new ArrayList<>(2);
-    List<Permission> permissions = new ArrayList<>(2);
-    roles.add(role1);
-    roles.add(role2);
-    permissions.add(permission1);
-    permissions.add(permission2);
-    //用户添加角色和权限
-    role1.setPermissions(permissions);
-    role2.setPermissions(permissions);
-    user1.setRoles(roles);
-    user2.setRoles(roles);
-    //向数据库级联插入数据
-    userServiceI.save(user1);
-    userServiceI.save(user2);
+    //用户添加角色
+//    user1.getRoles().add(role1);
+//    user1.getRoles().add(role2);
+    //角色添加用户
+    role1.getUsers().add(user1);
+    role1.getUsers().add(user2);
+    //向数据库正向级联插入用户
+//    userServiceI.saveOrUpdate(user1);
+    //向数据库反向级联插入角色
+    roleServiceI.saveOrUpdate(role1);
 } 
 
 /** 

@@ -1,5 +1,7 @@
 package com.iflytek.operation.entity.permission;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -28,7 +30,8 @@ public class Permission {
     /**
      * permission --> role 多对多处理
      */
-    @ManyToMany(mappedBy = "permissions", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(mappedBy = "permissions")
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Role> roles = new ArrayList<>();
 
     public Long getId() {
