@@ -1,5 +1,7 @@
 package com.iflytek.operation.entity.data;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -21,18 +23,30 @@ public class Node {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     /**
      * 节点信息
      */
     private String name;
-
+    /**
+     * 层次
+     */
+    private int level;
+    /**
+     * 是否为根节点
+     */
+    private boolean root;
+    /**
+     * 父节点
+     */
+    @ManyToOne
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinColumn(name = "parent_id")
+    private Node parent;
     /**
      * 子节点
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
-    @JoinColumn(name="parent_id")
-    private List<Node> children = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
+    private List<Node> childrens = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -50,11 +64,35 @@ public class Node {
         this.name = name;
     }
 
-    public List<Node> getChildren() {
-        return children;
+    public int getLevel() {
+        return level;
     }
 
-    public void setChildren(List<Node> children) {
-        this.children = children;
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public boolean isRoot() {
+        return root;
+    }
+
+    public void setRoot(boolean root) {
+        this.root = root;
+    }
+
+    public Node getParent() {
+        return parent;
+    }
+
+    public void setParent(Node parent) {
+        this.parent = parent;
+    }
+
+    public List<Node> getChildrens() {
+        return childrens;
+    }
+
+    public void setChildrens(List<Node> childrens) {
+        this.childrens = childrens;
     }
 }

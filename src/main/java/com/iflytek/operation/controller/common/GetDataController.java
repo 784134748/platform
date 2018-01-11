@@ -73,7 +73,7 @@ public class GetDataController {
     @RequestMapping(value = "tree.do")
     @ResponseBody
     public Node getTree(Long root) {
-        return treeNodeServiceI.getTree(root);
+        return null;
     }
 
 }

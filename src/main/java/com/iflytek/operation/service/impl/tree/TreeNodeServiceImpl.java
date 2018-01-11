@@ -24,8 +24,4 @@ public class TreeNodeServiceImpl implements TreeNodeServiceI {
     @Autowired
     private TreeNodeDaoI treeNodeDaoI;
 
-    @Override
-    public Node getTree(Long root) {
-        return treeNodeDaoI.get(root);
-    }
 }

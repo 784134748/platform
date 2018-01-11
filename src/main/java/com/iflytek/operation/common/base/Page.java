@@ -1,7 +1,7 @@
 package com.iflytek.operation.common.base;
 
-import net.sf.json.JSONArray;
-import org.apache.commons.lang.StringUtils;
+import com.alibaba.fastjson.JSONArray;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
@@ -178,11 +178,4 @@ public class Page<T> implements Serializable {
         this.formName = formName;
     }
 
-    /**
-     * 转换为json格式数据
-     * @return
-     */
-    public String toJson() {
-        return "{total:" + this.getTotalCount() + ",rows:" + JSONArray.fromObject(this.getResult()) + "}";
-    }
 }
