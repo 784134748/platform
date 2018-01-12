@@ -66,6 +66,15 @@
 
     <bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
         <!--   自定义配置...   -->
+        <!--<property name="serializerFeatures">
+            <array>
+                <value>WriteMapNullValue</value>
+                <value>WriteDateUseDateFormat</value>
+                <value>DisableCircularReferenceDetect</value>
+                <value>IgnoreNonFieldGetter</value>
+            </array>
+        </property>
+        <property name="dateFormat" value="yyyy-MM-dd" />--><!--会覆盖@JSONField的format yyyy-MM-dd HH:mm:ss-->
     </bean>
 
 </beans>

@@ -1,5 +1,7 @@
 package com.iflytek.operation.service.tree;
 
+import com.iflytek.operation.entity.data.Node;
+
 /**
  * <p>《一句话功能简述》
  * <p><功能详细描述>
@@ -14,14 +16,32 @@ package com.iflytek.operation.service.tree;
 public interface TreeNodeServiceI {
     /**
      * 新增根节点（树）
+     * @param root
      */
+    public void addTree(Node root);
+
+    /**
+     * 删除根节点（树）
+     * @param root
+     */
+    public void deleteTree(Node root);
 
     /**
      * 获取根节点（树）
+     * @return node
      */
+    public Node getTree();
 
     /**
      * 新增叶子节点
+     * @param children
      */
+    public void addNode(Node children);
+
+    /**
+     * 删除叶子节点
+     * @param children
+     */
+    public void deleteNode(Node children);
 
 }

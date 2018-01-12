@@ -1,5 +1,7 @@
 package com.iflytek.operation.common.base.enumstatus;
 
+import com.alibaba.fastjson.annotation.JSONType;
+
 import javax.persistence.AttributeConverter;
 
 /**
@@ -13,6 +15,7 @@ import javax.persistence.AttributeConverter;
  * @version [V1.0, 2018/1/5]
  * @see [相关类/方法]
  */
+@JSONType(serializeEnumAsJavaBean = true)
 public enum BasicType {
     /**
      * 是

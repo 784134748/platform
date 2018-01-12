@@ -34,6 +34,7 @@ public class Node {
     /**
      * 是否为根节点
      */
+    @Column(name = "is_root")
     private boolean root;
     /**
      * 父节点
