@@ -68,6 +68,7 @@ public interface ExampleServiceI {
     /**
      * 获得一个DTO
      *
+     * @param clazz
      * @param hql
      * @return
      */
@@ -128,6 +129,7 @@ public interface ExampleServiceI {
     /**
      * 执行Hql语句获取DTO集合
      *
+     * @param clazz
      * @param hql
      * @return
      */
@@ -138,6 +140,7 @@ public interface ExampleServiceI {
     /**
      * 执行原生Sql语句获取DTO集合
      *
+     * @param clazz
      * @param sql
      * @return
      */

@@ -77,6 +77,7 @@ public interface BaseDaoI<T> {
     /**
      * 通过HQL获得一个DTO
      *
+     * @param clazz
      * @param hql
      * @return
      */
@@ -187,6 +188,7 @@ public interface BaseDaoI<T> {
     /**
      * 执行Hql语句获取DTO集合
      *
+     * @param clazz
      * @param hql
      * @return
      */
@@ -209,6 +211,7 @@ public interface BaseDaoI<T> {
     /**
      * 执行原生Sql语句获取DTO集合
      *
+     * @param clazz
      * @param sql
      * @return
      */

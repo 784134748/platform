@@ -41,12 +41,13 @@ public class Node {
      */
     @ManyToOne
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinColumn(name = "parent_id")
+    @JoinColumn(name = "parent_id", nullable = false)
     private Node parent;
     /**
      * 子节点
      */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", orphanRemoval = true)
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<Node> childrens = new ArrayList<>();
 
     public Long getId() {

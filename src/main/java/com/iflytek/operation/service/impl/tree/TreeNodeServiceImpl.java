@@ -21,7 +21,33 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class TreeNodeServiceImpl implements TreeNodeServiceI {
+
     @Autowired
     private TreeNodeDaoI treeNodeDaoI;
 
+    @Override
+    public void addTree(Node root) {
+        treeNodeDaoI.saveOrUpdate(root);
+    }
+
+    @Override
+    public void deleteTree(Node root) {
+        treeNodeDaoI.delete(root);
+    }
+
+    @Override
+    public Node getTree() {
+        String hql = "";
+        return treeNodeDaoI.getEntityByHql(hql);
+    }
+
+    @Override
+    public void addNode(Node chirldren) {
+        treeNodeDaoI.saveOrUpdate(chirldren);
+    }
+
+    @Override
+    public void deleteNode(Node chirldren) {
+        treeNodeDaoI.delete(chirldren);
+    }
 }

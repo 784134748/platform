@@ -1,5 +1,7 @@
 package com.iflytek.operation.entity.data;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -33,7 +35,8 @@ public class DictionaryMenu {
     /**
      * dictionaryMenu --> dictionaryData
      */
-    @OneToMany(cascade=ALL, mappedBy="dictionaryMenu", orphanRemoval = true)
+    @OneToMany(mappedBy="dictionaryMenu", orphanRemoval = true)
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<DictionaryData> dictionaryDatas = new ArrayList<>();
 
     public Long getId() {

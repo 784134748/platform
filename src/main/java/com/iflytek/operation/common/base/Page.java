@@ -74,7 +74,7 @@ public class Page<T> implements Serializable {
     }
 
     public long getTotalPageCount() {
-        Assert.isTrue(this.pageSize > 0);
+        Assert.isTrue(this.pageSize > 0,"pageSize not more than zero");
         return this.totalCount % (long) this.pageSize == 0L ? this.totalCount / (long) this.pageSize : this.totalCount / (long) this.pageSize + 1L;
     }
 
