@@ -1,6 +1,5 @@
 package com.iflytek.operation.common.base;
 
-import com.alibaba.fastjson.JSONArray;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
@@ -20,16 +19,30 @@ import java.util.List;
  * @see [相关类/方法]
  */
 public class Page<T> implements Serializable {
-
-    public static final String ASC = "asc";
-    public static final String DESC = "desc";
+    
+    private static final long serialVersionUID = 6629860755132341034L;
+    
+    /**
+     * 默认页大小
+     */
     public static int DEFAULT_PAGE_SIZE = 10;
+    /**
+     * 当前页码
+     */
     protected int currentPageNo;
+    /**
+     * 页大小
+     */
     protected int pageSize;
+    /**
+     * 结果集
+     */
     protected List<T> result;
+    /**
+     * 查询结果总量
+     */
     protected long totalCount;
     protected boolean autoCount;
-    protected String pageUrl;
     protected String formName;
     protected String orderBy;
     protected String order;
@@ -45,7 +58,6 @@ public class Page<T> implements Serializable {
         this.result = Collections.emptyList();
         this.totalCount = -1L;
         this.autoCount = true;
-        this.pageUrl = "default.jsp";
         this.setPageSize(pageSize);
     }
 
@@ -55,7 +67,6 @@ public class Page<T> implements Serializable {
         this.result = Collections.emptyList();
         this.totalCount = -1L;
         this.autoCount = true;
-        this.pageUrl = "default.jsp";
         this.setPageSize(pageSize);
         this.setAutoCount(autoCount);
     }
@@ -66,7 +77,6 @@ public class Page<T> implements Serializable {
         this.result = Collections.emptyList();
         this.totalCount = -1L;
         this.autoCount = true;
-        this.pageUrl = "default.jsp";
         this.pageSize = pageSize;
         this.start = start;
         this.totalCount = totalSize;
@@ -128,14 +138,6 @@ public class Page<T> implements Serializable {
 
     public void setAutoCount(boolean autoCount) {
         this.autoCount = autoCount;
-    }
-
-    public String getPageUrl() {
-        return this.pageUrl;
-    }
-
-    public void setPageUrl(String pageUrl) {
-        this.pageUrl = pageUrl;
     }
 
     public long getStart() {
