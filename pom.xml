@@ -13,9 +13,11 @@
         <shiro.version>1.2.3</shiro.version>
         <log4j.version>1.2.17</log4j.version>
         <spring.version>4.3.13.RELEASE</spring.version>
-        <hibernate.version>5.2.12.Final</hibernate.version>
+        <hibernate.version>5.2.13.Final</hibernate.version>
+        <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
         <junit.version>4.12</junit.version>
         <fastjson.version>1.2.44</fastjson.version>
+        <druid.version>1.1.7</druid.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <!--=================本地仓库==============-->
@@ -178,22 +180,32 @@
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>6.0.7.Final</version>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>${hibernate-validator.version}</version>
         </dependency>
 
         <!--mysql 数据库-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.30</version>
+            <version>5.1.39</version>
         </dependency>
 
         <!--数据库连接池-->
         <dependency>
-            <groupId>com.mchange.c3p0</groupId>
-            <artifactId>com.springsource.com.mchange.v2.c3p0</artifactId>
-            <version>0.9.1.2</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
         </dependency>
 
         <!--Java工具类-->
