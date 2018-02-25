@@ -1,8 +1,8 @@
 package com.iflytek.operation.service.impl.example;
 
 import com.iflytek.operation.common.service.impl.BaseServiceImpl;
-import com.iflytek.operation.entity.example.basic.Person;
-import com.iflytek.operation.service.example.ExampleServiceI;
+import com.iflytek.operation.entity.example.logicDel.Client;
+import com.iflytek.operation.service.example.LogicDelServiceI;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class ExampleServiceImpl extends BaseServiceImpl<Person> implements ExampleServiceI {
+public class LogicDelServiceImpl extends BaseServiceImpl<Client> implements LogicDelServiceI {
 
 }

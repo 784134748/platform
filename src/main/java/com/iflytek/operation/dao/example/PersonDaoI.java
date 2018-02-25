@@ -1,7 +1,7 @@
 package com.iflytek.operation.dao.example;
 
 import com.iflytek.operation.common.dao.BaseDaoI;
-import com.iflytek.operation.entity.example.Person;
+import com.iflytek.operation.entity.example.basic.Person;
 
 /**
  * <p>《一句话功能简述》
@@ -14,5 +14,5 @@ import com.iflytek.operation.entity.example.Person;
  * @version [V1.0, 2017/12/9]
  * @see [相关类/方法]
  */
-public interface ExampleDaoI extends BaseDaoI<Person> {
+public interface PersonDaoI extends BaseDaoI<Person> {
 }

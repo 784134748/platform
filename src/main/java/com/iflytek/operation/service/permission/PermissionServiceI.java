@@ -30,7 +30,7 @@ public interface PermissionServiceI {
      * @param uid
      * @return
      */
-    public Set<String> getPermissionsByUid(Long uid);
+    public Set<String> getPermissionsByUid(Serializable uid);
 
     /**
      * 新增/更新权限

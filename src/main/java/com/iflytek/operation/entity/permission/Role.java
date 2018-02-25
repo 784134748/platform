@@ -1,5 +1,6 @@
 package com.iflytek.operation.entity.permission;
 
+import com.iflytek.operation.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -17,11 +18,8 @@ import java.util.*;
  * @see [相关类/方法]
  */
 @Entity
-public class Role {
+public class Role extends BaseUUID {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     /**
      * 角色标识
      */
@@ -63,14 +61,6 @@ public class Role {
     public void removeRole(Permission permission) {
         permissions.remove(permission);
         permission.getRoles().remove(permission);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getRole() {

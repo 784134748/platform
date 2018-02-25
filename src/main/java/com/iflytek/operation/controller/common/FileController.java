@@ -1,7 +1,7 @@
 package com.iflytek.operation.controller.common;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>《一句话功能简述》
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @version [V1.0, 2017/12/8]
  * @see [相关类/方法]
  */
-@Controller
+@RestController
 @RequestMapping(value = "/file")
 public class FileController {
 

@@ -1,6 +1,4 @@
-package com.iflytek.operation.entity.example;
-
-import javax.persistence.Entity;
+package com.iflytek.operation.entity.example.basic;
 
 /**
  * <p>《一句话功能简述》
@@ -13,6 +11,13 @@ import javax.persistence.Entity;
  * @version [V1.0, 2017/12/9]
  * @see [相关类/方法]
  */
-@Entity
-public class CreditCardPayment extends Payment {
+public enum PhoneType {
+    /**
+     * 固话
+     */
+    LAND_LINE,
+    /**
+     * 手机
+     */
+    MOBILE;
 }

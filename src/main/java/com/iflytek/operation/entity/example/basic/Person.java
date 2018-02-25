@@ -1,4 +1,6 @@
-package com.iflytek.operation.entity.example;
+package com.iflytek.operation.entity.example.basic;
+
+import com.iflytek.operation.common.base.strategy.BaseUUID;
 
 import javax.persistence.*;
 import java.util.*;
@@ -15,11 +17,7 @@ import java.util.*;
  * @see [相关类/方法]
  */
 @Entity
-public class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Person extends BaseUUID {
 
     private String name;
 
@@ -44,14 +42,6 @@ public class Person {
 
     @Version
     private int version;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

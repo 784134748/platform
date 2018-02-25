@@ -1,4 +1,6 @@
-package com.iflytek.operation.entity.example;
+package com.iflytek.operation.entity.example.basic;
+
+import com.iflytek.operation.common.base.strategy.BaseUUID;
 
 import javax.persistence.*;
 import java.util.*;
@@ -15,11 +17,7 @@ import java.util.*;
  * @see [相关类/方法]
  */
 @Entity
-public class Phone {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Phone extends BaseUUID {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Person person;
@@ -32,6 +30,7 @@ public class Phone {
     private PhoneType type;
 
     @OneToMany(mappedBy = "phone", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderColumn(name = "order_id")
     private List<Call> calls = new ArrayList<>();
 
     @OneToMany(mappedBy = "phone")
@@ -41,14 +40,6 @@ public class Phone {
 
     @ElementCollection
     private List<Date> repairTimestamps = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Person getPerson() {
         return person;

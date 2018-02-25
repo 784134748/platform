@@ -4,9 +4,9 @@ import com.iflytek.operation.common.base.GlobalParam;
 import com.iflytek.operation.entity.data.Node;
 import com.iflytek.operation.service.tree.TreeNodeServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
 
@@ -21,7 +21,7 @@ import java.util.*;
  * @version [V1.0, 2017/12/7]
  * @see [相关类/方法]
  */
-@Controller
+@RestController
 @RequestMapping(value = "/get")
 public class GetDataController {
 
@@ -35,7 +35,6 @@ public class GetDataController {
      * @return
      */
     @RequestMapping(value = "enumerate.do")
-    @ResponseBody
     public Enum[] getEnumerate(String className) {
         if (null == className || className.isEmpty()) {
             return null;
@@ -56,7 +55,6 @@ public class GetDataController {
      * @return
      */
     @RequestMapping(value = "dictionary.do")
-    @ResponseBody
     public Map<String, Object> getDictionary(String business) {
         Map<String, Object> dictionary = new HashMap<>(16);
         dictionary.put("张三", 1);
@@ -71,7 +69,6 @@ public class GetDataController {
      * @return
      */
     @RequestMapping(value = "tree.do")
-    @ResponseBody
     public Node getTree(Long root) {
         return null;
     }

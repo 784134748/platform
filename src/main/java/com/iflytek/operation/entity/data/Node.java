@@ -1,5 +1,6 @@
 package com.iflytek.operation.entity.data;
 
+import com.iflytek.operation.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -18,11 +19,8 @@ import java.util.*;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Node {
+public class Node extends BaseUUID {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     /**
      * 节点信息
      */
@@ -49,14 +47,6 @@ public class Node {
     @OneToMany(mappedBy = "parent", orphanRemoval = true)
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<Node> childrens = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

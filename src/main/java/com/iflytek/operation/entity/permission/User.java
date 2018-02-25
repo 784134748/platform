@@ -1,5 +1,6 @@
 package com.iflytek.operation.entity.permission;
 
+import com.iflytek.operation.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NaturalId;
 
@@ -18,11 +19,8 @@ import java.util.*;
  * @see [相关类/方法]
  */
 @Entity
-public class User {
+public class User extends BaseUUID {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     /**
      * 邮箱 | 登录帐号
      */
@@ -72,14 +70,6 @@ public class User {
     public void removeRole(Role role) {
         roles.remove(role);
         role.getUsers().remove(role);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {

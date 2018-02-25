@@ -35,7 +35,7 @@ public class RoleServiceImpl implements RoleServiceI {
     }
 
     @Override
-    public Set<String> getRolesByUid(Long id) {
+    public Set<String> getRolesByUid(Serializable id) {
         String hql = "select r.role from User u, Role r where u.id = u.roles.id and u.id = ? ";
         List<String> roles = roleDaoI.getParamsByHql(hql, id);
         Set<String> result = new HashSet<>(16);

@@ -1,11 +1,10 @@
 package com.iflytek.operation.entity.data;
 
+import com.iflytek.operation.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.*;
-
-import static javax.persistence.CascadeType.ALL;
 
 /**
  * <p>《一句话功能简述》
@@ -19,11 +18,8 @@ import static javax.persistence.CascadeType.ALL;
  * @see [相关类/方法]
  */
 @Entity
-public class DictionaryMenu {
+public class DictionaryMenu extends BaseUUID {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     /**
      * 字典项名称（业务名称）
      */
@@ -38,14 +34,6 @@ public class DictionaryMenu {
     @OneToMany(mappedBy="dictionaryMenu", orphanRemoval = true)
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<DictionaryData> dictionaryDatas = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDictionaryName() {
         return dictionaryName;

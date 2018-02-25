@@ -12,6 +12,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -97,14 +98,14 @@ public class UserRealm extends AuthorizingRealm {
     /**
      * 通过用户id获取角色信息
      */
-    public Set<String> getRolesByUid(Long uid){
+    public Set<String> getRolesByUid(Serializable uid){
         Set<String> roles = roleServiceI.getRolesByUid(uid);
         return roles;
     }
     /**
      * 通过用户id获取权限信息
      */
-    public Set<String> getPermissionsByUid(Long uid){
+    public Set<String> getPermissionsByUid(Serializable uid){
         Set<String> permissions = permissionServiceI.getPermissionsByUid(uid);
         return permissions;
     }

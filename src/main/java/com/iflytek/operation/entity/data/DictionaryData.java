@@ -1,5 +1,7 @@
 package com.iflytek.operation.entity.data;
 
+import com.iflytek.operation.common.base.strategy.BaseUUID;
+
 import javax.persistence.*;
 
 /**
@@ -14,11 +16,8 @@ import javax.persistence.*;
  * @see [相关类/方法]
  */
 @Entity
-public class DictionaryData {
+public class DictionaryData extends BaseUUID {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     /**
      * 操作类型（前台展示）
      */
@@ -33,14 +32,6 @@ public class DictionaryData {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="dictionaryMenu_id", nullable=false)
     private DictionaryMenu dictionaryMenu;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getOptionType() {
         return optionType;

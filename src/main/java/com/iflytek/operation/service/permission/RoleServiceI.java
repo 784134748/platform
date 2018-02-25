@@ -30,7 +30,7 @@ public interface RoleServiceI {
      * @param uid
      * @return
      */
-    public Set<String> getRolesByUid(Long uid);
+    public Set<String> getRolesByUid(Serializable uid);
 
     /**
      * 新增/更新角色

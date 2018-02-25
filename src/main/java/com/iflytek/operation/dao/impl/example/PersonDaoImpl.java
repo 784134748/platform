@@ -1,8 +1,8 @@
 package com.iflytek.operation.dao.impl.example;
 
 import com.iflytek.operation.common.dao.impl.BaseDaoImpl;
-import com.iflytek.operation.dao.example.ExampleDaoI;
-import com.iflytek.operation.entity.example.Person;
+import com.iflytek.operation.dao.example.PersonDaoI;
+import com.iflytek.operation.entity.example.basic.Person;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,5 +17,5 @@ import org.springframework.stereotype.Repository;
  * @see [相关类/方法]
  */
 @Repository
-public class ExampleDaoImpl extends BaseDaoImpl<Person> implements ExampleDaoI {
+public class PersonDaoImpl extends BaseDaoImpl<Person> implements PersonDaoI {
 }

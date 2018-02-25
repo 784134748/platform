@@ -1,7 +1,7 @@
 package com.iflytek.operation.service.example;
 
 import com.iflytek.operation.common.service.BaseServiceI;
-import com.iflytek.operation.entity.example.basic.Person;
+import com.iflytek.operation.entity.example.envers.Customer;
 
 /**
  * <p>《一句话功能简述》
@@ -14,6 +14,6 @@ import com.iflytek.operation.entity.example.basic.Person;
  * @version [V1.0, 2017/12/10]
  * @see [相关类/方法]
  */
-public interface ExampleServiceI extends BaseServiceI<Person> {
+public interface EnversServiceI extends BaseServiceI<Customer>{
 
 }

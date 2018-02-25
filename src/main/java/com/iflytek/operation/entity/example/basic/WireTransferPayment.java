@@ -1,4 +1,4 @@
-package com.iflytek.operation.entity.example;
+package com.iflytek.operation.entity.example.basic;
 
 import javax.persistence.Entity;
 

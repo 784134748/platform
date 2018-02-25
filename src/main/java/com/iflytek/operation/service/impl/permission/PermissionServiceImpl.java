@@ -35,7 +35,7 @@ public class PermissionServiceImpl implements PermissionServiceI {
     }
 
     @Override
-    public Set<String> getPermissionsByUid(Long id) {
+    public Set<String> getPermissionsByUid(Serializable id) {
         String hql = "select p.permission from User u, Role r, Permission p where u.id = u.roles.id and r.id = r.permissions.id and u.id = ? ";
         List<String> permissions = permissionDaoI.getParamsByHql(hql, id);
         Set<String> result = new HashSet<>(16);

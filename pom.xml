@@ -18,6 +18,8 @@
         <junit.version>4.12</junit.version>
         <fastjson.version>1.2.44</fastjson.version>
         <druid.version>1.1.7</druid.version>
+        <guava.version>24.0-jre</guava.version>
+        <lang3.version>3.7</lang3.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <!--=================本地仓库==============-->
@@ -212,12 +214,14 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.5</version>
+            <version>${lang3.version}</version>
         </dependency>
+
+        <!--google guava-->
         <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.7.0</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
 
         <!-- servlet -->

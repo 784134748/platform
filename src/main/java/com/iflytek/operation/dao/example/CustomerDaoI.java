@@ -1,4 +1,7 @@
-package com.iflytek.operation.entity.example;
+package com.iflytek.operation.dao.example;
+
+import com.iflytek.operation.common.dao.BaseDaoI;
+import com.iflytek.operation.entity.example.envers.Customer;
 
 /**
  * <p>《一句话功能简述》
@@ -11,13 +14,5 @@ package com.iflytek.operation.entity.example;
  * @version [V1.0, 2017/12/9]
  * @see [相关类/方法]
  */
-public enum AddressType {
-    /**
-     * 家庭
-     */
-    HOME,
-    /**
-     * 办公
-     */
-    OFFICE
+public interface CustomerDaoI extends BaseDaoI<Customer> {
 }

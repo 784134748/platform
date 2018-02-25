@@ -1,5 +1,6 @@
 package com.iflytek.operation.entity.permission;
 
+import com.iflytek.operation.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -17,11 +18,7 @@ import java.util.*;
  * @see [相关类/方法]
  */
 @Entity
-public class Permission {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Permission extends BaseUUID {
 
     /**
      * 权限字符串
@@ -33,14 +30,6 @@ public class Permission {
     @ManyToMany(mappedBy = "permissions")
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Role> roles = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getPermission() {
         return permission;

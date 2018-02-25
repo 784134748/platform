@@ -1,4 +1,6 @@
-package com.iflytek.operation.entity.example;
+package com.iflytek.operation.entity.example.basic;
+
+import com.iflytek.operation.common.base.strategy.BaseUUID;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,11 +18,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Payment {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Payment extends BaseUUID {
 
     private BigDecimal amount;
 
@@ -28,14 +26,6 @@ public class Payment {
 
     @ManyToOne
     private Person person;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public BigDecimal getAmount() {
         return amount;
