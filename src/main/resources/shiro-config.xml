@@ -23,7 +23,7 @@
     </bean>
 
     <!-- Realm -->
-    <bean id="UserRealm" class="com.iflytek.operation.common.secret.UserRealm"/>
+    <bean id="UserRealm" class="com.yalonglee.common.secret.UserRealm"/>
 
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
