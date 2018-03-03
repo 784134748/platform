@@ -17,6 +17,7 @@
                 /get/** = anon
                 /rbac/login.do = authc
                 /rbac/logout.do = logout
+                /rbac/admin.do = anon
                 /** = user
             </value>
         </property>

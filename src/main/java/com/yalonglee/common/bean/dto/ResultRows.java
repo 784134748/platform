@@ -2,7 +2,6 @@ package com.yalonglee.common.bean.dto;
 
 
 import com.yalonglee.common.bean.BaseResult;
-import com.yalonglee.common.bean.BaseResult;
 
 import java.util.List;
 

@@ -43,26 +43,6 @@ public class Role extends BaseUUID {
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<User> users = new ArrayList<>();
 
-    /**
-     * 添加权限
-     *
-     * @param permission
-     */
-    public void addPermission(Permission permission) {
-        permissions.add(permission);
-        permission.getRoles().add(this);
-    }
-
-    /**
-     * 删除权限
-     *
-     * @param permission
-     */
-    public void removeRole(Permission permission) {
-        permissions.remove(permission);
-        permission.getRoles().remove(permission);
-    }
-
     public String getRole() {
         return role;
     }

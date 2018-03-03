@@ -1,9 +1,5 @@
 package com.yalonglee.platform.service.impl.example;
 
-import com.yalonglee.platform.entity.example.logicDel.Account;
-import com.yalonglee.platform.entity.example.logicDel.AccountType;
-import com.yalonglee.platform.entity.example.logicDel.Client;
-import com.yalonglee.platform.service.example.LogicDelServiceI;
 import com.yalonglee.platform.service.example.LogicDelServiceI;
 import org.junit.Test;
 import org.junit.Before; 

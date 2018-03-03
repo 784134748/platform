@@ -57,6 +57,30 @@ public class RbacController {
     }
 
     /**
+     * 创建管理员
+     */
+    @RequestMapping(value = "/admin.do")
+    public void superAdmin(){
+        //创建权限
+        Permission permission = new Permission();
+        permission.setPermission("admin:admin:all");
+        //创建角色
+        Role role = new Role();
+        role.setRole("admin");
+        //创建用户
+        User user = new User();
+        user.setUsername("admin");
+        user.setPassword("admin");
+        user.setSalt("1234");
+        //角色添加权限
+        role.getPermissions().add(permission);
+        //用户添加角色
+        user.getRoles().add(role);
+        //添加管理员
+        userServiceI.saveOrUpdate(user);
+    }
+
+    /**
      * 新增/修改用户
      * @param user
      */

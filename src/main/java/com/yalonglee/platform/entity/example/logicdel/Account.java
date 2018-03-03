@@ -1,4 +1,4 @@
-package com.yalonglee.platform.entity.example.logicDel;
+package com.yalonglee.platform.entity.example.logicdel;
 
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.*;

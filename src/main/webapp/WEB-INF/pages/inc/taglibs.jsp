@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
-<%--跳出iframe--%>
+<%--登录超时--%>
 <script type="text/javascript">
     if (top.location !== self.location) {
-        top.location = self.location;
+        self.location = "/rbac/timeout.do";
     }
 </script>
-<%--跳出iframe--%>
+<%--登录超时--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>

@@ -2,7 +2,7 @@ package com.yalonglee.platform.dao.impl.example;
 
 import com.yalonglee.common.dao.impl.BaseDaoImpl;
 import com.yalonglee.platform.dao.example.AccountDaoI;
-import com.yalonglee.platform.entity.example.logicDel.Account;
+import com.yalonglee.platform.entity.example.logicdel.Account;
 import org.springframework.stereotype.Repository;
 
 /**

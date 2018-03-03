@@ -88,33 +88,36 @@ public void testGetUserByUsername() throws Exception {
 public void testSaveOrUpdate() throws Exception {
     //创建权限
     Permission permission1 = new Permission();
-    permission1.setPermission("admin1:admin1:all");
+    permission1.setPermission("admin:admin:all");
     Permission permission2 = new Permission();
-    permission2.setPermission("admin2:admin2:all");
+    permission2.setPermission("admin1:admin1:all");
     //创建角色
     Role role1 = new Role();
-    role1.setRole("admin1");
+    role1.setRole("admin");
     Role role2 = new Role();
-    role2.setRole("admin2");
+    role2.setRole("admin1");
     //创建用户
+    User user = new User();
+    user.setUsername("admin");
+    user.setPassword("123456");
+    user.setSalt("1234");
     User user1 = new User();
-    user1.setUsername("admin12");
+    user1.setUsername("admin1");
     user1.setPassword("123456");
     user1.setSalt("1234");
-    User user2 = new User();
-    user2.setUsername("admin13");
-    user2.setPassword("123456");
-    user2.setSalt("1234");
+    //角色添加权限
+    role1.getPermissions().add(permission1);
+    role1.getPermissions().add(permission2);
+    role2.getPermissions().add(permission1);
+    role2.getPermissions().add(permission2);
     //用户添加角色
-//    user1.getRoles().add(role1);
-//    user1.getRoles().add(role2);
-    //角色添加用户
-    role1.getUsers().add(user1);
-    role1.getUsers().add(user2);
+    user.getRoles().add(role1);
+    user.getRoles().add(role2);
+    user1.getRoles().add(role1);
+    user1.getRoles().add(role2);
     //向数据库正向级联插入用户
-//    userServiceI.saveOrUpdate(user1);
-    //向数据库反向级联插入角色
-    roleServiceI.saveOrUpdate(role1);
+    userServiceI.saveOrUpdate(user);
+    userServiceI.saveOrUpdate(user1);
 } 
 
 /** 

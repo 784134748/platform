@@ -8,5 +8,5 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <div class="layui-body">
     <!-- 内容主体区域 -->
-    <p>主体内容</p>
+    <iframe src="/sys/menu.do" frameborder="0" name="iframe" id="iframe" scrolling="auto"></iframe>
 </div>

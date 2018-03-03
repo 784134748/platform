@@ -52,26 +52,6 @@ public class User extends BaseUUID {
     )
     private List<Role> roles = new ArrayList<>();
 
-    /**
-     * 添加角色
-     *
-     * @param role
-     */
-    public void addRole(Role role) {
-        roles.add(role);
-        role.getUsers().add(this);
-    }
-
-    /**
-     * 删除角色
-     *
-     * @param role
-     */
-    public void removeRole(Role role) {
-        roles.remove(role);
-        role.getUsers().remove(role);
-    }
-
     public String getUsername() {
         return username;
     }

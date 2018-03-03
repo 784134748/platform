@@ -1,7 +1,7 @@
 package com.yalonglee.platform.service.example;
 
 import com.yalonglee.common.service.BaseServiceI;
-import com.yalonglee.platform.entity.example.logicDel.Client;
+import com.yalonglee.platform.entity.example.logicdel.Client;
 
 /**
  * <p>《一句话功能简述》

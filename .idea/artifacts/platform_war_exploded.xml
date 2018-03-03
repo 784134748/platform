@@ -23,9 +23,9 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.13.RELEASE" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.6" />
-          <element id="library" level="project" name="Maven: org.hibernate:hibernate-ehcache:5.2.13.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-ehcache:5.2.14.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.1.Final" />
-          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.2.13.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.2.14.Final" />
           <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.22.0-GA" />
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
@@ -34,7 +34,7 @@
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache:2.10.3" />
-          <element id="library" level="project" name="Maven: org.hibernate:hibernate-envers:5.2.13.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-envers:5.2.14.Final" />
           <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:6.0.7.Final" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.1" />

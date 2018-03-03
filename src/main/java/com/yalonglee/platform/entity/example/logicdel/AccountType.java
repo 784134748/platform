@@ -1,4 +1,4 @@
-package com.yalonglee.platform.entity.example.logicDel;
+package com.yalonglee.platform.entity.example.logicdel;
 
 /**
  * <p>《一句话功能简述》
