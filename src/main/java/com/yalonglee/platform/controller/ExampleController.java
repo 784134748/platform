@@ -1,9 +1,9 @@
 package com.yalonglee.platform.controller;
 
 import com.yalonglee.common.base.Page;
-import com.yalonglee.platform.dto.example.PersonDto;
 import com.yalonglee.platform.entity.example.basic.Person;
 import com.yalonglee.platform.service.example.ExampleServiceI;
+import com.yalonglee.platform.vo.example.PersonVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,17 +55,17 @@ public class ExampleController {
     }
 
     /**
-     * 通过HQL获得一个DTO
+     * 通过HQL获得一个VO
      */
-    @RequestMapping(value = "/getDtoByHql.do")
-    public Object getDtoByHql(String hql) {
-        Object result = exampleServiceI.getDtoByHql(PersonDto.class, hql);
+    @RequestMapping(value = "/getVoByHql.do")
+    public Object getVoByHql(String hql) {
+        Object result = exampleServiceI.getVoByHql(PersonVo.class, hql);
         return result;
     }
 
-    @RequestMapping(value = "/getDtoBySql.do")
-    public Object getDtoBySql(String sql) {
-        Object result = exampleServiceI.getDtoBySql(PersonDto.class, sql);
+    @RequestMapping(value = "/getVoBySql.do")
+    public Object getVoBySql(String sql) {
+        Object result = exampleServiceI.getVoBySql(PersonVo.class, sql);
         return result;
     }
 
@@ -145,32 +145,32 @@ public class ExampleController {
     }
 
     /**
-     * 执行Hql语句获取DTO集合
+     * 执行Hql语句获取VO集合
      */
-    @RequestMapping(value = "/findDtoListByHql.do")
-    public List<Object> findDtoListByHql(String hql) {
-        List<Object> result = exampleServiceI.findDtoListByHql(PersonDto.class, hql);
+    @RequestMapping(value = "/findVoListByHql.do")
+    public List<Object> findVoListByHql(String hql) {
+        List<Object> result = exampleServiceI.findVoListByHql(PersonVo.class, hql);
         return result;
     }
 
-    @RequestMapping(value = "/findDtoPageByHql.do")
-    public Page<Object> findDtoPageByHql(Page<Object> page, String hql) {
-        Page<Object> result = exampleServiceI.findDtoPageByHql(PersonDto.class, page, hql);
+    @RequestMapping(value = "/findVoPageByHql.do")
+    public Page<Object> findVoPageByHql(Page<Object> page, String hql) {
+        Page<Object> result = exampleServiceI.findVoPageByHql(PersonVo.class, page, hql);
         return result;
     }
 
     /**
-     * 执行原生Sql语句获取DTO集合
+     * 执行原生Sql语句获取VO集合
      */
-    @RequestMapping(value = "/findDtoListBySql.do")
-    public List<Object> findDtoListBySql(String sql) {
-        List<Object> result = exampleServiceI.findDtoListBySql(PersonDto.class, sql);
+    @RequestMapping(value = "/findVoListBySql.do")
+    public List<Object> findVoListBySql(String sql) {
+        List<Object> result = exampleServiceI.findVoListBySql(PersonVo.class, sql);
         return result;
     }
 
-    @RequestMapping(value = "/findDtoPageBySql.do")
-    public Page<Object> findDtoPageBySql(Page<Object> page, String sql) {
-        Page<Object> result = exampleServiceI.findDtoPageBySql(PersonDto.class, page, sql);
+    @RequestMapping(value = "/findVoPageBySql.do")
+    public Page<Object> findVoPageBySql(Page<Object> page, String sql) {
+        Page<Object> result = exampleServiceI.findVoPageBySql(PersonVo.class, page, sql);
         return result;
     }
 

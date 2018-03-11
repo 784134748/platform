@@ -38,14 +38,14 @@ public class Node extends BaseUUID {
      * 父节点
      */
     @ManyToOne
-    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "parent_id", nullable = false)
     private Node parent;
     /**
      * 子节点
      */
     @OneToMany(mappedBy = "parent", orphanRemoval = true)
-    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Node> childrens = new ArrayList<>();
 
     public String getName() {

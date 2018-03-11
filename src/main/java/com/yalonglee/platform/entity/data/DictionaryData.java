@@ -1,6 +1,7 @@
 package com.yalonglee.platform.entity.data;
 
 import com.yalonglee.common.base.strategy.BaseUUID;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -29,7 +30,8 @@ public class DictionaryData extends BaseUUID {
     /**
      * dictionaryData --> dictionaryMenu
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name="dictionaryMenu_id", nullable=false)
     private DictionaryMenu dictionaryMenu;
 

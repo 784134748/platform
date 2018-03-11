@@ -82,7 +82,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> E getDtoByHql(Class clazz, String hql) {
+    public <E> E getVoByHql(Class clazz, String hql) {
         Assert.hasText(hql, "hql is null");
         Query query = createQuery(clazz, hql);
         List<E> list = query.list();
@@ -90,7 +90,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> E getDtoByHql(Class clazz, String hql, Object... params) {
+    public <E> E getVoByHql(Class clazz, String hql, Object... params) {
         Assert.hasText(hql, "hql is null");
         Query query = createQuery(clazz, hql, params);
         List<E> list = query.list();
@@ -98,7 +98,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> E getDtoByHql(Class clazz, String hql, List<Object> params) {
+    public <E> E getVoByHql(Class clazz, String hql, List<Object> params) {
         Assert.hasText(hql, "hql is null");
         Query query = createQuery(clazz, hql, params);
         List<E> list = query.list();
@@ -106,7 +106,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> E getDtoByHql(Class clazz, String hql, Map<String, Object> params) {
+    public <E> E getVoByHql(Class clazz, String hql, Map<String, Object> params) {
         Assert.hasText(hql, "hql is null");
         Query query = createQuery(clazz, hql, params);
         List<E> list = query.list();
@@ -114,7 +114,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> E getDtoBySql(Class clazz, String sql) {
+    public <E> E getVoBySql(Class clazz, String sql) {
         Assert.hasText(sql, "sql is null");
         Query query = createNativeQuery(clazz, sql);
         List<E> list = query.list();
@@ -122,7 +122,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> E getDtoBySql(Class clazz, String sql, Object... params) {
+    public <E> E getVoBySql(Class clazz, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
         Query query = createNativeQuery(clazz, sql, params);
         List<E> list = query.list();
@@ -130,7 +130,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> E getDtoBySql(Class clazz, String sql, List<Object> params) {
+    public <E> E getVoBySql(Class clazz, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
         Query query = createNativeQuery(clazz, sql, params);
         List<E> list = query.list();
@@ -138,7 +138,7 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> E getDtoBySql(Class clazz, String sql, Map<String, Object> params) {
+    public <E> E getVoBySql(Class clazz, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
         Query query = createNativeQuery(clazz, sql, params);
         List<E> list = query.list();
@@ -358,104 +358,104 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     }
 
     @Override
-    public <E> List<E> findDtoListByHql(Class clazz, String hql) {
+    public <E> List<E> findVoListByHql(Class clazz, String hql) {
         Assert.hasText(hql, "hql is null");
         return createQuery(clazz, hql).list();
     }
 
     @Override
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, Object... params) {
+    public <E> List<E> findVoListByHql(Class clazz, String hql, Object... params) {
         Assert.hasText(hql, "hql is null");
         return createQuery(clazz, hql, params).list();
     }
 
     @Override
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, List<Object> params) {
+    public <E> List<E> findVoListByHql(Class clazz, String hql, List<Object> params) {
         Assert.hasText(hql, "hql is null");
         return createQuery(hql, params).list();
     }
 
     @Override
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, Map<String, Object> params) {
+    public <E> List<E> findVoListByHql(Class clazz, String hql, Map<String, Object> params) {
         Assert.hasText(hql, "hql is null");
         return createQuery(clazz, hql, params).list();
     }
 
     @Override
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql) {
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql) {
         Assert.hasText(hql, "hql is null");
         page.setResult(createQuery(clazz, page, hql).list());
         return page;
     }
 
     @Override
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, Object... params) {
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, Object... params) {
         Assert.hasText(hql, "hql is null");
         page.setResult(createQuery(clazz, page, hql, params).list());
         return page;
     }
 
     @Override
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, List<Object> params) {
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, List<Object> params) {
         Assert.hasText(hql, "hql is null");
         page.setResult(createQuery(clazz, page, hql, params).list());
         return page;
     }
 
     @Override
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, Map<String, Object> params) {
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, Map<String, Object> params) {
         Assert.hasText(hql, "hql is null");
         page.setResult(createQuery(clazz, page, hql, params).list());
         return page;
     }
 
     @Override
-    public <E> List<E> findDtoListBySql(Class clazz, String sql) {
+    public <E> List<E> findVoListBySql(Class clazz, String sql) {
         Assert.hasText(sql, "sql is null");
         return createNativeQuery(clazz, sql).list();
     }
 
     @Override
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, Object... params) {
+    public <E> List<E> findVoListBySql(Class clazz, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
         return createNativeQuery(clazz, sql, params).list();
     }
 
     @Override
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, List<Object> params) {
+    public <E> List<E> findVoListBySql(Class clazz, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
         return createNativeQuery(clazz, sql, params).list();
     }
 
     @Override
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, Map<String, Object> params) {
+    public <E> List<E> findVoListBySql(Class clazz, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
         return createNativeQuery(clazz, sql, params).list();
     }
 
     @Override
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql) {
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql) {
         Assert.hasText(sql, "sql is null");
         page.setResult(createNativeQuery(clazz, page, sql).list());
         return page;
     }
 
     @Override
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, Object... params) {
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
         page.setResult(createNativeQuery(clazz, page, sql, params).list());
         return page;
     }
 
     @Override
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, List<Object> params) {
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
         page.setResult(createNativeQuery(clazz, page, sql, params).list());
         return page;
     }
 
     @Override
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, Map<String, Object> params) {
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
         page.setResult(createNativeQuery(clazz, page, sql, params).list());
         return page;

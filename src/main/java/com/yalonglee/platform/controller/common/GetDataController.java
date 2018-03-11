@@ -1,9 +1,8 @@
 package com.yalonglee.platform.controller.common;
 
 import com.yalonglee.common.base.GlobalParam;
+import com.yalonglee.platform.entity.data.DictionaryData;
 import com.yalonglee.platform.entity.data.Node;
-import com.yalonglee.platform.service.tree.TreeNodeServiceI;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,9 +22,6 @@ import java.util.*;
 @RestController
 @RequestMapping(value = "/get")
 public class GetDataController {
-
-    @Autowired
-    private TreeNodeServiceI treeNodeServiceI;
 
     /**
      * 枚举类型转json
@@ -48,23 +44,20 @@ public class GetDataController {
     }
 
     /**
-     * 数据字典转json
+     * 根据字典项别称返回字典项JSON数据
      *
-     * @param business
+     * @param dictionaryAlise
      * @return
      */
     @RequestMapping(value = "dictionary.do")
-    public Map<String, Object> getDictionary(String business) {
-        Map<String, Object> dictionary = new HashMap<>(16);
-        dictionary.put("张三", 1);
-        dictionary.put("李四", 2);
-        dictionary.put("王五", 3);
-        return dictionary;
+    public List<DictionaryData> getDictionary(String dictionaryAlise) {
+        return null;
     }
 
     /**
-     * tree转json
+     * 返回树形JSON数据
      *
+     * @param root
      * @return
      */
     @RequestMapping(value = "tree.do")

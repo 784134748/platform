@@ -76,27 +76,27 @@ public interface BaseDaoI<T> {
     public T load(Serializable id);
 
     /**
-     * 通过HQL获得一个DTO
+     * 通过HQL获得一个VO
      *
      * @param clazz
      * @param hql
      * @return
      */
-    public <E> E getDtoByHql(Class clazz, String hql);
+    public <E> E getVoByHql(Class clazz, String hql);
 
-    public <E> E getDtoByHql(Class clazz, String hql, Object... params);
+    public <E> E getVoByHql(Class clazz, String hql, Object... params);
 
-    public <E> E getDtoByHql(Class clazz, String hql, List<Object> params);
+    public <E> E getVoByHql(Class clazz, String hql, List<Object> params);
 
-    public <E> E getDtoByHql(Class clazz, String hql, Map<String, Object> params);
+    public <E> E getVoByHql(Class clazz, String hql, Map<String, Object> params);
 
-    public <E> E getDtoBySql(Class clazz, String sql);
+    public <E> E getVoBySql(Class clazz, String sql);
 
-    public <E> E getDtoBySql(Class clazz, String sql, Object... params);
+    public <E> E getVoBySql(Class clazz, String sql, Object... params);
 
-    public <E> E getDtoBySql(Class clazz, String sql, List<Object> params);
+    public <E> E getVoBySql(Class clazz, String sql, List<Object> params);
 
-    public <E> E getDtoBySql(Class clazz, String sql, Map<String, Object> params);
+    public <E> E getVoBySql(Class clazz, String sql, Map<String, Object> params);
 
     /**
      * 通过HQL获得一个对象
@@ -187,50 +187,50 @@ public interface BaseDaoI<T> {
     public Page<T> findPageBySql(Page<T> page, String sql, Map<String, Object> params);
 
     /**
-     * 执行Hql语句获取DTO集合
+     * 执行Hql语句获取VO集合
      *
      * @param clazz
      * @param hql
      * @return
      */
-    public <E> List<E> findDtoListByHql(Class clazz, String hql);
+    public <E> List<E> findVoListByHql(Class clazz, String hql);
 
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, Object... params);
+    public <E> List<E> findVoListByHql(Class clazz, String hql, Object... params);
 
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, List<Object> params);
+    public <E> List<E> findVoListByHql(Class clazz, String hql, List<Object> params);
 
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, Map<String, Object> params);
+    public <E> List<E> findVoListByHql(Class clazz, String hql, Map<String, Object> params);
 
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql);
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql);
 
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, Object... params);
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, Object... params);
 
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, List<Object> params);
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, List<Object> params);
 
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, Map<String, Object> params);
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, Map<String, Object> params);
 
     /**
-     * 执行原生Sql语句获取DTO集合
+     * 执行原生Sql语句获取VO集合
      *
      * @param clazz
      * @param sql
      * @return
      */
-    public <E> List<E> findDtoListBySql(Class clazz, String sql);
+    public <E> List<E> findVoListBySql(Class clazz, String sql);
 
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, Object... params);
+    public <E> List<E> findVoListBySql(Class clazz, String sql, Object... params);
 
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, List<Object> params);
+    public <E> List<E> findVoListBySql(Class clazz, String sql, List<Object> params);
 
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, Map<String, Object> params);
+    public <E> List<E> findVoListBySql(Class clazz, String sql, Map<String, Object> params);
 
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql);
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql);
 
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, Object... params);
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, Object... params);
 
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, List<Object> params);
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, List<Object> params);
 
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, Map<String, Object> params);
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, Map<String, Object> params);
 
     /**
      * 获得记录数

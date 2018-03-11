@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.dozer.spring.DozerBeanMapperFactoryBean">
+        <property name="mappingFiles">
+            <list>
+                <value>/dozer-mapper/dozer-global-configuration.xml</value>
+                <value>/dozer-mapper/dozer-bean-mappings.xml</value>
+                <value>/dozer-mapper/more-dozer-bean-mappings.xml</value>
+            </list>
+        </property>
+        <property name="customConverters">
+            <list>
+                <!--<bean class="org.dozer.converters.CustomConverter"/>-->
+            </list>
+        </property>
+        <property name="eventListeners">
+            <list>
+                <!--<bean class="org.dozer.listeners.EventListener"/>-->
+            </list>
+        </property>
+        <property name="factories">
+            <map>
+                <!--<entry key="id" value-ref="bean-factory-ref"/>-->
+            </map>
+        </property>
+    </bean>
+
+</beans>

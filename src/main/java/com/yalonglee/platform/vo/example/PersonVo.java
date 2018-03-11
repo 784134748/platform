@@ -1,6 +1,4 @@
-package com.yalonglee.platform.dto.example;
-
-import com.yalonglee.common.annotation.Dictionary;
+package com.yalonglee.platform.vo.example;
 
 /**
  * <p>《一句话功能简述》
@@ -13,7 +11,7 @@ import com.yalonglee.common.annotation.Dictionary;
  * @version [V1.0, 2017/12/20]
  * @see [相关类/方法]
  */
-public class PersonDto {
+public class PersonVo {
 
     private Long id;
 

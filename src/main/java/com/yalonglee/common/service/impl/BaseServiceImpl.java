@@ -54,43 +54,43 @@ public class BaseServiceImpl<T> implements BaseServiceI<T> {
     }
 
     @Override
-    public <E> E getDtoByHql(Class clazz, String hql) {
-        return baseDaoI.getDtoByHql(clazz, hql);
+    public <E> E getVoByHql(Class clazz, String hql) {
+        return baseDaoI.getVoByHql(clazz, hql);
     }
 
     @Override
-    public <E> E getDtoByHql(Class clazz, String hql, Object... params) {
-        return baseDaoI.getDtoByHql(clazz, hql, params);
+    public <E> E getVoByHql(Class clazz, String hql, Object... params) {
+        return baseDaoI.getVoByHql(clazz, hql, params);
     }
 
     @Override
-    public <E> E getDtoByHql(Class clazz, String hql, List<Object> params) {
-        return baseDaoI.getDtoByHql(clazz, hql, params);
+    public <E> E getVoByHql(Class clazz, String hql, List<Object> params) {
+        return baseDaoI.getVoByHql(clazz, hql, params);
     }
 
     @Override
-    public <E> E getDtoByHql(Class clazz, String hql, Map<String, Object> params) {
-        return baseDaoI.getDtoByHql(clazz, hql, params);
+    public <E> E getVoByHql(Class clazz, String hql, Map<String, Object> params) {
+        return baseDaoI.getVoByHql(clazz, hql, params);
     }
 
     @Override
-    public <E> E getDtoBySql(Class clazz, String sql) {
-        return baseDaoI.getDtoBySql(clazz, sql);
+    public <E> E getVoBySql(Class clazz, String sql) {
+        return baseDaoI.getVoBySql(clazz, sql);
     }
 
     @Override
-    public <E> E getDtoBySql(Class clazz, String sql, Object... params) {
-        return baseDaoI.getDtoBySql(clazz, sql, params);
+    public <E> E getVoBySql(Class clazz, String sql, Object... params) {
+        return baseDaoI.getVoBySql(clazz, sql, params);
     }
 
     @Override
-    public <E> E getDtoBySql(Class clazz, String sql, List<Object> params) {
-        return baseDaoI.getDtoBySql(clazz, sql, params);
+    public <E> E getVoBySql(Class clazz, String sql, List<Object> params) {
+        return baseDaoI.getVoBySql(clazz, sql, params);
     }
 
     @Override
-    public <E> E getDtoBySql(Class clazz, String sql, Map<String, Object> params) {
-        return baseDaoI.getDtoBySql(clazz, sql, params);
+    public <E> E getVoBySql(Class clazz, String sql, Map<String, Object> params) {
+        return baseDaoI.getVoBySql(clazz, sql, params);
     }
 
     @Override
@@ -254,83 +254,83 @@ public class BaseServiceImpl<T> implements BaseServiceI<T> {
     }
 
     @Override
-    public <E> List<E> findDtoListByHql(Class clazz, String hql) {
-        return baseDaoI.findDtoListByHql(clazz, hql);
+    public <E> List<E> findVoListByHql(Class clazz, String hql) {
+        return baseDaoI.findVoListByHql(clazz, hql);
     }
 
     @Override
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, Object... params) {
-        return baseDaoI.findDtoListByHql(clazz, hql, params);
+    public <E> List<E> findVoListByHql(Class clazz, String hql, Object... params) {
+        return baseDaoI.findVoListByHql(clazz, hql, params);
     }
 
     @Override
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, List<Object> params) {
-        return baseDaoI.findDtoListByHql(clazz, hql, params);
+    public <E> List<E> findVoListByHql(Class clazz, String hql, List<Object> params) {
+        return baseDaoI.findVoListByHql(clazz, hql, params);
     }
 
     @Override
-    public <E> List<E> findDtoListByHql(Class clazz, String hql, Map<String, Object> params) {
-        return baseDaoI.findDtoListByHql(clazz, hql, params);
+    public <E> List<E> findVoListByHql(Class clazz, String hql, Map<String, Object> params) {
+        return baseDaoI.findVoListByHql(clazz, hql, params);
     }
 
     @Override
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql) {
-        return baseDaoI.findDtoPageByHql(clazz, page, hql);
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql) {
+        return baseDaoI.findVoPageByHql(clazz, page, hql);
     }
 
     @Override
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, Object... params) {
-        return baseDaoI.findDtoPageByHql(clazz, page, hql, params);
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, Object... params) {
+        return baseDaoI.findVoPageByHql(clazz, page, hql, params);
     }
 
     @Override
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, List<Object> params) {
-        return baseDaoI.findDtoPageByHql(clazz, page, hql, params);
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, List<Object> params) {
+        return baseDaoI.findVoPageByHql(clazz, page, hql, params);
     }
 
     @Override
-    public <E> Page<E> findDtoPageByHql(Class clazz, Page<E> page, String hql, Map<String, Object> params) {
-        return baseDaoI.findDtoPageByHql(clazz, page, hql, params);
+    public <E> Page<E> findVoPageByHql(Class clazz, Page<E> page, String hql, Map<String, Object> params) {
+        return baseDaoI.findVoPageByHql(clazz, page, hql, params);
     }
 
     @Override
-    public <E> List<E> findDtoListBySql(Class clazz, String sql) {
-        return baseDaoI.findDtoListBySql(clazz, sql);
+    public <E> List<E> findVoListBySql(Class clazz, String sql) {
+        return baseDaoI.findVoListBySql(clazz, sql);
     }
 
     @Override
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, Object... params) {
-        return baseDaoI.findDtoListBySql(clazz, sql, params);
+    public <E> List<E> findVoListBySql(Class clazz, String sql, Object... params) {
+        return baseDaoI.findVoListBySql(clazz, sql, params);
     }
 
     @Override
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, List<Object> params) {
-        return baseDaoI.findDtoListBySql(clazz, sql, params);
+    public <E> List<E> findVoListBySql(Class clazz, String sql, List<Object> params) {
+        return baseDaoI.findVoListBySql(clazz, sql, params);
     }
 
     @Override
-    public <E> List<E> findDtoListBySql(Class clazz, String sql, Map<String, Object> params) {
-        return baseDaoI.findDtoListBySql(clazz, sql, params);
+    public <E> List<E> findVoListBySql(Class clazz, String sql, Map<String, Object> params) {
+        return baseDaoI.findVoListBySql(clazz, sql, params);
     }
 
     @Override
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql) {
-        return baseDaoI.findDtoPageBySql(clazz, page, sql);
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql) {
+        return baseDaoI.findVoPageBySql(clazz, page, sql);
     }
 
     @Override
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, Object... params) {
-        return baseDaoI.findDtoPageBySql(clazz, page, sql, params);
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, Object... params) {
+        return baseDaoI.findVoPageBySql(clazz, page, sql, params);
     }
 
     @Override
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, List<Object> params) {
-        return baseDaoI.findDtoPageBySql(clazz, page, sql, params);
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, List<Object> params) {
+        return baseDaoI.findVoPageBySql(clazz, page, sql, params);
     }
 
     @Override
-    public <E> Page<E> findDtoPageBySql(Class clazz, Page<E> page, String sql, Map<String, Object> params) {
-        return baseDaoI.findDtoPageBySql(clazz, page, sql, params);
+    public <E> Page<E> findVoPageBySql(Class clazz, Page<E> page, String sql, Map<String, Object> params) {
+        return baseDaoI.findVoPageBySql(clazz, page, sql, params);
     }
 
     @Override
