@@ -77,7 +77,10 @@
     <!--=============================依赖注入===============================-->
     <!--===================================================================-->
     <!-- 自动扫描dao\service包(自动注入) -->
-    <context:component-scan base-package="com.yalonglee.**"/>
+    <context:component-scan base-package="com.yalonglee.platform.dao"/>
+    <context:component-scan base-package="com.yalonglee.platform.service"/>
+    <!-- 工具类引入service(自动注入) -->
+    <context:component-scan base-package="com.yalonglee.common.util"/>
 
     <!--===================Spring Framework Integration====================-->
     <!--===================================================================-->
