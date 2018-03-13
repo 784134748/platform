@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.example.basic;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ import java.util.Date;
 @Table(name = "phone_call")
 public class Call extends BaseUUID {
 
+    @JSONField(serialize = false)
     @ManyToOne
     private Phone phone;
 

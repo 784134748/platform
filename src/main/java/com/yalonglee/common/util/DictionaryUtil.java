@@ -1,6 +1,7 @@
 package com.yalonglee.common.util;
 
-import com.yalonglee.common.annotation.Dictionary;
+import com.yalonglee.common.annotation.Dict;
+import com.yalonglee.common.base.Dictionary;
 import com.yalonglee.platform.entity.data.DictionaryData;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,11 @@ public class DictionaryUtil {
 //    }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         dictionaryUnit = this;
 //        dictionaryUnit.dictionaryService = this.dictionaryService;
     }
+
     /**
      * 添加注解的field
      */
@@ -53,12 +55,12 @@ public class DictionaryUtil {
     /**
      * 添加的注解
      */
-    private static List<Dictionary> annotations;
+    private static List<Dict> annotations;
 
     /**
      * 数据字典列表
      */
-    private static List<DictionaryData> dictionaryList;
+    private static List<Dictionary> dictionaryList;
 
     /**
      * 已经获取的数据字典项
@@ -68,6 +70,7 @@ public class DictionaryUtil {
 
     /**
      * 对外提供的转换接口
+     *
      * @param list
      * @return
      */
@@ -102,12 +105,12 @@ public class DictionaryUtil {
                 getAnnotationsAndFieldsAndFieldNames(field.getType());
                 continue;
             }
-            if (field.isAnnotationPresent(Dictionary.class)) {
+            if (field.isAnnotationPresent(Dict.class)) {
                 fieldNames.append(clazz.getSimpleName());
                 fieldNames.append(".");
                 fieldNames.append(field.getName());
                 fieldNames.append(",");
-                Dictionary annotation = field.getAnnotation(Dictionary.class);
+                Dict annotation = field.getAnnotation(Dict.class);
                 annotations.add(annotation);
             }
         }
@@ -120,12 +123,12 @@ public class DictionaryUtil {
     private static void initDictionnaryData() {
         dictionaryList = new ArrayList<>();
         dictionaryListRecord = new HashMap<>(8);
-        for (Dictionary annotation : annotations) {
+        for (Dict annotation : annotations) {
             if (null != dictionaryListRecord.get(annotation.value())) {
                 continue;
             }
             //根据code获取字典列表
-//            List<DictionaryData> list_custom = dictionaryUnit.dictionaryService.getList(annotation.value());
+//            List<Dictionary> list_custom = dictionaryUnit.dictionaryService.getList(annotation.value());
 //            if (list_custom != null && list_custom.size() > 0) {
 //                dictionaryList.addAll(list_custom);
 //                //记录已经获取的字典code
@@ -156,10 +159,10 @@ public class DictionaryUtil {
                 if (clazz.getSimpleName().equals(n[0]) && field.getName().equals(n[1])) {
                     field.setAccessible(true);
                     String val = String.valueOf(field.get(object));
-                    if (field.isAnnotationPresent(Dictionary.class)) {
-                        for (DictionaryData dictionaryData : dictionaryList) {
-                            if (dictionaryData.getOptionType().equals(val)) {
-                                field.set(object, dictionaryData.getDataType());
+                    if (field.isAnnotationPresent(Dict.class)) {
+                        for (Dictionary dictionary : dictionaryList) {
+                            if (dictionary.getDictionaryAlise().equals(field.getAnnotation(Dict.class).value()) && dictionary.getOptionType().equals(val)) {
+                                field.set(object, dictionary.getDataType());
                                 break;
                             }
                         }

@@ -1,7 +1,5 @@
 package com.yalonglee.platform.dto.example;
 
-import com.yalonglee.common.annotation.Dictionary;
-
 /**
  * <p>《一句话功能简述》
  * <p><功能详细描述>

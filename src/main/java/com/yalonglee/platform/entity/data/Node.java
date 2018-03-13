@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.data;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -37,6 +38,7 @@ public class Node extends BaseUUID {
     /**
      * 父节点
      */
+    @JSONField(serialize = false)
     @ManyToOne
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "parent_id", nullable = false)

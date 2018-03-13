@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.example.basic;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class Payment extends BaseUUID {
 
     private boolean completed;
 
+    @JSONField(serialize = false)
     @ManyToOne
     private Person person;
 

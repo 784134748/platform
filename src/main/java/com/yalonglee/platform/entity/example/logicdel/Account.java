@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.example.logicdel;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.*;
 
@@ -41,6 +42,7 @@ import javax.persistence.Entity;
 )
 public class Account extends BaseUUID {
 
+    @JSONField(serialize = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Client client;

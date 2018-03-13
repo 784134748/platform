@@ -16,6 +16,6 @@ import java.lang.annotation.*;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Dictionary {
+public @interface Dict {
     String value() default "";
 }
