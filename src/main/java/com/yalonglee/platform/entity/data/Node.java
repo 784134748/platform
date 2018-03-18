@@ -27,9 +27,9 @@ public class Node extends BaseUUID {
      */
     private String name;
     /**
-     * 层次
+     * 层级&排序
      */
-    private int level;
+    private int key;
     /**
      * 是否为根节点
      */
@@ -38,14 +38,15 @@ public class Node extends BaseUUID {
     /**
      * 父节点
      */
-    @JSONField(serialize = false)
     @ManyToOne
+    @JSONField(serialize = false)
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "parent_id", nullable = false)
     private Node parent;
     /**
      * 子节点
      */
+    @JSONField(serialize = false)
     @OneToMany(mappedBy = "parent", orphanRemoval = true)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Node> childrens = new ArrayList<>();
@@ -58,12 +59,12 @@ public class Node extends BaseUUID {
         this.name = name;
     }
 
-    public int getLevel() {
-        return level;
+    public int getKey() {
+        return key;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setKey(int key) {
+        this.key = key;
     }
 
     public boolean isRoot() {
@@ -86,7 +87,7 @@ public class Node extends BaseUUID {
         return childrens;
     }
 
-    public void setChildrens(List<Node> childrens) {
+    public void setChildren(List<Node> childrens) {
         this.childrens = childrens;
     }
 }

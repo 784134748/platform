@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.data;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -31,6 +32,7 @@ public class DictionaryMenu extends BaseUUID {
     /**
      * dictionaryMenu --> dictionaryData
      */
+    @JSONField(serialize = false)
     @OneToMany(mappedBy="dictionaryMenu", orphanRemoval = true)
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<DictionaryData> dictionaryDatas = new ArrayList<>();

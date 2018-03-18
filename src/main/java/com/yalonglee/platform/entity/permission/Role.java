@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.permission;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -28,6 +29,7 @@ public class Role extends BaseUUID {
      * role --> permission 多对多处理
      */
     @ManyToMany
+    @JSONField(serialize = false)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "ROLE_PERMISSION",
             joinColumns =
@@ -39,9 +41,17 @@ public class Role extends BaseUUID {
     /**
      * role --> user 多对多处理
      */
+    @JSONField(serialize = false)
     @ManyToMany(mappedBy = "roles")
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<User> users = new ArrayList<>();
+    /**
+     * role --> group 多对多处理
+     */
+    @JSONField(serialize = false)
+    @ManyToMany(mappedBy = "roles")
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private List<Group> groups = new ArrayList<>();
 
     public String getRole() {
         return role;
@@ -65,5 +75,13 @@ public class Role extends BaseUUID {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 }

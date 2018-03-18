@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.permission;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NaturalId;
@@ -43,6 +44,7 @@ public class User extends BaseUUID {
      * user --> role 多对多处理
      */
     @ManyToMany
+    @JSONField(serialize = false)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "USER_ROLE",
             joinColumns =
@@ -51,6 +53,13 @@ public class User extends BaseUUID {
             @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")
     )
     private List<Role> roles = new ArrayList<>();
+    /**
+     * user --> group 多对多处理
+     */
+    @JSONField(serialize = false)
+    @ManyToMany(mappedBy = "users")
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private List<Group> groups = new ArrayList<>();
 
     public String getUsername() {
         return username;
@@ -90,6 +99,14 @@ public class User extends BaseUUID {
 
     public void setLocked(Boolean locked) {
         this.locked = locked;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     @Override
