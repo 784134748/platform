@@ -19,9 +19,9 @@ import java.util.List;
  * @see [相关类/方法]
  */
 public class Page<T> implements Serializable {
-    
-    private static final long serialVersionUID = 6629860755132341034L;
-    
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 默认页大小
      */
@@ -29,79 +29,30 @@ public class Page<T> implements Serializable {
     /**
      * 当前页码
      */
-    protected int currentPageNo;
+    private int currentPageNo = 1;
     /**
      * 页大小
      */
-    protected int pageSize;
+    private int pageSize;
     /**
      * 结果集
      */
-    protected List<T> result;
+    private List<T> result;
     /**
      * 查询结果总量
      */
-    protected long totalCount;
-    protected boolean autoCount;
-    protected String formName;
-    protected String orderBy;
-    protected String order;
-    private long start;
+    private long totalCount;
 
-    public Page() {
-        this(DEFAULT_PAGE_SIZE);
+    public static int getDefaultPageSize() {
+        return DEFAULT_PAGE_SIZE;
     }
 
-    public Page(int pageSize) {
-        this.currentPageNo = 1;
-        this.pageSize = DEFAULT_PAGE_SIZE;
-        this.result = Collections.emptyList();
-        this.totalCount = -1L;
-        this.autoCount = true;
-        this.setPageSize(pageSize);
-    }
-
-    public Page(int pageSize, boolean autoCount) {
-        this.currentPageNo = 1;
-        this.pageSize = DEFAULT_PAGE_SIZE;
-        this.result = Collections.emptyList();
-        this.totalCount = -1L;
-        this.autoCount = true;
-        this.setPageSize(pageSize);
-        this.setAutoCount(autoCount);
-    }
-
-    public Page(long start, long totalSize, int pageSize, List<T> data) {
-        this.currentPageNo = 1;
-        this.pageSize = DEFAULT_PAGE_SIZE;
-        this.result = Collections.emptyList();
-        this.totalCount = -1L;
-        this.autoCount = true;
-        this.pageSize = pageSize;
-        this.start = start;
-        this.totalCount = totalSize;
-        this.result = data;
-    }
-
-    public long getTotalPageCount() {
-        Assert.isTrue(this.pageSize > 0,"pageSize not more than zero");
-        return this.totalCount % (long) this.pageSize == 0L ? this.totalCount / (long) this.pageSize : this.totalCount / (long) this.pageSize + 1L;
-    }
-
-    public boolean isOrderBySetted() {
-        return StringUtils.isNotBlank(this.orderBy) && StringUtils.isNotBlank(this.order);
-    }
-
-    public int getFirstOfPage() {
-        return (this.currentPageNo - 1) * this.pageSize + 1;
-    }
-
-    public int getLastOfPage() {
-        return this.currentPageNo * this.pageSize;
+    public static void setDefaultPageSize(int defaultPageSize) {
+        DEFAULT_PAGE_SIZE = defaultPageSize;
     }
 
     public int getCurrentPageNo() {
-        return this.currentPageNo;
+        return currentPageNo;
     }
 
     public void setCurrentPageNo(int currentPageNo) {
@@ -109,7 +60,7 @@ public class Page<T> implements Serializable {
     }
 
     public int getPageSize() {
-        return this.pageSize;
+        return pageSize;
     }
 
     public void setPageSize(int pageSize) {
@@ -117,7 +68,7 @@ public class Page<T> implements Serializable {
     }
 
     public List<T> getResult() {
-        return this.result;
+        return result;
     }
 
     public void setResult(List<T> result) {
@@ -125,59 +76,10 @@ public class Page<T> implements Serializable {
     }
 
     public long getTotalCount() {
-        return this.totalCount;
+        return totalCount;
     }
 
     public void setTotalCount(long totalCount) {
         this.totalCount = totalCount;
     }
-
-    public boolean isAutoCount() {
-        return this.autoCount;
-    }
-
-    public void setAutoCount(boolean autoCount) {
-        this.autoCount = autoCount;
-    }
-
-    public long getStart() {
-        return this.start;
-    }
-
-    public void setStart(long start) {
-        this.start = start;
-    }
-
-    public String getOrderBy() {
-        return this.orderBy;
-    }
-
-    public void setOrderBy(String orderBy) {
-        this.orderBy = orderBy;
-    }
-
-    public String getOrder() {
-        return this.order;
-    }
-
-    public void setOrder(String order) {
-        this.order = order;
-    }
-
-    public static String getAsc() {
-        return "asc";
-    }
-
-    public static String getDesc() {
-        return "desc";
-    }
-
-    public String getFormName() {
-        return this.formName;
-    }
-
-    public void setFormName(String formName) {
-        this.formName = formName;
-    }
-
 }

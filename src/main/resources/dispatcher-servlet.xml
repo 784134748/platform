@@ -9,7 +9,7 @@
     <!--=============================视图资源============================-->
     <!--================================================================-->
 
-    <!--定义视图配置-->
+    <!-- 定义视图配置 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--支持JSTL-->
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -17,9 +17,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--视图资源路径-->
-    <mvc:resources mapping="/resources/**" location="classpath*:/resources/"/>
+    <!--&lt;!&ndash; 视图资源路径 &ndash;&gt;-->
+    <!--<mvc:resources mapping="/resources/**" location="classpath*:/resources/"/>-->
 
+    <!--将静态资源交由默认的servlet处理-->
+    <mvc:default-servlet-handler/>
 
     <!--=============================依赖注入===============================-->
     <!--===================================================================-->
@@ -35,7 +37,7 @@
     <!--===========================高级功能配置=============================-->
     <!--===================================================================-->
 
-    <!--多视图解析器，根据路径后缀，选择不同视图-->
+    <!-- 多视图解析器，根据路径后缀，选择不同视图 -->
     <bean id="cnManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="favorPathExtension" value="true"/>
         <property name="ignoreAcceptHeader" value="true"/>
@@ -52,7 +54,7 @@
         </property>
     </bean>
 
-    <!--使springMVC支持自定义类型转换器-->
+    <!-- 使springMVC支持自定义类型转换器 -->
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"/>
 
     <!-- 使用 Fastjson 提供的FastJsonHttpMessageConverter 来替换 Spring MVC 默认的 HttpMessageConverter -->
@@ -76,5 +78,8 @@
         </property>
         <property name="dateFormat" value="yyyy-MM-dd" />--><!--会覆盖@JSONField的format yyyy-MM-dd HH:mm:ss-->
     </bean>
+
+    <!-- Springfox Swagger2 -->
+    <context:component-scan base-package="springfox"/>
 
 </beans>

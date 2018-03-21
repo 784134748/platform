@@ -72,7 +72,7 @@ public void testGetPermissionsByUid() throws Exception {
 
 /** 
 * 
-* Method: saveOrUpdate(Permission permission) 
+* Method: saveOrUpdate(PermissionDto permission)
 * 
 */ 
 @Test
@@ -82,7 +82,7 @@ public void testSaveOrUpdate() throws Exception {
 
 /** 
 * 
-* Method: delete(Permission permission) 
+* Method: delete(PermissionDto permission)
 * 
 */ 
 @Test

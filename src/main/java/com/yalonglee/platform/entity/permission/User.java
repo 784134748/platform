@@ -3,6 +3,7 @@ package com.yalonglee.platform.entity.permission;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class User extends BaseUUID {
     /**
      * 邮箱 | 登录帐号
      */
-    @NaturalId(mutable=true)
+    @NaturalId(mutable = true)
     @Column(unique = true)
     private String username;
     /**

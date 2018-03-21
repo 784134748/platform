@@ -4,6 +4,7 @@ import com.yalonglee.common.base.Page;
 import com.yalonglee.platform.entity.example.basic.Person;
 import com.yalonglee.platform.service.example.ExampleServiceI;
 import com.yalonglee.platform.vo.example.PersonVo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,31 +25,58 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/example")
+@Api(value = "/example", tags = "测试接口")
 public class ExampleController {
     @Autowired
     private ExampleServiceI exampleServiceI;
 
+    /**
+     * 新增
+     *
+     * @param person
+     */
     @RequestMapping(value = "/save.do")
     public void save(@RequestBody Person person) {
         exampleServiceI.save(person);
     }
 
+    /**
+     * 删除
+     *
+     * @param person
+     */
     @RequestMapping(value = "/delete.do")
     public void delete(@RequestBody Person person) {
         person = exampleServiceI.get(person.getId());
         exampleServiceI.delete(person);
     }
 
+    /**
+     * 更新
+     *
+     * @param person
+     */
     @RequestMapping(value = "/update.do")
     public void update(@RequestBody Person person) {
         exampleServiceI.update(person);
     }
 
+    /**
+     * 更新或删除
+     *
+     * @param person
+     */
     @RequestMapping(value = "/saveOrUpdate.do")
     public void saveOrUpdate(@RequestBody Person person) {
         exampleServiceI.saveOrUpdate(person);
     }
 
+    /**
+     * 通过ID获取实体类
+     *
+     * @param person
+     * @return
+     */
     @RequestMapping(value = "/get.do")
     public Person get(@RequestBody Person person) {
         return exampleServiceI.get(person.getId());
