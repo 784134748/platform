@@ -22,7 +22,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @version [V1.0, 2018/3/21]
  * @see [相关类/方法]
  */
-@Configuration
 @EnableSwagger2
 @ComponentScan(basePackages = "com.yalonglee.platform.controller")
 public class SwaggerConfig {
