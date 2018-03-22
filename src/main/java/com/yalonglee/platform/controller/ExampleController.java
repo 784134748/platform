@@ -4,7 +4,6 @@ import com.yalonglee.common.base.Page;
 import com.yalonglee.platform.entity.example.basic.Person;
 import com.yalonglee.platform.service.example.ExampleServiceI;
 import com.yalonglee.platform.vo.example.PersonVo;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,6 @@ import java.util.List;
 @RestController
 @EnableWebMvc
 @RequestMapping(value = "/example")
-@Api(value = "/example", tags = "测试接口")
 public class ExampleController {
     @Autowired
     private ExampleServiceI exampleServiceI;

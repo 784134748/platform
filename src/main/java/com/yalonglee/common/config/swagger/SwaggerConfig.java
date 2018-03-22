@@ -3,6 +3,8 @@ package com.yalonglee.common.config.swagger;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.*;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
@@ -20,6 +22,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @version [V1.0, 2018/3/21]
  * @see [相关类/方法]
  */
+@Configuration
+@EnableWebMvc
 @EnableSwagger2
 @ComponentScan(basePackages = "com.yalonglee.platform.controller")
 public class SwaggerConfig {
