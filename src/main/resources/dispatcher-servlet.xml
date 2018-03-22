@@ -17,9 +17,6 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--&lt;!&ndash; 视图资源路径 &ndash;&gt;-->
-    <!--<mvc:resources mapping="/resources/**" location="classpath*:/resources/"/>-->
-
     <!--将静态资源交由默认的servlet处理-->
     <mvc:default-servlet-handler/>
 
