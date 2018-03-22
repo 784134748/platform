@@ -13,12 +13,19 @@
         <property name="securityManager" ref="securityManager"/>
         <property name="filterChainDefinitions">
             <value>
+                <!-- swagger2 -->
+                /swagger-ui.html = anon
+                /webjars/** = anon
+                /swagger-resources = anon
+                /v2/** = anon
+
+                <!-- other -->
                 /example/** = anon
                 /get/** = anon
                 /rbac/login.do = authc
                 /rbac/logout.do = logout
                 /rbac/admin.do = anon
-                /** = user
+                /** = anon
             </value>
         </property>
     </bean>
