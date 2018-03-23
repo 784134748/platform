@@ -25,7 +25,7 @@
                 /rbac/login.do = authc
                 /rbac/logout.do = logout
                 /rbac/admin.do = anon
-                /** = anon
+                /** = user
             </value>
         </property>
     </bean>
