@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * <p>《一句话功能简述》
  * <p><功能详细描述>
- * @author ylli6
+ * @author listener
  * @version 
  */
 @Controller
@@ -19,7 +19,7 @@ public class GetViewController {
      * goURL: 1级目录
      * @param file
      * @return
-     * @author ylli6
+     * @author listener
      */
     @RequestMapping("/{file}")
     public String goURL(@PathVariable String file) {
@@ -31,7 +31,7 @@ public class GetViewController {
      * @param folder
      * @param file
      * @return
-     * @author ylli6
+     * @author listener
      */
     @RequestMapping("/{folder}/{file}")
     public String goURL2(@PathVariable String folder, @PathVariable String file) {
@@ -43,7 +43,7 @@ public class GetViewController {
      * @param folder
      * @param file
      * @return
-     * @author ylli6
+     * @author listener
      */
     @RequestMapping("/{folder}/{model}/{file}")
     public String goURL3(@PathVariable String folder, @PathVariable String model, @PathVariable String file) {

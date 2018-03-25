@@ -1,6 +1,6 @@
 package com.yalonglee.platform.enumstatus;
 
-import com.alibaba.fastjson.annotation.JSONType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.AttributeConverter;
 
@@ -8,14 +8,14 @@ import javax.persistence.AttributeConverter;
  * <p>《基本类型》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2018, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2018, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2018/1/5]
  * @see [相关类/方法]
  */
-@JSONType(serializeEnumAsJavaBean = true)
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum BasicType {
     /**
      * 是

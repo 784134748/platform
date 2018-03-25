@@ -1,11 +1,9 @@
 package com.yalonglee.common.bean.dto;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 /**
  * 结果DTO
  * 
- * @author hyzha
+ * @author listener
  * @lastModified
  * @history
  */
@@ -20,7 +18,6 @@ public class ResultDto {
     /**
      * 结果详细
      */
-    @JSONField(name = "msg")
     private String result;
     
     /**

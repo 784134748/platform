@@ -1,6 +1,5 @@
 package com.yalonglee.platform.entity.data;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -11,8 +10,8 @@ import java.util.*;
  * <p>《一句话功能简述》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2017, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2017, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2017/12/19]
@@ -39,14 +38,12 @@ public class Node extends BaseUUID {
      * 父节点
      */
     @ManyToOne
-    @JSONField(serialize = false)
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "parent_id", nullable = false)
     private Node parent;
     /**
      * 子节点
      */
-    @JSONField(serialize = false)
     @OneToMany(mappedBy = "parent", orphanRemoval = true)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Node> childrens = new ArrayList<>();

@@ -18,8 +18,8 @@ import java.util.Map;
  * <p>《数据字典翻译工具类》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2018, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2018, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2018/3/10]
@@ -43,6 +43,11 @@ public class DictionaryUtil {
     }
 
     /**
+     * 添加的注解
+     */
+    private static List<Dict> annotations;
+
+    /**
      * 添加注解的field
      */
     private static Field[] fields;
@@ -51,11 +56,6 @@ public class DictionaryUtil {
      * 添加注解的fieldName
      */
     private static StringBuilder fieldNames;
-
-    /**
-     * 添加的注解
-     */
-    private static List<Dict> annotations;
 
     /**
      * 数据字典列表

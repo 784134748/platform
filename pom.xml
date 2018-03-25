@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.iflytek</groupId>
+    <groupId>com.yalonglee</groupId>
     <packaging>war</packaging>
     <artifactId>platform</artifactId>
     <!--=================jar包版本==============-->
@@ -16,7 +16,8 @@
         <hibernate.version>5.2.14.Final</hibernate.version>
         <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
         <junit.version>4.12</junit.version>
-        <fastjson.version>1.2.44</fastjson.version>
+        <jackson.version>2.9.0</jackson.version>
+        <jackson-modules.version>2.9.4</jackson-modules.version>
         <druid.version>1.1.7</druid.version>
         <guava.version>24.0-jre</guava.version>
         <lang3.version>3.7</lang3.version>
@@ -48,6 +49,10 @@
         <repository>
             <id>jcenter-snapshots</id>
             <url>https://jcenter.bintray.com/</url>
+        </repository>
+        <repository>
+            <id>jackson</id>
+            <url>http://repo1.maven.org/maven2/</url>
         </repository>
     </repositories>
     <!--=================mvn插件==============-->
@@ -117,11 +122,26 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- fastjson -->
+        <!-- jackson -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-parameter-names</artifactId>
+            <version>${jackson-modules.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>${jackson-modules.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-modules.version}</version>
         </dependency>
 
         <!--spring mvc组件-->
@@ -267,11 +287,6 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
             <version>${swagger2.version}</version>
         </dependency>
 

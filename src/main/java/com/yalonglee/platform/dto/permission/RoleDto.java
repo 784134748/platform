@@ -7,8 +7,8 @@ import java.util.List;
  * <p>《一句话功能简述》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2018, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2018, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2018/3/20]

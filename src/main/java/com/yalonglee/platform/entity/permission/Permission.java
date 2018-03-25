@@ -1,6 +1,5 @@
 package com.yalonglee.platform.entity.permission;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -11,8 +10,8 @@ import java.util.*;
  * <p>《权限》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2017, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2017, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2017/12/9]
@@ -28,7 +27,6 @@ public class Permission extends BaseUUID {
     /**
      * permission --> role 多对多处理
      */
-    @JSONField(serialize = false)
     @ManyToMany(mappedBy = "permissions")
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Role> roles = new ArrayList<>();
@@ -36,7 +34,6 @@ public class Permission extends BaseUUID {
      * permission --> resource 多对多处理
      */
     @ManyToMany
-    @JSONField(serialize = false)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "PERMISSION_RESOURCE",
             joinColumns =

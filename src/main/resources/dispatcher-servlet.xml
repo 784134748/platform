@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
@@ -57,24 +57,16 @@
     <!-- 使用 Fastjson 提供的FastJsonHttpMessageConverter 来替换 Spring MVC 默认的 HttpMessageConverter -->
     <mvc:annotation-driven content-negotiation-manager="cnManager" conversion-service="conversionService">
         <mvc:message-converters>
-            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
-                <property name="fastJsonConfig" ref="fastJsonConfig"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="objectMapper"/>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
-        <!--   自定义配置...   -->
-        <!--<property name="serializerFeatures">
-            <array>
-                <value>WriteMapNullValue</value>
-                <value>WriteDateUseDateFormat</value>
-                <value>DisableCircularReferenceDetect</value>
-                <value>IgnoreNonFieldGetter</value>
-            </array>
-        </property>
-        <property name="dateFormat" value="yyyy-MM-dd" />--><!--会覆盖@JSONField的format yyyy-MM-dd HH:mm:ss-->
-    </bean>
+    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"
+          p:indentOutput="true"
+          p:simpleDateFormat="yyyy-MM-dd"
+          p:modulesToInstall="com.fasterxml.jackson.module.paramnames.ParameterNamesModule"/>
 
     <!-- Springfox Swagger2 -->
     <context:component-scan base-package="springfox"/>

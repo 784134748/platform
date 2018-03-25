@@ -1,9 +1,7 @@
 package com.yalonglee.platform.entity.permission;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -13,8 +11,8 @@ import java.util.*;
  * <p>《用户》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2017, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2017, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2017/12/9]
@@ -45,7 +43,6 @@ public class User extends BaseUUID {
      * user --> role 多对多处理
      */
     @ManyToMany
-    @JSONField(serialize = false)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "USER_ROLE",
             joinColumns =
@@ -57,7 +54,6 @@ public class User extends BaseUUID {
     /**
      * user --> group 多对多处理
      */
-    @JSONField(serialize = false)
     @ManyToMany(mappedBy = "users")
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Group> groups = new ArrayList<>();

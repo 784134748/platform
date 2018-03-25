@@ -1,6 +1,5 @@
 package com.yalonglee.platform.entity.example.logicdel;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.*;
 
@@ -11,8 +10,8 @@ import javax.persistence.Entity;
  * <p>《一句话功能简述》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2018, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2018, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2018/2/7]
@@ -42,7 +41,6 @@ import javax.persistence.Entity;
 )
 public class Account extends BaseUUID {
 
-    @JSONField(serialize = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Client client;

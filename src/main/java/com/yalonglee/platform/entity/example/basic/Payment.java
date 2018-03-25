@@ -1,6 +1,5 @@
 package com.yalonglee.platform.entity.example.basic;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 
 import javax.persistence.*;
@@ -10,8 +9,8 @@ import java.math.BigDecimal;
  * <p>《一句话功能简述》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2017, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2017, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2017/12/9]
@@ -25,7 +24,6 @@ public class Payment extends BaseUUID {
 
     private boolean completed;
 
-    @JSONField(serialize = false)
     @ManyToOne
     private Person person;
 

@@ -1,6 +1,5 @@
 package com.yalonglee.platform.entity.data;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -10,8 +9,8 @@ import javax.persistence.*;
  * <p>《数据字典数据》
  * <p><功能详细描述>
  * <p>
- * <p>Copyright (c) 2018, listener@iflytek.com All Rights Reserve</p>
- * <p>Company : 科大讯飞</p>
+ * <p>Copyright (c) 2018, listener@yalonglee.com All Rights Reserve</p>
+ * <p>Company : yalonglee</p>
  *
  * @author listener
  * @version [V1.0, 2018/1/4]
@@ -31,7 +30,6 @@ public class DictionaryData extends BaseUUID {
     /**
      * dictionaryData --> dictionaryMenu
      */
-    @JSONField(serialize = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name="dictionaryMenu_id", nullable=false)
