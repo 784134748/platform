@@ -16,7 +16,7 @@
                 <!-- swagger2 -->
                 /swagger-ui.html = anon
                 /webjars/** = anon
-                /swagger-resources = anon
+                /swagger-resources/** = anon
                 /v2/** = anon
 
                 <!-- other -->
