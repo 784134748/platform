@@ -28,7 +28,7 @@ import java.util.Map;
 @Component
 public class DictionaryUtil {
 
-    @Autowired
+//    @Autowired
 //    private DictionaryService dictionaryService;
     private static DictionaryUtil dictionaryUnit;
 

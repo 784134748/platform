@@ -3,7 +3,10 @@ package com.yalonglee.platform.controller.common;
 import com.yalonglee.common.base.GlobalParam;
 import com.yalonglee.platform.entity.data.DictionaryData;
 import com.yalonglee.platform.entity.data.Node;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
@@ -21,6 +24,7 @@ import java.util.*;
  */
 @RestController
 @RequestMapping(value = "/get")
+@Api(value = "数据结构")
 public class GetDataController {
 
     /**
@@ -29,7 +33,8 @@ public class GetDataController {
      * @param className
      * @return
      */
-    @RequestMapping(value = "enumerate.do")
+    @ApiOperation(value = "枚举类型")
+    @RequestMapping(value = "enumerate.do", method = RequestMethod.GET)
     public Enum[] getEnumerate(String className) {
         if (null == className || className.isEmpty()) {
             return null;
@@ -49,7 +54,8 @@ public class GetDataController {
      * @param dictionaryAlise
      * @return
      */
-    @RequestMapping(value = "dictionary.do")
+    @ApiOperation(value = "数据字典")
+    @RequestMapping(value = "dictionary.do", method = RequestMethod.GET)
     public List<DictionaryData> getDictionary(String dictionaryAlise) {
         return null;
     }
@@ -60,7 +66,8 @@ public class GetDataController {
      * @param root
      * @return
      */
-    @RequestMapping(value = "tree.do")
+    @ApiOperation(value = "树形结构")
+    @RequestMapping(value = "tree.do", method = RequestMethod.GET)
     public Node getTree(Long root) {
         return null;
     }

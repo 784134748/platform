@@ -23,7 +23,7 @@
             <li class="layui-nav-item layui-nav-itemed">
                 <a class="" href="javascript:;">数据交互</a>
                 <dl class="layui-nav-child">
-                    <shiro:hasPermission name="admin:admin:all"><dd><a href="javascript:iframeByUrl('/bast/data.do');">最佳实践</a></dd></shiro:hasPermission>
+                    <shiro:hasPermission name="admin:admin:all"><dd><a href="javascript:iframeByUrl('/best/data.do');">最佳实践</a></dd></shiro:hasPermission>
                 </dl>
             </li>
         </ul>

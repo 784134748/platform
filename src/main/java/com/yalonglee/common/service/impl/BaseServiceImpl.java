@@ -3,6 +3,8 @@ package com.yalonglee.common.service.impl;
 import com.yalonglee.common.base.Page;
 import com.yalonglee.common.dao.BaseDaoI;
 import com.yalonglee.common.service.BaseServiceI;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,8 +21,10 @@ import java.util.Map;
  * @version [V1.0, 2018/2/9]
  * @see [相关类/方法]
  */
-public class BaseServiceImpl<T> implements BaseServiceI<T> {
+@Service
+public abstract class BaseServiceImpl<T> implements BaseServiceI<T> {
 
+    @Autowired
     private BaseDaoI<T> baseDaoI;
 
     @Override

@@ -1,8 +1,5 @@
 package com.yalonglee.platform.dto.permission;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * <p>《一句话功能简述》
  * <p><功能详细描述>
@@ -37,13 +34,9 @@ public class UserDto {
      */
     private Boolean locked;
     /**
-     * user --> role 多对多处理
-     */
-    private List<RoleDto> roles = new ArrayList<>();
-    /**
      * user --> group 多对多处理
      */
-    private List<GroupDto> groups = new ArrayList<>();
+    private String groupId;
 
     public String getId() {
         return id;
@@ -85,19 +78,11 @@ public class UserDto {
         this.locked = locked;
     }
 
-    public List<RoleDto> getRoles() {
-        return roles;
+    public String getGroupId() {
+        return groupId;
     }
 
-    public void setRoles(List<RoleDto> roles) {
-        this.roles = roles;
-    }
-
-    public List<GroupDto> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<GroupDto> groups) {
-        this.groups = groups;
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 }

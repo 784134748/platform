@@ -1,8 +1,5 @@
 package com.yalonglee.platform.dto.permission;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * <p>《一句话功能简述》
  * <p><功能详细描述>
@@ -27,11 +24,7 @@ public class PermissionDto {
     /**
      * permission --> role 多对多处理
      */
-    private List<RoleDto> roles = new ArrayList<>();
-    /**
-     * permission --> resource 多对多处理
-     */
-    private List<ResourceDto> resources = new ArrayList<>();
+    private String roleId;
 
     public String getId() {
         return id;
@@ -49,19 +42,11 @@ public class PermissionDto {
         this.permission = permission;
     }
 
-    public List<RoleDto> getRoles() {
-        return roles;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRoles(List<RoleDto> roles) {
-        this.roles = roles;
-    }
-
-    public List<ResourceDto> getResources() {
-        return resources;
-    }
-
-    public void setResources(List<ResourceDto> resources) {
-        this.resources = resources;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 }
