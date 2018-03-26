@@ -5,6 +5,8 @@ import com.yalonglee.platform.entity.data.DictionaryData;
 import com.yalonglee.platform.entity.data.Node;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,8 @@ import java.util.*;
 @RequestMapping(value = "/get")
 @Api(value = "数据结构")
 public class GetDataController {
+
+    private static final Logger logger = LogManager.getLogger(GetDataController.class);
 
     /**
      * 枚举类型转json

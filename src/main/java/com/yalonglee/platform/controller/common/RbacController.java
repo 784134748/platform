@@ -12,6 +12,8 @@ import com.yalonglee.platform.service.permission.UserServiceI;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.dozer.Mapper;
@@ -46,6 +48,8 @@ public class RbacController {
     private RoleServiceI roleServiceI;
     @Autowired
     private PermissionServiceI permissionServiceI;
+
+    private static final Logger logger = LogManager.getLogger(RbacController.class);
 
     /**
      * 身份认证失败

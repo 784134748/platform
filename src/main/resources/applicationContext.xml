@@ -79,6 +79,9 @@
     <!-- 自动扫描dao\service包(自动注入) -->
     <context:component-scan base-package="com.yalonglee.platform.dao"/>
     <context:component-scan base-package="com.yalonglee.platform.service"/>
+    <!-- 自动扫描baseDao\baseService包(自动注入) -->
+    <context:component-scan base-package="com.yalonglee.common.dao"/>
+    <context:component-scan base-package="com.yalonglee.common.service"/>
     <!-- 工具类引入service(自动注入) -->
     <context:component-scan base-package="com.yalonglee.common.util"/>
 

@@ -4,7 +4,8 @@ import com.yalonglee.common.base.Page;
 import com.yalonglee.common.dao.BaseDaoI;
 import com.yalonglee.common.service.BaseServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Map;
  * @version [V1.0, 2018/2/9]
  * @see [相关类/方法]
  */
-@Service
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public abstract class BaseServiceImpl<T> implements BaseServiceI<T> {
 
     @Autowired

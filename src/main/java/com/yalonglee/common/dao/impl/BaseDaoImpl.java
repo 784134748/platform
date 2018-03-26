@@ -9,6 +9,7 @@ import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
@@ -27,6 +28,7 @@ import java.util.Map;
  * @version [V1.0, 2017/12/10]
  * @see [相关类/方法]
  */
+@Repository
 public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
 
     @Autowired
@@ -51,7 +53,10 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
 
     @Override
     public Serializable save(T o) {
-        return getCurrentSession().save(o);
+        if (null != o) {
+            return getCurrentSession().save(o);
+        }
+        return null;
     }
 
     @Override

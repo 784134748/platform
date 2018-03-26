@@ -2,6 +2,8 @@ package com.yalonglee.platform.controller.common;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Api(value = "多级目录")
 public class GetViewController {
 
+    private static final Logger logger = LogManager.getLogger(GetViewController.class);
 
     /**
      * goURL: 1级目录

@@ -7,6 +7,8 @@ import com.yalonglee.platform.service.example.ExampleServiceI;
 import com.yalonglee.platform.vo.example.PersonVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +40,8 @@ public class ExampleController {
     Mapper mapper;
     @Autowired
     private ExampleServiceI exampleServiceI;
+
+    private static final Logger logger = LogManager.getLogger(ExampleController.class);
 
     /**
      * 新增
