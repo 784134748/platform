@@ -1,8 +1,9 @@
 package com.yalonglee.platform.service.permission;
 
-import com.yalonglee.platform.entity.permission.User;
+import com.yalonglee.platform.entity.permission.*;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * <p>《一句话功能简述》
@@ -23,6 +24,34 @@ public interface UserServiceI {
      * @return
      */
     public User getUserByUsername(String username);
+
+    /**
+     * 通过用户名获取群组
+     * @param username
+     * @return
+     */
+    public Set<Group> getGroupsByUsername(String username);
+
+    /**
+     * 通过用户名获取角色
+     * @param username
+     * @return
+     */
+    public Set<Role> getRolesByUsername(String username);
+
+    /**
+     * 通过用户名获取权限
+     * @param username
+     * @return
+     */
+    public Set<Permission> getPermissionsByUsername(String username);
+
+    /**
+     * 通过用户名获取权限
+     * @param username
+     * @return
+     */
+    public Set<Resource> getResourcesByUsername(String username);
 
     /**
      * 通过id获取用户

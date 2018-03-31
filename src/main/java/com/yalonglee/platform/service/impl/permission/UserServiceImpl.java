@@ -1,13 +1,14 @@
 package com.yalonglee.platform.service.impl.permission;
 
 import com.yalonglee.platform.dao.permission.UserDaoI;
-import com.yalonglee.platform.entity.permission.User;
+import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.service.permission.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * <p>《一句话功能简述》
@@ -27,6 +28,32 @@ public class UserServiceImpl implements UserServiceI {
     private UserDaoI userDaoI;
 
     @Override
+    public User getUserByUsername(String username) {
+        String hql = "from User where username = ?";
+        return userDaoI.getEntityByHql(hql, username);
+    }
+
+    @Override
+    public Set<Group> getGroupsByUsername(String username) {
+        return null;
+    }
+
+    @Override
+    public Set<Role> getRolesByUsername(String username) {
+        return null;
+    }
+
+    @Override
+    public Set<Permission> getPermissionsByUsername(String username) {
+        return null;
+    }
+
+    @Override
+    public Set<Resource> getResourcesByUsername(String username) {
+        return null;
+    }
+
+    @Override
     public User get(Serializable id) {
         return userDaoI.get(id);
     }
@@ -39,12 +66,6 @@ public class UserServiceImpl implements UserServiceI {
     @Override
     public void update(User user) {
         userDaoI.update(user);
-    }
-
-    @Override
-    public User getUserByUsername(String username) {
-        String hql = "from User where username = ?";
-        return userDaoI.getEntityByHql(hql, username);
     }
 
     @Override

@@ -1,14 +1,8 @@
 package com.yalonglee.platform.controller.common;
 
-import com.yalonglee.platform.dto.permission.PermissionDto;
-import com.yalonglee.platform.dto.permission.RoleDto;
-import com.yalonglee.platform.dto.permission.UserDto;
-import com.yalonglee.platform.entity.permission.Permission;
-import com.yalonglee.platform.entity.permission.Role;
-import com.yalonglee.platform.entity.permission.User;
-import com.yalonglee.platform.service.permission.PermissionServiceI;
-import com.yalonglee.platform.service.permission.RoleServiceI;
-import com.yalonglee.platform.service.permission.UserServiceI;
+import com.yalonglee.platform.dto.permission.*;
+import com.yalonglee.platform.entity.permission.*;
+import com.yalonglee.platform.service.permission.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -19,10 +13,13 @@ import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>《一句话功能简述》
@@ -43,17 +40,22 @@ public class RbacController {
     @Autowired
     Mapper mapper;
     @Autowired
+    private GroupServiceI groupServiceI;
+    @Autowired
     private UserServiceI userServiceI;
     @Autowired
     private RoleServiceI roleServiceI;
     @Autowired
     private PermissionServiceI permissionServiceI;
+    @Autowired
+    private ResourceServiceI resourceServiceI;
 
     private static final Logger logger = LogManager.getLogger(RbacController.class);
 
     /**
      * 身份认证失败
      */
+    @ApiOperation(value = "登录接口")
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
     public void toLoginPage(HttpServletRequest httpServletRequest) {
         String exceptionClassName = (String) httpServletRequest.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
@@ -87,12 +89,30 @@ public class RbacController {
         user.setUsername("admin");
         user.setPassword("admin");
         user.setSalt("1234");
-        //角色添加权限
+        //创建群组
+        Group group = new Group();
+        group.setGroup("admin");
+        //角色添加权限和群组
         role.getPermissions().add(permission);
-        //用户添加角色
+        role.getGroups().add(group);
+        //用户添加角色和群组
         user.getRoles().add(role);
+        user.getGroups().add(group);
         //添加管理员
         userServiceI.saveOrUpdate(user);
+    }
+
+    /**
+     * 新增/修改群组
+     *
+     * @param groupDto
+     */
+    @ApiOperation(value = "新增/修改群组")
+    @RequestMapping(value = "/group", method = RequestMethod.PUT)
+    public void saveOrUpdateGroup(GroupDto groupDto) {
+        Group group = new Group();
+        mapper.map(group, groupDto);
+        groupServiceI.saveOrUpdate(group);
     }
 
     /**
@@ -101,7 +121,7 @@ public class RbacController {
      * @param userDto
      */
     @ApiOperation(value = "新增/修改用户")
-    @RequestMapping(value = "/user/saveOrUpdate.do", method = RequestMethod.PUT)
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
     public void saveOrUpdateUser(UserDto userDto) {
         User user = new User();
         mapper.map(user, userDto);
@@ -114,7 +134,7 @@ public class RbacController {
      * @param roleDto
      */
     @ApiOperation(value = "新增/修改角色")
-    @RequestMapping(value = "/role/saveOrUpdate.do", method = RequestMethod.PUT)
+    @RequestMapping(value = "/role", method = RequestMethod.PUT)
     public void saveOrUpdateRole(RoleDto roleDto) {
         Role role = new Role();
         mapper.map(role, roleDto);
@@ -127,11 +147,148 @@ public class RbacController {
      * @param permissionDto
      */
     @ApiOperation(value = "新增/修改权限")
-    @RequestMapping(value = "/permission/saveOrUpdate.do", method = RequestMethod.PUT)
+    @RequestMapping(value = "/permission", method = RequestMethod.PUT)
     public void saveOrUpdatePermission(PermissionDto permissionDto) {
         Permission permission = new Permission();
         mapper.map(permission, permissionDto);
         permissionServiceI.saveOrUpdate(permission);
+    }
+
+    /**
+     * 新增/修改资源
+     *
+     * @param resourceDto
+     */
+    @ApiOperation(value = "新增/修改资源")
+    @RequestMapping(value = "/resource", method = RequestMethod.PUT)
+    public void saveOrUpdateResource(ResourceDto resourceDto) {
+        Resource resource = new Resource();
+        mapper.map(resource, resourceDto);
+        resourceServiceI.saveOrUpdate(resource);
+    }
+
+    /**
+     * 获取群组列表
+     *
+     * @param groupDto
+     */
+    @ApiOperation(value = "获取群组列表")
+    @RequestMapping(value = "/group", method = RequestMethod.GET)
+    public void getGroups(GroupDto groupDto) {
+
+    }
+
+    /**
+     * 获取用户列表
+     *
+     * @param userDto
+     */
+    @ApiOperation(value = "获取用户列表")
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public void getUsers(UserDto userDto) {
+
+    }
+
+    /**
+     * 获取角色列表
+     *
+     * @param roleDto
+     */
+    @ApiOperation(value = "获取角色列表")
+    @RequestMapping(value = "/role", method = RequestMethod.GET)
+    public void getRoles(RoleDto roleDto) {
+
+    }
+
+    /**
+     * 获取权限列表
+     *
+     * @param permissionDto
+     */
+    @ApiOperation(value = "获取权限列表")
+    @RequestMapping(value = "/permission", method = RequestMethod.GET)
+    public void getPermissions(PermissionDto permissionDto) {
+
+    }
+
+    /**
+     * 获取资源列表
+     *
+     * @param resourceDto
+     */
+    @ApiOperation(value = "获取资源列表")
+    @RequestMapping(value = "/resource", method = RequestMethod.GET)
+    public void getResources(ResourceDto resourceDto) {
+
+    }
+
+    /**
+     * 群组与用户建立联系
+     *
+     * @param groupIds
+     * @param userIds
+     */
+    @ApiOperation(value = "群组与用户建立联系")
+    @RequestMapping(value = "/groups/users", method = RequestMethod.POST)
+    public void groupsAndUsers(String groupIds, String userIds) {
+        String[] groupId = groupIds.split(",");
+        String[] userId = userIds.split(",");
+
+    }
+
+    /**
+     * 群组与角色建立联系
+     *
+     * @param groupIds
+     * @param roleIds
+     */
+    @ApiOperation(value = "群组与角色建立联系")
+    @RequestMapping(value = "/groups/roles", method = RequestMethod.POST)
+    public void groupsAndRoles(String groupIds, String roleIds) {
+        String[] groupId = groupIds.split(",");
+        String[] roleId = roleIds.split(",");
+
+    }
+
+    /**
+     * 用户与角色建立联系
+     *
+     * @param userIds
+     * @param roleIds
+     */
+    @ApiOperation(value = "用户与角色建立联系")
+    @RequestMapping(value = "/users/roles", method = RequestMethod.POST)
+    public void usersAndRoles(String userIds, String roleIds) {
+        String[] userId = userIds.split(",");
+        String[] roleId = roleIds.split(",");
+
+    }
+
+    /**
+     * 角色与权限建立联系
+     *
+     * @param roleIds
+     * @param permissionIds
+     */
+    @ApiOperation(value = "角色与权限建立联系")
+    @RequestMapping(value = "/roles/permissions", method = RequestMethod.POST)
+    public void rolesAndPermissions(String roleIds, String permissionIds) {
+        String[] roleId = roleIds.split(",");
+        String[] permissionId = permissionIds.split(",");
+    }
+
+    /**
+     * 权限与资源建立联系
+     *
+     * @param permissionIds
+     * @param resourceIds
+     */
+    @ApiOperation(value = "角色与权限建立联系")
+    @RequestMapping(value = "/permissions/resources", method = RequestMethod.POST)
+    public void permissionsAndResources(String permissionIds, String resourceIds) {
+        String[] permissionId = permissionIds.split(",");
+        String[] resourceId = resourceIds.split(",");
+
     }
 
 }

@@ -1,7 +1,7 @@
 package com.yalonglee.platform.service.impl.permission;
 
 import com.yalonglee.platform.dao.permission.PermissionDaoI;
-import com.yalonglee.platform.entity.permission.Permission;
+import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.service.permission.PermissionServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +28,26 @@ import java.util.Set;
 public class PermissionServiceImpl implements PermissionServiceI {
     @Autowired
     private PermissionDaoI permissionDaoI;
+
+    @Override
+    public Set<User> getUsersByPermissionId(Serializable permissionId) {
+        return null;
+    }
+
+    @Override
+    public Set<Role> getRolesByPermissionId(Serializable permissionId) {
+        return null;
+    }
+
+    @Override
+    public Set<Group> getGroupsByPermissionId(Serializable permissionId) {
+        return null;
+    }
+
+    @Override
+    public Set<Resource> getResourcesByPermissionId(Serializable permissionId) {
+        return null;
+    }
 
     @Override
     public Permission get(Serializable id) {

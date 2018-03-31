@@ -1,6 +1,6 @@
 package com.yalonglee.platform.service.permission;
 
-import com.yalonglee.platform.entity.permission.Role;
+import com.yalonglee.platform.entity.permission.*;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -17,6 +17,34 @@ import java.util.Set;
  * @see [相关类/方法]
  */
 public interface RoleServiceI {
+
+    /**
+     * 通过角色ID获取用户
+     * @param roleId
+     * @return
+     */
+    public Set<User> getUsersByRoleId(Serializable roleId);
+
+    /**
+     * 通过角色ID获取群组
+     * @param roleId
+     * @return
+     */
+    public Set<Group> getGroupsByRoleId(Serializable roleId);
+
+    /**
+     * 通过角色ID获取权限
+     * @param roleId
+     * @return
+     */
+    public Set<Permission> getPermissionsByRoleId(Serializable roleId);
+
+    /**
+     * 通过角色ID获取资源
+     * @param roleId
+     * @return
+     */
+    public Set<Resource> getResourcesByRoleId(Serializable roleId);
 
     /**
      * 通过id获取角色
