@@ -10,30 +10,137 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a239b12e-3b89-45f1-bba8-2fe9a8f755b5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/main.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/register.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/global.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/bbb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/group.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/l.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/m.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/member_140x145.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/member_270x210.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/social-icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/FoodDaoI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/OrderDaoI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/RestaurantDaoI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/FoodDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/OrderDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/RestaurantDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Food.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/OrderState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Restaurant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/food/FoodServiceI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/food/OrderServiceI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/food/RestaurantServiceI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/FoodServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/RestaurantServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/listener.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/listener.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform.paw" beforeDir="false" afterPath="$PROJECT_DIR$/platform.paw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/RbacController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/RbacController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shiro-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shiro-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/RoleServiceI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/RoleServiceI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/side.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/side.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/taglibs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/taglibs.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/layui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/layui.mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/layui.mobile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/code.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/code.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/laydate/default/laydate.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/icon-ext.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/icon-ext.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/layer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/loading-0.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/loading-0.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/loading-1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/loading-1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/loading-2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/css/modules/layer/default/loading-2.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/font/iconfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/font/iconfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/font/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/font/iconfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/font/iconfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/font/iconfont.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/font/iconfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/font/iconfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/0.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/0.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/10.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/10.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/11.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/11.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/12.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/12.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/13.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/13.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/14.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/14.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/15.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/15.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/16.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/16.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/17.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/17.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/18.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/18.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/19.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/19.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/2.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/20.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/20.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/21.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/21.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/22.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/22.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/23.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/23.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/24.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/24.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/25.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/25.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/26.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/26.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/27.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/27.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/28.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/28.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/29.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/29.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/3.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/3.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/30.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/30.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/31.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/31.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/32.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/32.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/33.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/33.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/34.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/34.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/35.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/35.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/36.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/36.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/37.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/37.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/38.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/38.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/39.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/39.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/4.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/4.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/40.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/40.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/41.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/41.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/42.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/42.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/43.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/43.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/44.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/44.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/45.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/45.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/46.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/46.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/47.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/47.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/48.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/48.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/49.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/49.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/5.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/5.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/50.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/50.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/51.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/51.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/52.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/52.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/53.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/53.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/54.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/54.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/55.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/55.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/56.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/56.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/57.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/57.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/58.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/58.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/59.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/59.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/6.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/6.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/60.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/60.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/61.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/61.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/62.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/62.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/63.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/63.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/64.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/64.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/65.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/65.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/66.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/66.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/67.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/67.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/68.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/68.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/69.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/69.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/7.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/7.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/70.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/70.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/71.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/71.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/8.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/8.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/9.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/images/face/9.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/code.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/element.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/element.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/flow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/laydate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/laydate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/layedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/layedit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/layer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/laypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/laypage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/laytpl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/mobile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/tree.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/lay/modules/util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/layui.all.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/layui.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,74 +152,79 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.properties" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="27" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="95" column="46" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="taglibs.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/taglibs.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shiro-config.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/shiro-config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RbacController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RbacController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/RbacController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-678">
-              <caret line="105" selection-start-line="105" selection-end-line="105" />
+            <state relative-caret-position="203">
+              <caret line="103" column="11" selection-start-line="103" selection-start-column="11" selection-end-line="103" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Subject.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.2.3/shiro-core-1.2.3.jar!/org/apache/shiro/subject/Subject.class">
+      <file leaf-file-name="BaseDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/common/dao/impl/BaseDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+            <state relative-caret-position="171">
+              <caret line="797" selection-start-line="797" selection-end-line="797" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserRealm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/common/secret/UserRealm.java">
+      <file leaf-file-name="ExampleController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/ExampleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="896">
-              <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+            <state relative-caret-position="306">
+              <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleAuthenticationInfo.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.2.3/shiro-core-1.2.3.jar!/org/apache/shiro/authc/SimpleAuthenticationInfo.class">
+      <file leaf-file-name="register.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/register.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="-665">
+              <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#1;n#div#1;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#2;n#div#1;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#1;n#div#2;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#2;n#div#2;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/register.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="27" column="57" lean-forward="true" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+              <folding>
+                <element signature="e#1347#1370#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dispatcher-servlet.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/dispatcher-servlet.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="788">
+              <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -126,11 +238,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/login.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-113">
+              <caret line="13" column="66" selection-start-line="13" selection-start-column="66" selection-end-line="13" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/main.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="49" column="39" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="47" />
+            <state relative-caret-position="426">
+              <caret line="126" column="13" selection-start-line="126" selection-start-column="13" selection-end-line="126" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -141,9 +262,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
-        <option value="JavaScript File" />
         <option value="spring-beans.schema" />
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -217,23 +341,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/common/base/enumstatus/BasicType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/common/base/Page.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/common/bean/dto/ResultDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/common/bean/dto/ResultRows.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/dispatcher-servlet.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/common/util/DictionaryUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/common/dao/BaseDaoI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/vo/permission/UserVo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dto/permission/RoleDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dto/permission/UserDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dto/permission/GroupDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dto/permission/PermissionDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dto/permission/ResourceDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/common/config/swagger/SwaggerConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/example/ExampleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/common/dao/impl/BaseDaoImpl.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/ExampleController.java" />
@@ -247,18 +354,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/permission/ResourceDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/UserServiceI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/ResourceServiceI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/RoleServiceI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/GroupServiceI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/PermissionServiceI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/RoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/ResourceServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/PermissionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/GroupServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/register.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/header.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/side.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/index.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/taglibs.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/main.jsp" />
@@ -266,8 +367,31 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/shiro-config.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/RbacController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/OrderState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Food.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Order.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Restaurant.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/FoodDaoI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/OrderDaoI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/RestaurantDaoI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/OrderDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/RestaurantDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/FoodDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/food/RestaurantServiceI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/FoodServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/OrderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/RestaurantServiceI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/RestaurantServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/side.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/header.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/RoleServiceI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/RoleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/register.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/register.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/register.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/RbacController.java" />
       </list>
     </option>
   </component>
@@ -297,7 +421,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="78" />
+    <option name="x" value="-11" />
     <option name="y" value="23" />
     <option name="width" value="1567" />
     <option name="height" value="1027" />
@@ -418,15 +542,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="yalonglee" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yalonglee" type="462c0819:PsiDirectoryNode" />
               <item name="platform" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -449,16 +564,6 @@
               <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yalonglee" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="platform" type="b2602c69:ProjectViewProjectNode" />
@@ -466,6 +571,57 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="rbac" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -475,14 +631,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="$USER_HOME$/.nvm/versions/node/v9.2.0/bin/node" />
+    <property name="SearchEverywhereHistoryKey" value="favicon.ico&#9;FILE&#9;jar:///Users/listener/.m2/repository/net/sf/ehcache/ehcache/2.10.3/ehcache-2.10.3.jar!/rest-management-private-classpath/org/eclipse/jetty/favicon.ico&#10;apiCo&#9;PSI&#9;JAVA://springfox.documentation.swagger.web.ApiResourceController&#10;fa&#9;FILE&#9;jar:///Users/listener/.m2/repository/net/sf/ehcache/ehcache/2.10.3/ehcache-2.10.3.jar!/rest-management-private-classpath/org/eclipse/jetty/favicon.ico" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="favicon.ico&#9;FILE&#9;jar:///Users/listener/.m2/repository/net/sf/ehcache/ehcache/2.10.3/ehcache-2.10.3.jar!/rest-management-private-classpath/org/eclipse/jetty/favicon.ico&#10;apiCo&#9;PSI&#9;JAVA://springfox.documentation.swagger.web.ApiResourceController&#10;fa&#9;FILE&#9;jar:///Users/listener/.m2/repository/net/sf/ehcache/ehcache/2.10.3/ehcache-2.10.3.jar!/rest-management-private-classpath/org/eclipse/jetty/favicon.ico" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="$USER_HOME$/.nvm/versions/node/v9.2.0/bin/node" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -499,11 +656,11 @@
       <recent name="com.yalonglee.platform.vo.permission" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/plugin" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages" />
       <recent name="$PROJECT_DIR$/src/main/webapp/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/dozer-mapper" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -783,7 +940,7 @@
       <workItem from="1522739525348" duration="8991000" />
       <workItem from="1522807987868" duration="4587000" />
       <workItem from="1522856984022" duration="283000" />
-      <workItem from="1522892596383" duration="7103000" />
+      <workItem from="1522892596383" duration="21816000" />
     </task>
     <servers />
   </component>
@@ -802,10 +959,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184869000" />
+    <option name="totallyTimeSpent" value="199582000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="78" y="23" width="1567" height="1027" extended-state="0" />
+    <frame x="-11" y="23" width="1567" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -822,7 +979,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.38626608" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.33476394" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.34763947" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -833,7 +990,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32908162" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.22831632" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32725322" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26688525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26688525" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="JRebel" order="2" side_tool="true" />
@@ -924,7 +1081,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="50" />
+      <option name="time" value="64" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -957,340 +1114,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="66" lean-forward="true" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/shiro-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/permission/UserDaoI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" selection-start-line="16" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/permission/GroupDaoI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/permission/ResourceDaoI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/permission/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/permission/GroupDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="55" lean-forward="true" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/permission/ResourceDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="49" lean-forward="true" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dto/permission/PermissionDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/GetViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/GetDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/FileController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="84" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/ExampleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="43" selection-start-line="43" selection-end-line="43" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/permission/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/permission/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/permission/Resource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/permission/Permission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/permission/Group.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/PermissionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/GroupServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/ResourceServiceI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/PermissionServiceI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/GroupServiceI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/RoleServiceI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="41" selection-start-line="41" selection-end-line="46" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/RoleServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="732">
-          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/UserServiceI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="34" selection-start-line="34" selection-end-line="39" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="84" column="17" selection-start-line="84" selection-start-column="17" selection-end-line="84" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/ResourceServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="229" selection-start-line="229" selection-end-line="234" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/style.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-93" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
-          <folding>
-            <element signature="e#1347#1370#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/side.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/frame.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/taglibs.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="95" column="46" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="49" column="39" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.2.3/shiro-core-1.2.3.jar!/org/apache/shiro/authc/SimpleAuthenticationInfo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/common/secret/UserRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.2.3/shiro-core-1.2.3.jar!/org/apache/shiro/subject/Subject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1301,17 +1128,441 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/RbacController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-678">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        <state relative-caret-position="304">
+          <caret line="95" column="46" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/taglibs.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.2.3/shiro-core-1.2.3.jar!/org/apache/shiro/subject/Subject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/common/secret/UserRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="896">
+          <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.2.3/shiro-core-1.2.3.jar!/org/apache/shiro/authc/SimpleAuthenticationInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/permission/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/enumstatus/BasicType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/permission/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="23" selection-start-line="23" selection-end-line="23" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/data/DictionaryData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="44" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/data/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/example/basic/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="38" selection-start-line="38" selection-end-line="39" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/OrderState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Food.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-33">
+          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#987#988#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1087#1088#0" expanded="true" />
+            <element signature="e#1122#1123#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1201#1202#0" expanded="true" />
+            <element signature="e#1241#1242#0" expanded="true" />
+            <element signature="e#1273#1274#0" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+            <element signature="e#1377#1378#0" expanded="true" />
+            <element signature="e#1412#1413#0" expanded="true" />
+            <element signature="e#1443#1444#0" expanded="true" />
+            <element signature="e#1491#1492#0" expanded="true" />
+            <element signature="e#1531#1532#0" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1595#1596#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
+            <element signature="e#1681#1682#0" expanded="true" />
+            <element signature="e#1719#1720#0" expanded="true" />
+            <element signature="e#1753#1754#0" expanded="true" />
+            <element signature="e#1807#1808#0" expanded="true" />
+            <element signature="e#1853#1854#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1184#1185#0" expanded="true" />
+            <element signature="e#1226#1227#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="e#1340#1341#0" expanded="true" />
+            <element signature="e#1382#1383#0" expanded="true" />
+            <element signature="e#1416#1417#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1496#1497#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1579#1580#0" expanded="true" />
+            <element signature="e#1612#1613#0" expanded="true" />
+            <element signature="e#1668#1669#0" expanded="true" />
+            <element signature="e#1712#1713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/food/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+            <element signature="e#982#983#0" expanded="true" />
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1094#1095#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#1232#1233#0" expanded="true" />
+            <element signature="e#1284#1285#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1364#1365#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1480#1481#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/example/PersonDaoI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/permission/GroupDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/RestaurantDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="90" lean-forward="true" selection-start-line="17" selection-start-column="90" selection-end-line="17" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/OrderDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/impl/food/FoodDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="72" lean-forward="true" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/RestaurantDaoI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="62" lean-forward="true" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/OrderDaoI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/dao/food/FoodDaoI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="27" />
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/GroupServiceI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/food/FoodServiceI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/food/OrderServiceI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/food/RestaurantServiceI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/GroupServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/RestaurantServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="66" lean-forward="true" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/OrderServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/food/FoodServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="54" lean-forward="true" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/inc/side.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/permission/RoleServiceI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/entity/permission/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/service/impl/permission/RoleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="126" column="13" selection-start-line="126" selection-start-column="13" selection-end-line="126" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/register.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/plugin/layui/layui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/ExampleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/common/dao/impl/BaseDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="797" selection-start-line="797" selection-end-line="797" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-113">
+          <caret line="13" column="66" selection-start-line="13" selection-start-column="66" selection-end-line="13" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding>
+            <element signature="e#1347#1370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="788">
+          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rbac/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-665">
+          <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#1;n#div#1;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#div#1;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#1;n#div#2;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#div#2;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="27" column="57" lean-forward="true" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yalonglee/platform/controller/common/RbacController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="103" column="11" selection-start-line="103" selection-start-column="11" selection-end-line="103" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

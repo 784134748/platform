@@ -15,12 +15,11 @@ import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,6 +93,21 @@ public class RbacController {
         return "main";
     }
 
+    /**
+     * 注册用户
+     */
+    @ApiOperation(value = "注册普通用户")
+    @RequestMapping(value = "/register.do", method = RequestMethod.PUT)
+    public void register(@RequestBody User user) {
+        User user1 = userServiceI.getUserByUsername(user.getUsername());
+        if(null == user1){
+
+        }
+        Role role = roleServiceI.getRoleByRoleName("user");
+        user.setSalt("1234");
+        user.getRoles().add(role);
+        userServiceI.saveOrUpdate(user);
+    }
 
     /**
      * 创建管理员

@@ -11,7 +11,7 @@
 <head>
     <title>后台登录</title>
     <!-- Custom Theme files -->
-    <link href="/resources/css/login.css" rel="stylesheet"/>
+    <link href="${ctx}/resources/css/login.css" rel="stylesheet"/>
     <!-- Custom Theme files -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -22,7 +22,7 @@
 <!--header start here-->
 <div class="login-form">
     <div class="top-login">
-        <span><img src="/resources/images/group.png" alt=""/></span>
+        <span><img src="${ctx}/resources/images/group.png" alt=""/></span>
     </div>
     <h1>登录</h1>
     <div class="login-top">

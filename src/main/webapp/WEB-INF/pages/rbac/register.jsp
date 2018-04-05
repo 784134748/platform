@@ -22,90 +22,68 @@
 <body>
 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
-    <legend>已存在账户？<a href="login.html" target="_blank"><span style="color: red">登录</span></a></legend>
+    <legend>已存在账户？<a href="/"><span style="color: red">登录</span></a></legend>
 </fieldset>
 
-<form class="layui-form" action="">
+<form class="layui-form" action="" method="post">
     <div class="layui-form-item">
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-inline">
-            <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="text" id="username" name="username" lay-verify="required" placeholder="请输入" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <!-- 对号 -->
+        <div class="layui-inline">
+            <i class="layui-icon" id="ri" style="color: green;font-weight: bolder;" hidden></i>
+        </div>
+        <!-- 错号 -->
+        <div class="layui-inline">
+            <i class="layui-icon" id="wr" style="color: red; font-weight: bolder;" hidden>ဆ</i>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">密码</label>
         <div class="layui-input-inline">
-            <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="password" id="pwd" name="password" lay-verify="required" placeholder="请输入" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <!-- 对号 -->
+        <div class="layui-inline">
+            <i class="layui-icon" id="pri" style="color: green;font-weight: bolder;" hidden></i>
+        </div>
+        <!-- 错号 -->
+        <div class="layui-inline">
+            <i class="layui-icon" id="pwr" style="color: red; font-weight: bolder;" hidden>ဆ</i>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">验证密码</label>
         <div class="layui-input-inline">
-            <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="password" id="rpwd" name="checkPassword" lay-verify="required|check" placeholder="请输入" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <!-- 对号 -->
+        <div class="layui-inline">
+            <i class="layui-icon" id="rpri" style="color: green;font-weight: bolder;" hidden></i>
+        </div>
+        <!-- 错号 -->
+        <div class="layui-inline">
+            <i class="layui-icon" id="rpwr" style="color: red; font-weight: bolder;" hidden>ဆ</i>
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+            <button class="layui-btn" lay-submit="" lay-filter="sub">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
 </form>
 
 
-<script src="./plugins/layui/layui.js"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>
-    layui.use(['form', 'layedit', 'laydate'], function() {
-        var form = layui.form,
-            layer = layui.layer,
-            layedit = layui.layedit,
-            laydate = layui.laydate;
-
-        //日期
-        laydate.render({
-            elem: '#date'
-        });
-        laydate.render({
-            elem: '#date1'
-        });
-
-        //创建一个编辑器
-        var editIndex = layedit.build('LAY_demo_editor');
-
-        //自定义验证规则
-        form.verify({
-            title: function(value) {
-                if (value.length < 5) {
-                    return '标题至少得5个字符啊';
-                }
-            },
-            pass: [/(.+){6,12}$/, '密码必须6到12位'],
-            content: function(value) {
-                layedit.sync(editIndex);
-            }
-        });
-
-        //监听指定开关
-        form.on('switch(switchTest)', function(data) {
-            layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
-                offset: '6px'
-            });
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        });
-
-        //监听提交
-        form.on('submit(demo1)', function(data) {
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
-        });
-
-
-    });
-</script>
-
 </body>
+
+<script src="${ctx}/resources/plugin/layui/layui.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="${ctx}/resources/js/register.js"></script>
 
 </html>

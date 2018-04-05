@@ -54,6 +54,13 @@ public interface RoleServiceI {
     public Role get(Serializable id);
 
     /**
+     * 通过角色名称获取角色
+     * @param roleName
+     * @return
+     */
+    public Role getRoleByRoleName(String roleName);
+
+    /**
      * 通过用户id获取用户角色信息
      * @param uid
      * @return

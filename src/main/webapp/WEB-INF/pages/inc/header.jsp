@@ -22,10 +22,11 @@
                 <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                 <shiro:principal/>
             </a>
-            <%--<dl class="layui-nav-child">--%>
-                <%--<dd><a href="">基本资料</a></dd>--%>
-                <%--<dd><a href="">安全设置</a></dd>--%>
-            <%--</dl>--%>
+            <shiro:hasRole name="business">
+                <dl class="layui-nav-child">
+                    <dd><a href="">店铺信息</a></dd>
+                </dl>
+            </shiro:hasRole>
         </li>
         <li class="layui-nav-item"><a href="/rbac/logout.do">sign out</a></li>
     </ul>
