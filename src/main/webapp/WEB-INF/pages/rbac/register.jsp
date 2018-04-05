@@ -22,7 +22,7 @@
 <body>
 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
-    <legend>已存在账户？<a href="/"><span style="color: red">登录</span></a></legend>
+    <legend>已存在账户？<a href="/main.do"><span style="color: red">登录</span></a></legend>
 </fieldset>
 
 <form class="layui-form" action="" method="post">

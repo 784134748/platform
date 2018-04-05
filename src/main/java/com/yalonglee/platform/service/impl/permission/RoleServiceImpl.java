@@ -55,10 +55,9 @@ public class RoleServiceImpl implements RoleServiceI {
     }
 
     @Override
-    public Role getRoleByRoleName(String roleName) {
-        String hql = "from Role r where r.role = ？ ";
-        List<Role> roles = roleDaoI.getParamsByHql(hql,roleName );
-        return roles.size()>0 ? roles.get(0) : null;
+    public Role getRoleByRoleName(String role) {
+        String hql = "from Role where role = ?";
+        return roleDaoI.getEntityByHql(hql, role);
     }
 
     @Override

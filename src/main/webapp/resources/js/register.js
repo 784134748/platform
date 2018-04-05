@@ -26,11 +26,12 @@ layui.use(['layer', 'form', 'table'], function () {
             data: JSON.stringify(data.field),
             dataType: 'json',
             contentType:'application/json;charset=UTF-8',
-            success: function (data) {
-                if (data == 1) {
-                    layer.msg('注册成功');
+            success: function (res) {
+                debugger;
+                if (res.flag == true) {
+                    layer.msg(res.msg);
                 } else {
-                    layer.msg('注册失败');
+                    layer.msg(res.msg);
                 }
             }
         })

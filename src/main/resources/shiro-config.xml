@@ -13,12 +13,6 @@
         <property name="securityManager" ref="securityManager"/>
         <property name="filterChainDefinitions">
             <value>
-                <!-- swagger2 -->
-                /swagger-ui.html = anon
-                /webjars/** = anon
-                /swagger-resources/** = anon
-                /v2/** = anon
-
                 <!-- other -->
                 /rbac/login.do = authc
                 /rbac/logout.do = logout

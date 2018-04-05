@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.*;
 
 /**
@@ -24,12 +25,14 @@ public class User extends BaseUUID {
     /**
      * 邮箱 | 登录帐号
      */
+    @NotEmpty(message = "用户名不能为空")
     @NaturalId(mutable = true)
     @Column(unique = true)
     private String username;
     /**
      * 密码
      */
+    @NotEmpty(message = "密码不能为空")
     private String password;
     /**
      * salt

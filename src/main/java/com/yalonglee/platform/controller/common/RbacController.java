@@ -1,5 +1,6 @@
 package com.yalonglee.platform.controller.common;
 
+import com.yalonglee.common.bean.BaseResult;
 import com.yalonglee.platform.dto.permission.*;
 import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.service.permission.*;
@@ -14,12 +15,14 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +37,7 @@ import java.util.List;
  * @version [V1.0, 2017/12/17]
  * @see [相关类/方法]
  */
-@Controller
+@RestController
 @RequestMapping(value = "/rbac")
 @Api(value = "基于RBAC的权限管理")
 public class RbacController {
@@ -79,7 +82,7 @@ public class RbacController {
      */
     @ApiOperation(value = "登录成功后重定向")
     @RequestMapping(value = "/successUrl.do")
-    public String toSuccessPage() {
+    public ModelAndView toSuccessPage() {
         Subject currentUser = SecurityUtils.getSubject();
         List<String> roles = new ArrayList<>();
         roles.add("admin");
@@ -87,10 +90,11 @@ public class RbacController {
         boolean[] toAdmin = currentUser.hasRoles(roles);
         for (boolean isTrue : toAdmin) {
             if (isTrue) {
-                return "frame";
+                ModelAndView modelAndView = new ModelAndView("frame");
             }
         }
-        return "main";
+        ModelAndView modelAndView = new ModelAndView("main");
+        return modelAndView;
     }
 
     /**
@@ -98,15 +102,21 @@ public class RbacController {
      */
     @ApiOperation(value = "注册普通用户")
     @RequestMapping(value = "/register.do", method = RequestMethod.PUT)
-    public void register(@RequestBody User user) {
+    public BaseResult register(@RequestBody @Valid User user) {
+        BaseResult result = new BaseResult();
         User user1 = userServiceI.getUserByUsername(user.getUsername());
-        if(null == user1){
-
+        if (null != user1) {
+            result.setFlag(false);
+            result.setMsg("当前用户已存在");
+            return result;
         }
         Role role = roleServiceI.getRoleByRoleName("user");
         user.setSalt("1234");
         user.getRoles().add(role);
         userServiceI.saveOrUpdate(user);
+        result.setFlag(true);
+        result.setMsg("注册成功");
+        return result;
     }
 
     /**

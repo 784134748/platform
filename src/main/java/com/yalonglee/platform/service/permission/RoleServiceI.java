@@ -55,10 +55,10 @@ public interface RoleServiceI {
 
     /**
      * 通过角色名称获取角色
-     * @param roleName
+     * @param role
      * @return
      */
-    public Role getRoleByRoleName(String roleName);
+    public Role getRoleByRoleName(String role);
 
     /**
      * 通过用户id获取用户角色信息
