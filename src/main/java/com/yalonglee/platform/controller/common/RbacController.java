@@ -8,7 +8,9 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,11 +76,32 @@ public class RbacController {
     }
 
     /**
+     * 登录成功后重定向
+     */
+    @ApiOperation(value = "登录成功后重定向")
+    @RequestMapping(value = "/successUrl.do")
+    public String toSuccessPage() {
+        Subject currentUser = SecurityUtils.getSubject();
+        List<String> roles = new ArrayList<>();
+        roles.add("admin");
+        roles.add("business");
+        boolean[] toAdmin = currentUser.hasRoles(roles);
+        for (boolean isTrue : toAdmin) {
+            if (isTrue) {
+                return "frame";
+            }
+        }
+        return "main";
+    }
+
+
+    /**
      * 创建管理员
      */
     @ApiOperation(value = "创建管理员")
     @RequestMapping(value = "/admin.do", method = RequestMethod.GET)
     public void superAdmin() {
+        //创建管理员
         //创建权限
         Permission permission = new Permission();
         permission.setPermission("admin:admin:all");
@@ -89,17 +113,51 @@ public class RbacController {
         user.setUsername("admin");
         user.setPassword("admin");
         user.setSalt("1234");
-        //创建群组
-        Group group = new Group();
-        group.setGroup("admin");
         //角色添加权限和群组
         role.getPermissions().add(permission);
-        role.getGroups().add(group);
         //用户添加角色和群组
         user.getRoles().add(role);
-        user.getGroups().add(group);
+
+        //创建商家
+        //创建权限
+        Permission permission1 = new Permission();
+        permission1.setPermission("business:business:all");
+        //创建角色
+        Role role1 = new Role();
+        role1.setRole("business");
+        //创建用户
+        User user1 = new User();
+        user1.setUsername("business");
+        user1.setPassword("business");
+        user1.setSalt("1234");
+        //角色添加权限和群组
+        role1.getPermissions().add(permission1);
+        //用户添加角色和群组
+        user1.getRoles().add(role1);
+
+        //创建用户
+        //创建权限
+        Permission permission2 = new Permission();
+        permission2.setPermission("user:user:all");
+        //创建角色
+        Role role2 = new Role();
+        role2.setRole("user");
+        //创建用户
+        User user2 = new User();
+        user2.setUsername("user");
+        user2.setPassword("user");
+        user2.setSalt("1234");
+        //角色添加权限和群组
+        role2.getPermissions().add(permission2);
+        //用户添加角色和群组
+        user2.getRoles().add(role2);
+
         //添加管理员
         userServiceI.saveOrUpdate(user);
+        //添加商家
+        userServiceI.saveOrUpdate(user1);
+        //添加用户
+        userServiceI.saveOrUpdate(user2);
     }
 
     /**

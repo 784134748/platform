@@ -7,7 +7,7 @@
     <!--====================================================================-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="loginUrl" value="/rbac/login.do"/>
-        <property name="successUrl" value="/frame.do"/>
+        <property name="successUrl" value="/rbac/successUrl.do"/>
         <property name="unauthorizedUrl" value="/rbac/unauthorized.do"/>
 
         <property name="securityManager" ref="securityManager"/>
@@ -20,12 +20,9 @@
                 /v2/** = anon
 
                 <!-- other -->
-                /example/** = anon
-                /get/** = anon
                 /rbac/login.do = authc
                 /rbac/logout.do = logout
-                /rbac/admin.do = anon
-                /** = user
+
             </value>
         </property>
     </bean>
