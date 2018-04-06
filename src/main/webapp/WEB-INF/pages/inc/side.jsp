@@ -11,12 +11,6 @@
                         <dd><a href="javascript:iframeByUrl('/food/userInfo.do');">用户信息</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">商家管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:iframeByUrl('/food/addBusiness.do');">商家入驻</a></dd>
-                    </dl>
-                </li>
             </shiro:hasAnyRoles>
             <shiro:hasAnyRoles name="admin,business">
                 <li class="layui-nav-item layui-nav-itemed">

@@ -34,11 +34,7 @@ public class UserVo {
     /**
      * user --> role 多对多处理
      */
-    private List<RoleDto> roles = new ArrayList<>();
-    /**
-     * user --> group 多对多处理
-     */
-    private List<GroupDto> groups = new ArrayList<>();
+    private String roles;
 
     public String getId() {
         return id;
@@ -64,19 +60,11 @@ public class UserVo {
         this.locked = locked;
     }
 
-    public List<RoleDto> getRoles() {
+    public String getRoles() {
         return roles;
     }
 
-    public void setRoles(List<RoleDto> roles) {
+    public void setRoles(String roles) {
         this.roles = roles;
-    }
-
-    public List<GroupDto> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<GroupDto> groups) {
-        this.groups = groups;
     }
 }

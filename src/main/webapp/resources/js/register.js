@@ -19,7 +19,6 @@ layui.use(['layer', 'form', 'table'], function () {
      * 监听提交
      */
     form.on('submit(sub)', function (data) {
-        debugger;
         $.ajax({
             url: '/rbac/register.do',
             type: 'PUT',
@@ -27,7 +26,6 @@ layui.use(['layer', 'form', 'table'], function () {
             dataType: 'json',
             contentType:'application/json;charset=UTF-8',
             success: function (res) {
-                debugger;
                 if (res.flag == true) {
                     layer.msg(res.msg);
                 } else {

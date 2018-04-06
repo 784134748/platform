@@ -196,23 +196,36 @@ public class RbacController {
      */
     @ApiOperation(value = "新增/修改群组")
     @RequestMapping(value = "/group", method = RequestMethod.PUT)
-    public void saveOrUpdateGroup(GroupDto groupDto) {
+    @ResponseBody
+    public void saveOrUpdateGroup(@RequestBody GroupDto groupDto) {
         Group group = new Group();
-        mapper.map(group, groupDto);
+        mapper.map(groupDto, group);
         groupServiceI.saveOrUpdate(group);
     }
 
     /**
      * 新增/修改用户
-     *
-     * @param userDto
+     * @param id
+     * @param locked
+     * @return
      */
     @ApiOperation(value = "新增/修改用户")
-    @RequestMapping(value = "/user", method = RequestMethod.PUT)
-    public void saveOrUpdateUser(UserDto userDto) {
-        User user = new User();
-        mapper.map(user, userDto);
-        userServiceI.saveOrUpdate(user);
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult saveOrUpdateUser(String id,Boolean locked) {
+        BaseResult baseResult = new BaseResult();
+        User user = userServiceI.get(id);
+        user.setLocked(locked);
+        try {
+            userServiceI.saveOrUpdate(user);
+        } catch (Exception e) {
+            baseResult.setFlag(false);
+            baseResult.setMsg("修改失败");
+            return baseResult;
+        }
+        baseResult.setFlag(true);
+        baseResult.setMsg("修改成功");
+        return baseResult;
     }
 
     /**
@@ -222,9 +235,10 @@ public class RbacController {
      */
     @ApiOperation(value = "新增/修改角色")
     @RequestMapping(value = "/role", method = RequestMethod.PUT)
-    public void saveOrUpdateRole(RoleDto roleDto) {
+    @ResponseBody
+    public void saveOrUpdateRole(@RequestBody RoleDto roleDto) {
         Role role = new Role();
-        mapper.map(role, roleDto);
+        mapper.map(roleDto, role);
         roleServiceI.saveOrUpdate(role);
     }
 
@@ -235,9 +249,10 @@ public class RbacController {
      */
     @ApiOperation(value = "新增/修改权限")
     @RequestMapping(value = "/permission", method = RequestMethod.PUT)
-    public void saveOrUpdatePermission(PermissionDto permissionDto) {
+    @ResponseBody
+    public void saveOrUpdatePermission(@RequestBody PermissionDto permissionDto) {
         Permission permission = new Permission();
-        mapper.map(permission, permissionDto);
+        mapper.map(permissionDto, permission);
         permissionServiceI.saveOrUpdate(permission);
     }
 
@@ -248,7 +263,8 @@ public class RbacController {
      */
     @ApiOperation(value = "新增/修改资源")
     @RequestMapping(value = "/resource", method = RequestMethod.PUT)
-    public void saveOrUpdateResource(ResourceDto resourceDto) {
+    @ResponseBody
+    public void saveOrUpdateResource(@RequestBody ResourceDto resourceDto) {
         Resource resource = new Resource();
         mapper.map(resource, resourceDto);
         resourceServiceI.saveOrUpdate(resource);

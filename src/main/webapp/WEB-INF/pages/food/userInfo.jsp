@@ -21,7 +21,10 @@
 <script src="${ctx}/resources/plugin/layui/layui.js" charset="utf-8"></script>
 <script src="${ctx}/resources/js/food/userInfo.js" charset="utf-8"></script>
 <script type="text/html" id="toobar">
-    <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="update">修改</a>
+    {{#  if(d.locked == false){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="locked">锁定</a>
+    {{#  } else { }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="unlocked">解锁</a>
+    {{#  } }}
 </script>
 </html>

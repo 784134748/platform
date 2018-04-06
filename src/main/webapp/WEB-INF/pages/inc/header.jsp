@@ -24,7 +24,7 @@
             </a>
             <shiro:hasRole name="business">
                 <dl class="layui-nav-child">
-                    <dd><a href="">店铺信息</a></dd>
+                    <dd><a href="javascript:iframeByUrl('/food/addBusiness.do');">店铺信息</a></dd>
                 </dl>
             </shiro:hasRole>
         </li>
