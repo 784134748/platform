@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.permission;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -27,7 +28,8 @@ public class Role extends BaseUUID {
     /**
      * role --> permission 多对多处理
      */
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "ROLE_PERMISSION",
             joinColumns =
@@ -39,12 +41,14 @@ public class Role extends BaseUUID {
     /**
      * role --> user 多对多处理
      */
+    @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<User> users = new ArrayList<>();
     /**
      * role --> group 多对多处理
      */
+    @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Group> groups = new ArrayList<>();

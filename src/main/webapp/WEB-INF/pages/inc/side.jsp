@@ -8,13 +8,13 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:iframeByUrl('/best/page.do');">新增用户</a></dd>
+                        <dd><a href="javascript:iframeByUrl('/food/userInfo.do');">用户信息</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">商家管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:iframeByUrl('/best/page.do');">商家入驻</a></dd>
+                        <dd><a href="javascript:iframeByUrl('/food/addBusiness.do');">商家入驻</a></dd>
                     </dl>
                 </li>
             </shiro:hasAnyRoles>
@@ -22,13 +22,13 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">菜品管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:iframeByUrl('/best/page.do');">菜品发布</a></dd>
+                        <dd><a href="javascript:iframeByUrl('/food/addFood.do');">菜品发布</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">订单管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:iframeByUrl('/best/page.do');">订单信息</a></dd>
+                        <dd><a href="javascript:iframeByUrl('/food/orderInfo.do');">订单信息</a></dd>
                     </dl>
                 </li>
             </shiro:hasAnyRoles>

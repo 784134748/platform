@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.permission;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -31,6 +32,7 @@ public class Group extends BaseUUID {
     /**
      * group --> role 多对多处理
      */
+    @JsonIgnore
     @ManyToMany
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "GROUP_ROLE",
@@ -43,6 +45,7 @@ public class Group extends BaseUUID {
     /**
      * group --> user 多对多处理
      */
+    @JsonIgnore
     @ManyToMany
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "GROUP_USER",

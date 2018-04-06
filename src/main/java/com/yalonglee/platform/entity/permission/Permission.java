@@ -1,5 +1,6 @@
 package com.yalonglee.platform.entity.permission;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import org.hibernate.annotations.Cascade;
 
@@ -27,13 +28,15 @@ public class Permission extends BaseUUID {
     /**
      * permission --> role 多对多处理
      */
+    @JsonIgnore
     @ManyToMany(mappedBy = "permissions")
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Role> roles = new ArrayList<>();
     /**
      * permission --> resource 多对多处理
      */
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
     @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "PERMISSION_RESOURCE",
             joinColumns =

@@ -1,8 +1,10 @@
 package com.yalonglee.platform.service.permission;
 
 import com.yalonglee.platform.entity.permission.*;
+import com.yalonglee.platform.vo.permission.UserVo;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -83,5 +85,11 @@ public interface UserServiceI {
      * @param user
      */
     public void delete(User user);
+
+    /**
+     * 获取用户列表
+     * @return
+     */
+    public List<UserVo> getUsers();
 
 }

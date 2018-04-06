@@ -3,11 +3,13 @@ package com.yalonglee.platform.service.impl.permission;
 import com.yalonglee.platform.dao.permission.UserDaoI;
 import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.service.permission.UserServiceI;
+import com.yalonglee.platform.vo.permission.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -76,5 +78,11 @@ public class UserServiceImpl implements UserServiceI {
     @Override
     public void delete(User user) {
         userDaoI.delete(user);
+    }
+
+    @Override
+    public List<UserVo> getUsers() {
+        String hql = "select u.id as id, u.username as username, u.locked as locked from User u";
+        return userDaoI.findVoListByHql(UserVo.class, hql);
     }
 }

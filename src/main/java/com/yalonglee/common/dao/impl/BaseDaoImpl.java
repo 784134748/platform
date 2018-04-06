@@ -365,25 +365,29 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     @Override
     public <E> List<E> findVoListByHql(Class clazz, String hql) {
         Assert.hasText(hql, "hql is null");
-        return createQuery(clazz, hql).list();
+        List<E> list = createQuery(clazz, hql).list();
+        return list;
     }
 
     @Override
     public <E> List<E> findVoListByHql(Class clazz, String hql, Object... params) {
         Assert.hasText(hql, "hql is null");
-        return createQuery(clazz, hql, params).list();
+        List<E> list = createQuery(clazz, hql, params).list();
+        return list;
     }
 
     @Override
     public <E> List<E> findVoListByHql(Class clazz, String hql, List<Object> params) {
         Assert.hasText(hql, "hql is null");
-        return createQuery(hql, params).list();
+        List<E> list = createQuery(hql, params).list();
+        return list;
     }
 
     @Override
     public <E> List<E> findVoListByHql(Class clazz, String hql, Map<String, Object> params) {
         Assert.hasText(hql, "hql is null");
-        return createQuery(clazz, hql, params).list();
+        List<E> list = createQuery(clazz, hql, params).list();
+        return list;
     }
 
     @Override

@@ -1,9 +1,14 @@
 package com.yalonglee.platform.controller.common;
 
+import com.sun.org.apache.xpath.internal.operations.Mult;
 import com.yalonglee.common.bean.BaseResult;
+import com.yalonglee.common.bean.LayuiResult;
+import com.yalonglee.common.bean.MultiResult;
+import com.yalonglee.common.bean.dto.ResultRows;
 import com.yalonglee.platform.dto.permission.*;
 import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.service.permission.*;
+import com.yalonglee.platform.vo.permission.UserVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -15,11 +20,11 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -37,7 +42,7 @@ import java.util.List;
  * @version [V1.0, 2017/12/17]
  * @see [相关类/方法]
  */
-@RestController
+@Controller
 @RequestMapping(value = "/rbac")
 @Api(value = "基于RBAC的权限管理")
 public class RbacController {
@@ -82,7 +87,7 @@ public class RbacController {
      */
     @ApiOperation(value = "登录成功后重定向")
     @RequestMapping(value = "/successUrl.do")
-    public ModelAndView toSuccessPage() {
+    public String toSuccessPage() {
         Subject currentUser = SecurityUtils.getSubject();
         List<String> roles = new ArrayList<>();
         roles.add("admin");
@@ -90,11 +95,10 @@ public class RbacController {
         boolean[] toAdmin = currentUser.hasRoles(roles);
         for (boolean isTrue : toAdmin) {
             if (isTrue) {
-                ModelAndView modelAndView = new ModelAndView("frame");
+                return "frame";
             }
         }
-        ModelAndView modelAndView = new ModelAndView("main");
-        return modelAndView;
+        return "main";
     }
 
     /**
@@ -102,6 +106,7 @@ public class RbacController {
      */
     @ApiOperation(value = "注册普通用户")
     @RequestMapping(value = "/register.do", method = RequestMethod.PUT)
+    @ResponseBody
     public BaseResult register(@RequestBody @Valid User user) {
         BaseResult result = new BaseResult();
         User user1 = userServiceI.getUserByUsername(user.getUsername());
@@ -256,6 +261,7 @@ public class RbacController {
      */
     @ApiOperation(value = "获取群组列表")
     @RequestMapping(value = "/group", method = RequestMethod.GET)
+    @ResponseBody
     public void getGroups(GroupDto groupDto) {
 
     }
@@ -267,8 +273,14 @@ public class RbacController {
      */
     @ApiOperation(value = "获取用户列表")
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public void getUsers(UserDto userDto) {
-
+    @ResponseBody
+    public LayuiResult<UserVo> getUsers(UserDto userDto) {
+        LayuiResult<UserVo> layuiResult = new LayuiResult<>();
+        List<UserVo> list = userServiceI.getUsers();
+        layuiResult.setData(list);
+        layuiResult.setCode(0);
+        layuiResult.setCount(10L);
+        return layuiResult;
     }
 
     /**
@@ -278,6 +290,7 @@ public class RbacController {
      */
     @ApiOperation(value = "获取角色列表")
     @RequestMapping(value = "/role", method = RequestMethod.GET)
+    @ResponseBody
     public void getRoles(RoleDto roleDto) {
 
     }
@@ -289,6 +302,7 @@ public class RbacController {
      */
     @ApiOperation(value = "获取权限列表")
     @RequestMapping(value = "/permission", method = RequestMethod.GET)
+    @ResponseBody
     public void getPermissions(PermissionDto permissionDto) {
 
     }
@@ -300,6 +314,7 @@ public class RbacController {
      */
     @ApiOperation(value = "获取资源列表")
     @RequestMapping(value = "/resource", method = RequestMethod.GET)
+    @ResponseBody
     public void getResources(ResourceDto resourceDto) {
 
     }
