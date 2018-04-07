@@ -3,16 +3,14 @@ package com.yalonglee.common.util;
 import com.yalonglee.common.annotation.Dict;
 import com.yalonglee.common.base.Dictionary;
 import com.yalonglee.platform.entity.data.DictionaryData;
+import com.yalonglee.platform.vo.permission.UserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p>《数据字典翻译工具类》
@@ -28,7 +26,7 @@ import java.util.Map;
 @Component
 public class DictionaryUtil {
 
-//    @Autowired
+    //    @Autowired
 //    private DictionaryService dictionaryService;
     private static DictionaryUtil dictionaryUnit;
 
@@ -69,26 +67,48 @@ public class DictionaryUtil {
 
 
     /**
-     * 对外提供的转换接口
+     * 翻译List
      *
-     * @param list
+     * @param collection
      * @return
      */
-    public static List<?> Convert(List<?> list) {
-        if (null != list & list.size() > 0) {
-            getAnnotationsAndFieldsAndFieldNames(list.get(0).getClass());
+    public static Collection<?> getCollectionConvert(Collection<?> collection) {
+        Iterator it = collection.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            if (i == 0) {
+                getAnnotationsAndFieldsAndFieldNames(it.next().getClass());
+                i++;
+            }
             if (StringUtils.isNotEmpty(fieldNames)) {
                 String[] fNames = fieldNames.toString().split(",");
                 try {
-                    for (Object object : list) {
-                        translate(fNames, object);
-                    }
+                    translate(fNames, it.next());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
-        return list;
+        return collection;
+    }
+
+    /**
+     * 翻译Object
+     *
+     * @param o
+     * @return
+     */
+    public static Object getObjectConvert(Object o) {
+        getAnnotationsAndFieldsAndFieldNames(o.getClass());
+        if (StringUtils.isNotEmpty(fieldNames)) {
+            String[] fNames = fieldNames.toString().split(",");
+            try {
+                translate(fNames, o);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return o;
     }
 
     /**
@@ -182,4 +202,50 @@ public class DictionaryUtil {
             }
         }
     }
+
+    public static void main(String[] args) {
+
+        /**
+         * 数据字典项
+         */
+        Dictionary dictionary1 = new Dictionary();
+        dictionary1.setDictionaryName("sex");
+        dictionary1.setDictionaryAlise("性别");
+        dictionary1.setOptionType("男");
+        dictionary1.setDataType("0");
+        Dictionary dictionary2 = new Dictionary();
+        dictionary2.setDictionaryName("sex");
+        dictionary2.setDictionaryAlise("性别");
+        dictionary2.setOptionType("女");
+        dictionary2.setDataType("1");
+
+        /**
+         * 测试数据
+         */
+        Set<String> roles = new TreeSet<>();
+        roles.add("admin");
+        roles.add("business");
+
+        UserVo userVo1 = new UserVo();
+        userVo1.setId("1");
+        userVo1.setUsername("test");
+        userVo1.setLocked(true);
+        userVo1.setSex("0");
+        userVo1.setRoles(roles);
+
+        UserVo userVo2 = new UserVo();
+        userVo2.setId("2");
+        userVo2.setUsername("test1");
+        userVo2.setLocked(false);
+        userVo2.setSex("1");
+        userVo2.setRoles(roles);
+
+        List<UserVo> list = new ArrayList<>();
+        list.add(userVo1);
+        list.add(userVo2);
+
+
+    }
 }
+
+

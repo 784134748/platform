@@ -1,10 +1,8 @@
 package com.yalonglee.platform.vo.permission;
 
-import com.yalonglee.platform.dto.permission.GroupDto;
-import com.yalonglee.platform.dto.permission.RoleDto;
+import com.yalonglee.common.annotation.Dict;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 /**
  * <p>《一句话功能简述》
@@ -28,13 +26,18 @@ public class UserVo {
      */
     private String username;
     /**
+     * 性别
+     */
+    @Dict(value = "sex")
+    private String sex;
+    /**
      * 账号锁定
      */
     private Boolean locked;
     /**
      * user --> role 多对多处理
      */
-    private String roles;
+    private Set<String> roles;
 
     public String getId() {
         return id;
@@ -52,6 +55,14 @@ public class UserVo {
         this.username = username;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public Boolean getLocked() {
         return locked;
     }
@@ -60,11 +71,11 @@ public class UserVo {
         this.locked = locked;
     }
 
-    public String getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
 }
