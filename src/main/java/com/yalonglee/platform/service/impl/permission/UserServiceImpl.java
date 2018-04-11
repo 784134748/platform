@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserServiceI {
 
     @Override
     public List<UserVo> getUsers() {
-        String hql = "select u.id as id, u.username as username, u.locked as locked from User u left join u.roles r";
+        String hql = "select u.id as id, u.username as username, u.locked as locked from User u";
         return userDaoI.findVoListByHql(UserVo.class, hql);
     }
 }

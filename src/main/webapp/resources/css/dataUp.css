@@ -1,0 +1,241 @@
+/**
+*数据填报模块
+**/
+
+
+/*幼儿园办园条件*/
+
+
+/*搜索条件*/
+
+.query-condition {
+    padding: 20px 0;
+}
+
+.condition-title {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #3d3e43;
+    line-height: 30px;
+}
+
+.condition-list {
+    padding-left: 50px;
+}
+
+.condition-list li {
+    float: left;
+    padding: 0 27px;
+    font-size: 14px;
+    color: #3d3e43;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.condition-list .condition-selected {
+    color: #266ccb;
+}
+
+
+/*下拉样式设置*/
+
+.layui-form-label {
+    padding-left: 0;
+    padding-right: 0;
+    width: 72px;
+    font-size: 12px;
+    color: #3d3e43;
+}
+
+.layui-input-block {
+    margin-left: 80px;
+}
+
+.layui-form-select {
+    width: 100%;
+}
+
+.layui-form-select .layui-edge {
+    border-top-color: #686a6f;
+}
+
+.form-title {
+    padding-bottom: 15px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 24px;
+    text-align: center;
+    color: #484a50;
+}
+
+.form-line img {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: top;
+}
+
+.form-line span {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+}
+
+.icon-unit {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 12px;
+    line-height: 38px;
+}
+
+.pr30 {
+    padding-right: 30px;
+}
+
+.pr60 {
+    padding-right: 60px;
+}
+
+.pr100 {
+    padding-right: 100px;
+}
+
+.layui-input {
+    /*width:auto;*/
+}
+
+
+/* 功能室和厨房登记表 */
+
+.mb15 {
+    margin-bottom: 15px;
+}
+.mr10{
+    margin-right:10px;
+}
+.ml10{
+    margin-left:10px;
+}
+.r25{
+    right:25px;
+}
+.mid {
+    margin-top: 4px;
+}
+
+.btn-area {
+    padding: 0 0 10px;
+}
+/*展开筛选按钮*/
+.btn-expand {
+    padding-left:15px;
+    width: 85px;
+    height: 30px;
+    background:url(../images/down-arrow.png) no-repeat;
+    background-position:75px 12px;
+    background-size:11px 6px;
+    background-color: #d7d7d7;
+    border: 1px solid #bebebe;
+    color: #666;
+    font-size: 14px;
+    /*text-align: center;*/
+    line-height: 30px;
+}
+
+.btn-expand:hover {
+    color: #666;
+}
+/*收起筛选按钮*/
+.btn-expand-avtive {
+    background:url(../images/top-arrow.png) no-repeat;
+    background-position:75px 9px;
+    background-color: #f6f6f6;
+}
+.head-img {
+    width: 160px;
+    height: 210px;
+    background: url(../images/bg-head.png) no-repeat center;
+    background-size: 100% 100%;
+}
+
+/* 教职工数据 */
+.anchor-wrap{
+    position: fixed;
+    right:0;
+    z-index: 999;
+}
+.anchor-wrap img{
+    display: block;
+    width:73px;
+    height:99px;
+}
+.isshow{
+    float:left;
+}
+.anchor{
+    /*float:left;*/
+    height:300px;
+    overflow-y: scroll;
+    background:#e8f5ff;
+}
+.anchor li{
+    padding:10px;
+    width:60px;
+    font-size:12px;
+    line-height: 15px;
+    color:#3d3e43;
+    text-align: center;
+    cursor: pointer;
+}
+.anchor a {
+    display: block;
+    padding:5px;
+    padding-bottom:15px;
+    /*height:30px;*/
+    border-bottom: 1px  solid #c5cad2;
+}
+.anchor .last{
+    border-bottom:none;
+}
+.anchor .isanchor{
+    color:#fff;
+    background:#266ccb;
+}
+.btn-show{
+    float:left;
+    padding:5px;
+    margin-right: 2px;
+    width:15px;
+    height:50px;
+    background:#266ccb;
+    font-size:12px;
+    line-height: 15px;
+    color:#fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* 学生数据 */
+.zk{
+    margin-left:3px;
+    width:11px;
+    height:6px;
+}
+.sq{
+    margin-left:3px;
+    margin-top:-4px;
+    width:15px;
+    height:9px;
+}
+.pt0{
+    padding-top:0;
+}
+/* 教室情况登记表 */
+.btn-del-tr{
+    display: inline-block;
+    width:100%;
+    height:100%;
+    cursor:pointer;
+}

@@ -11,12 +11,10 @@
                         <dd><a href="javascript:iframeByUrl('/food/userInfo.do');">用户信息</a></dd>
                     </dl>
                 </li>
-            </shiro:hasAnyRoles>
-            <shiro:hasAnyRoles name="admin,business">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">菜品管理</a>
+                    <a class="" href="javascript:;">商户管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:iframeByUrl('/food/addFood.do');">菜品发布</a></dd>
+                        <dd><a href="javascript:iframeByUrl('/food/restaurantInfo.do');">商户信息</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
@@ -26,6 +24,15 @@
                     </dl>
                 </li>
             </shiro:hasAnyRoles>
+            <shiro:hasRole name="business">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">菜品管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:iframeByUrl('/food/foodInfo.do');">菜品信息</a></dd>
+                    </dl>
+                </li>
+            </shiro:hasRole>
+
         </ul>
     </div>
 </div>

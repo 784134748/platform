@@ -3,6 +3,7 @@ package com.yalonglee.platform.dao.impl.food;
 import com.yalonglee.common.dao.impl.BaseDaoImpl;
 import com.yalonglee.platform.dao.food.FoodDaoI;
 import com.yalonglee.platform.entity.food.Food;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>《一句话功能简述》
@@ -15,5 +16,6 @@ import com.yalonglee.platform.entity.food.Food;
  * @version [V1.0, 2018/4/5]
  * @see [相关类/方法]
  */
+@Repository
 public class FoodDaoImpl extends BaseDaoImpl<Food> implements FoodDaoI {
 }

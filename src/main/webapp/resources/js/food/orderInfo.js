@@ -46,6 +46,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
 
     //查询按钮
     $('#queryByCondition').on('click', function () {
+        debugger;
         event.preventDefault();
         index = layer.load(1);//开启进度条
         var searchform = pubUtil.serializeObject($("#searchform"));//查询页面表单ID

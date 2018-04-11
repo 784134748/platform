@@ -9,7 +9,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
 
     table.render({
         elem: '#table',//table id
-        url: '/rbac/user',
+        url: '/food/foods.do',
         method: 'get', //方式
         page: true,//是否开启分页
         type: "json",
@@ -25,13 +25,13 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         },
         cols: [[ //标题栏
             {
-                field: 'username',
-                title: '用户名',
+                field: 'foodName',
+                title: '菜品名称',
                 align: 'center',
                 width: '20%'
             }, {
-                field: 'locked',
-                title: '状态',
+                field: 'price',
+                title: '菜品价格',
                 align: 'center',
                 width: '20%'
             }, {
@@ -46,6 +46,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
 
     //查询按钮
     $('#queryByCondition').on('click', function () {
+        debugger;
         event.preventDefault();
         index = layer.load(1);//开启进度条
         var searchform = pubUtil.serializeObject($("#searchform"));//查询页面表单ID
@@ -53,6 +54,40 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
             where: searchform
         });
     });
+
+
+    /**
+     * 新增商户
+     */
+    var active = {
+        btnAdd: function () { //新增操作
+            openAdd();
+        }
+    };
+
+    $('.layui-btn').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+
+    function openAdd() {
+        event.preventDefault();
+        var index = layer.open({
+            type: 2,
+            title: '新增菜品',
+            shadeClose: true,//点击遮罩关闭
+            anim: public_anim,
+            btnAlign: 'c',
+            shade: false,//是否有遮罩，可以设置成false
+            area: ['480px', '600px'],
+            fixed: true,
+            boolean: true,
+            id: "addID",
+            content: ['/food/addFood.do', 'yes'], //iframe的url，no代表不显示滚动条
+            success: function (layero, lockIndex) {
+            }
+        })
+    }
 
 
     /**

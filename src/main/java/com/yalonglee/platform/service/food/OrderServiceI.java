@@ -1,5 +1,11 @@
 package com.yalonglee.platform.service.food;
 
+import com.yalonglee.platform.entity.food.Order;
+import com.yalonglee.platform.vo.food.OrderVo;
+
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * <p>《一句话功能简述》
  * <p><功能详细描述>
@@ -12,4 +18,15 @@ package com.yalonglee.platform.service.food;
  * @see [相关类/方法]
  */
 public interface OrderServiceI {
+
+    /**
+     * 新增订单
+     */
+    public Serializable addOrder(Order order);
+
+    /**
+     * 订单展示
+     */
+    public List<OrderVo> orders();
+
 }

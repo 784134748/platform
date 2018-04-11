@@ -30,7 +30,7 @@ public class GetViewController {
      * @author listener
      */
     @ApiOperation(value = "一级目录")
-    @RequestMapping(value = "/{file}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{file}")
     public String goURL(@PathVariable String file) {
         return "/" + file;
     }
@@ -44,7 +44,7 @@ public class GetViewController {
      * @author listener
      */
     @ApiOperation(value = "二级目录")
-    @RequestMapping(value = "/{folder}/{file}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{folder}/{file}")
     public String goURL2(@PathVariable String folder, @PathVariable String file) {
         return "/" + folder + "/" + file;
     }
@@ -58,7 +58,7 @@ public class GetViewController {
      * @author listener
      */
     @ApiOperation(value = "三级目录")
-    @RequestMapping(value = "/{folder}/{model}/{file}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{folder}/{model}/{file}")
     public String goURL3(@PathVariable String folder, @PathVariable String model, @PathVariable String file) {
         return "/" + folder + "/" + model + "/" + file;
     }

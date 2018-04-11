@@ -1,5 +1,11 @@
 package com.yalonglee.platform.service.food;
 
+import com.yalonglee.platform.entity.food.Food;
+import com.yalonglee.platform.vo.food.FoodVo;
+
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * <p>《一句话功能简述》
  * <p><功能详细描述>
@@ -12,4 +18,14 @@ package com.yalonglee.platform.service.food;
  * @see [相关类/方法]
  */
 public interface FoodServiceI {
+
+    /**
+     * 新增菜单
+     */
+    public Serializable addFood(Food food);
+
+    /**
+     * 菜单展示
+     */
+    public List<FoodVo> foods();
 }

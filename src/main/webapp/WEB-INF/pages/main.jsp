@@ -224,7 +224,7 @@
                             '    </div>\n' +
                             '</li>')
                     }
-                    next(lis.join(''), page < 8); //假设总页数为 6
+                    next(lis.join(''), page < 8); //假设总页数为 8
                 }, 500);
             }
         });
@@ -252,7 +252,7 @@
                             '    </div>\n' +
                             '</li>')
                     }
-                    next(lis.join(''), page < 8); //假设总页数为 6
+                    next(lis.join(''), page < 8); //假设总页数为 8
                 }, 500);
             }
         });

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <html>
 <head>
-    <title>订单信息</title>
+    <title>餐厅信息</title>
     <link rel="stylesheet" href="${ctx}/resources/plugin/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="${ctx}/resources/css/dataUp.css" media="all">
     <link rel="stylesheet" href="${ctx}/resources/css/common.css" media="all">
@@ -27,6 +27,9 @@
                 </div>
             </div>
             <div class="layui-col-md4 layui-col-sm4 layui-col-md-offset5 clearfix">
+                <button class="layui-btn layui-btn-normal fr" data-type="btnAdd">
+                    <i class="iconfont icon-xinzeng"></i> 新增
+                </button>
                 <button class="layui-btn layui-btn-normal fr mr10" id="queryByCondition">
                     <i class="iconfont icon-chaxun"></i> 查询
                 </button>
@@ -38,7 +41,7 @@
 
 </body>
 <script src="${ctx}/resources/plugin/layui/layui.js" charset="utf-8"></script>
-<script src="${ctx}/resources/js/food/orderInfo.js" charset="utf-8"></script>
+<script src="${ctx}/resources/js/food/restaurantInfo.js" charset="utf-8"></script>
 <script type="text/html" id="toobar">
     {{#  if(d.locked == false){ }}
     <a class="layui-btn layui-btn-xs" lay-event="locked">锁定</a>
