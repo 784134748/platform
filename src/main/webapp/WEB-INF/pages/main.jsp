@@ -94,7 +94,7 @@
     <div class="layui-container" style="border-radius: 5px;border:1px solid #FF5722">
         <!--店铺-->
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-            <legend>进店逛逛</legend>
+            <legend>招牌菜</legend>
         </fieldset>
     </div>
     <!--信息流，懒加载-->
