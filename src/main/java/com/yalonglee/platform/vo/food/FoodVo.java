@@ -6,6 +6,7 @@ import com.yalonglee.platform.entity.food.Restaurant;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
 /**
  * <p>《一句话功能简述》
@@ -18,7 +19,12 @@ import javax.persistence.ManyToOne;
  * @version [V1.0, 2018/4/5]
  * @see [相关类/方法]
  */
-public class FoodVo extends BaseUUID {
+public class FoodVo {
+
+    /**
+     * ID
+     */
+    private Serializable foodId;
 
     /**
      * 所属餐厅
@@ -50,6 +56,14 @@ public class FoodVo extends BaseUUID {
      * 菜品图片
      */
     private String picturePath;
+
+    public Serializable getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(Serializable foodId) {
+        this.foodId = foodId;
+    }
 
     public String getRestaurantId() {
         return restaurantId;

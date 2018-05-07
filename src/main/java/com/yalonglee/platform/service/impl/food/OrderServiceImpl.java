@@ -1,7 +1,7 @@
 package com.yalonglee.platform.service.impl.food;
 
 import com.yalonglee.platform.dao.food.OrderDaoI;
-import com.yalonglee.platform.entity.food.Order;
+import com.yalonglee.platform.entity.food.foodOrder;
 import com.yalonglee.platform.service.food.OrderServiceI;
 import com.yalonglee.platform.vo.food.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +30,13 @@ public class OrderServiceImpl implements OrderServiceI {
     private OrderDaoI orderDaoI;
 
     @Override
-    public Serializable addOrder(Order order) {
+    public Serializable addOrder(foodOrder order) {
         return orderDaoI.save(order);
     }
 
     @Override
     public List<OrderVo> orders() {
-        String hql = "from Order";
+        String hql = "from foodOrder";
         return orderDaoI.findVoListByHql(OrderVo.class, hql);
     }
 }

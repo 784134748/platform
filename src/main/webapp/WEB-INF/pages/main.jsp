@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="${ctx}/resources/plugin/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="${ctx}/resources/css/global.css" media="all">
     <link rel="stylesheet" href="${ctx}/resources/css/index.css" media="all">
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -66,6 +67,10 @@
                             <dd>
                                 <a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的订单</a>
                             </dd>
+                            <dd>
+                                <a href="user/message.html"><i class="iconfont icon-tongzhi"
+                                                               style="top: 4px;"></i>购物车</a>
+                            </dd>
                             <hr style="margin: 5px 0;">
                             <dd><a href="/rbac/logout.do" style="text-align: center;">退出</a></dd>
                         </dl>
@@ -91,10 +96,11 @@
     </fieldset>
     <!--信息流，懒加载-->
     <ul class="flow-default" id="LAY_demo1"></ul>
-    <div class="layui-container" style="border-radius: 5px;border:1px solid #FF5722">
+
+    <div class="layui-container" style="border-radius: 5px;border:1px solid #FF5722;margin-top: 2px">
         <!--店铺-->
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-            <legend>招牌菜</legend>
+            <legend>店铺</legend>
         </fieldset>
     </div>
     <!--信息流，懒加载-->
@@ -199,7 +205,8 @@
 </script>
 <script>
     layui.use('flow', function () {
-        var flow = layui.flow;
+        var flow = layui.flow
+            , $ = layui.$;
         flow.load({
             elem: '#LAY_demo1' //流加载容器
             , scrollElem: '#LAY_demo2' //滚动条所在元素，一般不用填，此处只是演示需要。
@@ -207,25 +214,54 @@
             , isLazyimg: true
             , done: function (page, next) { //加载下一页
                 //模拟插入
-                setTimeout(function () {
-                    var lis = [];
-                    for (var i = 0; i < 8; i++) {
+                // setTimeout(function () {
+                // var lis = [];
+                // for (var i = 0; i < 8; i++) {
+                // lis.push('<li class="single-member effect-3">\n' +
+                // '    <div class="member-image">\n' +
+                // '        <img src="/resources/images/member_270x210.jpg" alt="Member">\n' +
+                // '    </div>\n' +
+                // '    <div class="member-info">\n' +
+                // '        <h3>大盘鸡</h3>\n' +
+                // '        <h5>￥11/份</h5>\n' +
+                // '        <p>Lorem tempor incididunt ut labore et dolore magna aliqua.</p>\n' +
+                // '        <div class="social-touch">\n' +
+                // '            <a class="fb-touch" href="#"><h2>下单</h2></a>\n' +
+                // '        </div>\n' +
+                // '    </div>\n' +
+                // '</li>')
+                // }
+                // next(lis.join(''), page < 8); //假设总页数为 8
+                // }, 500);
+                var lis = [];
+                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                $.get('/food/foods.do?page=' + page, function (res) {
+                    //假设你的列表返回在data集合中
+                    layui.each(res.data, function (index, item) {
                         lis.push('<li class="single-member effect-3">\n' +
                             '    <div class="member-image">\n' +
-                            '        <img src="/resources/images/member_270x210.jpg" alt="Member">\n' +
+                            '        <img src="/file/imageView.do?picturePath=' + item.picturePath + '" alt="Member">\n' +
                             '    </div>\n' +
                             '    <div class="member-info">\n' +
-                            '        <h3>大盘鸡</h3>\n' +
-                            '        <h5>￥11/份</h5>\n' +
-                            '        <p>Lorem tempor incididunt ut labore et dolore magna aliqua.</p>\n' +
+                            '        <h3>' + item.foodName + '</h3>\n' +
+                            '        <h5>￥' + item.price + '/份</h5>\n' +
+                            '        <p>' + item.foodInfo + '</p>\n' +
                             '        <div class="social-touch">\n' +
-                            '            <a class="fb-touch" href="#"><h2>下单</h2></a>\n' +
+                            '            <button class="fb-touch" onclick="addOrder(this.id)" id="' + item.foodId + '"><h2>加入购物车</h2></button>\n' +
                             '        </div>\n' +
                             '    </div>\n' +
                             '</li>')
+                    });
+
+                    for (var i = 0; i < 4 - page % 4; i++) {
+                        lis.push('<li class="single-member effect-3">\n' +
+                            '</li>')
                     }
-                    next(lis.join(''), page < 8); //假设总页数为 8
-                }, 500);
+
+                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                    next(lis.join(''), page < res.pages);
+                });
             }
         });
         flow.load({
@@ -235,45 +271,83 @@
             , isLazyimg: true
             , done: function (page, next) { //加载下一页
                 //模拟插入
-                setTimeout(function () {
-                    var lis = [];
-                    for (var i = 0; i < 8; i++) {
+                // setTimeout(function () {
+                //     var lis = [];
+                //     for (var i = 0; i < 8; i++) {
+                //         lis.push('<li class="single-member effect-1">\n' +
+                //             // '    <div class="member-image">\n' +
+                //             // '        <img src="/resources/images/member_140x145.jpg" alt="Member">\n' +
+                //             // '    </div>\n' +
+                //             // '    <div class="member-info">\n' +
+                //             // '        <h3>Sophia</h3>\n' +
+                //             // '        <h5>ShowGilr</h5>\n' +
+                //             // '        <p>Lorem ipsum dolor sit amet, consectetur adipiscin</p>\n' +
+                //             // '        <div class="social-touch">\n' +
+                //             // '            <a class="fb-touch" href="#"><h2>进店看看</h2></a>\n' +
+                //             // '        </div>\n' +
+                //             // '    </div>\n' +
+                //             '</li>')
+                //     }
+                //     next(lis.join(''), page < 8); //假设总页数为 8
+                // }, 500);
+                var lis = [];
+                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                $.get('/food/restuarants.do?page=' + page, function (res) {
+                    //假设你的列表返回在data集合中
+                    layui.each(res.data, function (index, item) {
                         lis.push('<li class="single-member effect-1">\n' +
                             '    <div class="member-image">\n' +
-                            '        <img src="/resources/images/member_140x145.jpg" alt="Member">\n' +
+                            '        <img src="/file/imageView.do?picturePath=' + item.bossPicturePath + '" alt="Member">\n' +
                             '    </div>\n' +
                             '    <div class="member-info">\n' +
-                            '        <h3>Sophia</h3>\n' +
-                            '        <h5>ShowGilr</h5>\n' +
-                            '        <p>Lorem ipsum dolor sit amet, consectetur adipiscin</p>\n' +
+                            '        <h3>' + item.restaurantName + '</h3>\n' +
+                            '        <h5>' + item.boss + '</h5>\n' +
+                            '        <p>' + item.restaurantInfo + '</p>\n' +
                             '        <div class="social-touch">\n' +
                             '            <a class="fb-touch" href="#"><h2>进店看看</h2></a>\n' +
                             '        </div>\n' +
                             '    </div>\n' +
                             '</li>')
+                    });
+
+                    for (var i = 0; i < 4 - page % 4; i++) {
+                        lis.push('<li class="single-member effect-3">\n' +
+                            '</li>')
                     }
-                    next(lis.join(''), page < 8); //假设总页数为 8
-                }, 500);
+
+                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                    next(lis.join(''), page < res.pages);
+                });
             }
         });
     });
+
+    function addOrder(e) {
+        event.preventDefault();
+        layer.open({
+            title: '确认添加购物栏？' //显示标题栏
+            , id: 'LAY_layuipro' //设定一个id，防止重复弹出
+            , offset: '100px'
+            , btn: ['确认']
+            , closeBtn: 1
+            , yes: function (index, layero) {
+                //按钮【按钮一】的回调
+                var lockIndex = layer.load(1);//
+                $.ajax({
+                    url: '/food/addOrder.do',
+                    data: {foodId: e},
+                    type: 'POST',//默认以get提交，以get提交如果是中文后台会出现乱码
+                    dataType: 'json',
+                    success: function (obj) {
+                        layer.close(lockIndex);//关闭
+                    }
+                });
+            }
+        });
+
+    }
 </script>
-<%--<script>--%>
-    <%--layui.use('layer', function () {--%>
-        <%--var layer = layui.layer, //弹层--%>
-            <%--$ = layui.$;--%>
-        <%--/**--%>
-         <%--* 登录事件--%>
-         <%--*/--%>
-        <%--$('#login').on('click', function () {--%>
-            <%--event.preventDefault();--%>
-            <%--layer.open({--%>
-                <%--title: '登录',--%>
-                <%--content: '可以填写任意的layer代码'--%>
-            <%--});--%>
-        <%--});--%>
-    <%--})--%>
-<%--</script>--%>
 </body>
 </html>
 

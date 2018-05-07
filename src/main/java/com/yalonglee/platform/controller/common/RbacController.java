@@ -6,7 +6,9 @@ import com.yalonglee.common.bean.LayuiResult;
 import com.yalonglee.common.bean.MultiResult;
 import com.yalonglee.common.bean.dto.ResultRows;
 import com.yalonglee.platform.dto.permission.*;
+import com.yalonglee.platform.entity.food.Restaurant;
 import com.yalonglee.platform.entity.permission.*;
+import com.yalonglee.platform.service.food.RestaurantServiceI;
 import com.yalonglee.platform.service.permission.*;
 import com.yalonglee.platform.vo.permission.UserVo;
 import io.swagger.annotations.Api;
@@ -59,6 +61,8 @@ public class RbacController {
     private PermissionServiceI permissionServiceI;
     @Autowired
     private ResourceServiceI resourceServiceI;
+    @Autowired
+    private RestaurantServiceI restaurantServiceI;
 
     private static final Logger logger = LogManager.getLogger(RbacController.class);
 
@@ -164,6 +168,10 @@ public class RbacController {
         //用户添加角色和群组
         user1.getRoles().add(role1);
 
+        //
+        Restaurant restaurant = new Restaurant();
+        restaurant.setBoss(user1);
+
         //创建用户
         //创建权限
         Permission permission2 = new Permission();
@@ -185,6 +193,8 @@ public class RbacController {
         userServiceI.saveOrUpdate(user);
         //添加商家
         userServiceI.saveOrUpdate(user1);
+        //添加商户
+        restaurantServiceI.addRestaurant(restaurant);
         //添加用户
         userServiceI.saveOrUpdate(user2);
     }

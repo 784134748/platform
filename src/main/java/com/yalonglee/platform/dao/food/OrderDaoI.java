@@ -1,7 +1,7 @@
 package com.yalonglee.platform.dao.food;
 
 import com.yalonglee.common.dao.BaseDaoI;
-import com.yalonglee.platform.entity.food.Order;
+import com.yalonglee.platform.entity.food.foodOrder;
 
 /**
  * <p>《一句话功能简述》
@@ -14,5 +14,5 @@ import com.yalonglee.platform.entity.food.Order;
  * @version [V1.0, 2018/4/5]
  * @see [相关类/方法]
  */
-public interface OrderDaoI extends BaseDaoI<Order> {
+public interface OrderDaoI extends BaseDaoI<foodOrder> {
 }

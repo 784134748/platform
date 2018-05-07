@@ -35,6 +35,11 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
                 align: 'center',
                 width: '20%'
             }, {
+                field: 'foodInfo',
+                title: '菜品简介',
+                align: 'center',
+                width: '20%'
+            }, {
                 fixed: 'right',
                 title: '操作',
                 align: 'center',

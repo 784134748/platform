@@ -17,12 +17,6 @@
                         <dd><a href="javascript:iframeByUrl('/food/restaurantInfo.do');">商户信息</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">订单管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:iframeByUrl('/food/orderInfo.do');">订单信息</a></dd>
-                    </dl>
-                </li>
             </shiro:hasAnyRoles>
             <shiro:hasRole name="business">
                 <li class="layui-nav-item layui-nav-itemed">
@@ -32,7 +26,12 @@
                     </dl>
                 </li>
             </shiro:hasRole>
-
+            <li class="layui-nav-item layui-nav-itemed">
+                <a class="" href="javascript:;">订单管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:iframeByUrl('/food/orderInfo.do');">订单信息</a></dd>
+                </dl>
+            </li>
         </ul>
     </div>
 </div>

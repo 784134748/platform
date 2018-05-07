@@ -21,7 +21,7 @@ import java.util.Date;
  * @see [相关类/方法]
  */
 @Entity
-public class Order extends BaseUUID {
+public class foodOrder extends BaseUUID {
 
     /**
      * 订购的菜品

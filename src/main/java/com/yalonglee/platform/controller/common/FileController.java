@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,15 +37,15 @@ public class FileController {
     @ApiOperation(value = "图片上传接口，返回图片地址")
     @RequestMapping(value = "/imageUpload.do")
     @ResponseBody
-    public LayuiUploadResult imageUpload(MultipartFile file){
+    public LayuiUploadResult imageUpload(MultipartFile file) {
         LayuiUploadResult layuiUploadResult = new LayuiUploadResult();
-        Map<String,String> map = new HashMap<>();
-        String path="/Users/listener/Desktop/"+System.currentTimeMillis()+file.getOriginalFilename();
-        map.put("url",path);
+        Map<String, String> map = new HashMap<>();
+        String path = "/Users/listener/Desktop/" + System.currentTimeMillis() + file.getOriginalFilename();
+        map.put("url", path);
         layuiUploadResult.setCode(0);
         layuiUploadResult.setMsg("上传成功");
         layuiUploadResult.setData(map);
-        File newFile=new File(path);
+        File newFile = new File(path);
         //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
         try {
             file.transferTo(newFile);
@@ -54,5 +54,54 @@ public class FileController {
         }
         return layuiUploadResult;
     }
+
+    /**
+     * 图片预览服务
+     */
+    @ApiOperation(value = "图片预览接口，返回图片")
+    @RequestMapping(value = "/imageView.do")
+    @ResponseBody
+    public void imageView(HttpServletResponse response, String picturePath) {
+        try {
+            byte[] buffer = new byte[1024];
+            ByteArrayOutputStream out = null;
+
+            synchronized (picturePath) {
+                FileInputStream fis = null;
+                out = new ByteArrayOutputStream();
+                try {
+                    fis = new FileInputStream(picturePath);
+                    byte[] buffer1 = new byte[1024 * 4];
+                    int n = 0;
+                    while ((n = fis.read(buffer1)) != -1) {
+                        out.write(buffer1, 0, n);
+                    }
+                } catch (FileNotFoundException e) {
+
+                } catch (IOException e) {
+
+                } finally {
+                    try {
+                        fis.close();
+                        out.close();
+                    } catch (IOException e) {
+
+                    }
+                }
+            }
+            byte[] photo = out.toByteArray();
+
+            if (null != photo) {
+                InputStream is = new ByteArrayInputStream(photo);
+                while (is.read(buffer) != -1) {
+                    response.getOutputStream().write(buffer);
+                    response.getOutputStream().flush();
+                }
+            }
+        } catch (IOException e) {
+
+        }
+    }
+
 
 }

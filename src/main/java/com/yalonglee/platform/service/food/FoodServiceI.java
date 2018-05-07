@@ -28,4 +28,9 @@ public interface FoodServiceI {
      * 菜单展示
      */
     public List<FoodVo> foods();
+
+    /**
+     * 通过id获取food
+     */
+    public Food getFoodById(Serializable id);
 }

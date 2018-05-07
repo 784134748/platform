@@ -2,7 +2,7 @@ package com.yalonglee.platform.dao.impl.food;
 
 import com.yalonglee.common.dao.impl.BaseDaoImpl;
 import com.yalonglee.platform.dao.food.OrderDaoI;
-import com.yalonglee.platform.entity.food.Order;
+import com.yalonglee.platform.entity.food.foodOrder;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,5 +17,5 @@ import org.springframework.stereotype.Repository;
  * @see [相关类/方法]
  */
 @Repository
-public class OrderDaoImpl extends BaseDaoImpl<Order> implements OrderDaoI {
+public class OrderDaoImpl extends BaseDaoImpl<foodOrder> implements OrderDaoI {
 }
