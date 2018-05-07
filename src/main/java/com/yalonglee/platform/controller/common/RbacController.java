@@ -171,6 +171,7 @@ public class RbacController {
         //
         Restaurant restaurant = new Restaurant();
         restaurant.setBoss(user1);
+        restaurant.setRestaurantName("business");
 
         //创建用户
         //创建权限

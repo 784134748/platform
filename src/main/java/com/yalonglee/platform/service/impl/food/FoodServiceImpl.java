@@ -37,7 +37,13 @@ public class FoodServiceImpl implements FoodServiceI {
     @Override
     public List<FoodVo> foods() {
         String hql = "Select f.id as foodId, f.foodName as foodName, f.price as price, f.foodInfo as foodInfo, f.picturePath as picturePath from Food f";
+        StringBuilder hql_where = new StringBuilder();
+        hql_where.append(" where 1=1");
+//        if(){
+//            hql_where.append("");
+//        }
         return foodDaoI.findVoListByHql(FoodVo.class, hql);
+
     }
 
     @Override

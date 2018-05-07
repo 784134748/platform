@@ -40,7 +40,7 @@ public class FileController {
     public LayuiUploadResult imageUpload(MultipartFile file) {
         LayuiUploadResult layuiUploadResult = new LayuiUploadResult();
         Map<String, String> map = new HashMap<>();
-        String path = "/Users/listener/Desktop/" + System.currentTimeMillis() + file.getOriginalFilename();
+        String path = "/Users/listener/Desktop/testpicture/" + System.currentTimeMillis() + file.getOriginalFilename();
         map.put("url", path);
         layuiUploadResult.setCode(0);
         layuiUploadResult.setMsg("上传成功");
@@ -82,8 +82,12 @@ public class FileController {
 
                 } finally {
                     try {
-                        fis.close();
-                        out.close();
+                        if(fis != null){
+                            fis.close();
+                        }
+                        if(out != null){
+                            out.close();
+                        }
                     } catch (IOException e) {
 
                     }

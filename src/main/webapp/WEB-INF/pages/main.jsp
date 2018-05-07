@@ -234,6 +234,7 @@
                 // next(lis.join(''), page < 8); //假设总页数为 8
                 // }, 500);
                 var lis = [];
+                var count = 0;
                 //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
                 $.get('/food/foods.do?page=' + page, function (res) {
                     //假设你的列表返回在data集合中
@@ -251,11 +252,14 @@
                             '        </div>\n' +
                             '    </div>\n' +
                             '</li>')
+                        count ++;
                     });
 
-                    for (var i = 0; i < 4 - page % 4; i++) {
-                        lis.push('<li class="single-member effect-3">\n' +
-                            '</li>')
+                    if(count % 4 !== 0){
+                        for (var i = 0; i < 4 - count % 4; i++) {
+                            lis.push('<li class="single-member effect-3">\n' +
+                                '</li>')
+                        }
                     }
 
                     //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
@@ -291,6 +295,7 @@
                 //     next(lis.join(''), page < 8); //假设总页数为 8
                 // }, 500);
                 var lis = [];
+                var count = 0;
                 //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
                 $.get('/food/restuarants.do?page=' + page, function (res) {
                     //假设你的列表返回在data集合中
@@ -308,11 +313,14 @@
                             '        </div>\n' +
                             '    </div>\n' +
                             '</li>')
+                        count ++;
                     });
 
-                    for (var i = 0; i < 4 - page % 4; i++) {
-                        lis.push('<li class="single-member effect-3">\n' +
-                            '</li>')
+                    if(count % 4 !== 0) {
+                        for (var i = 0; i < 4 - count % 4; i++) {
+                            lis.push('<li class="single-member effect-3">\n' +
+                                '</li>')
+                        }
                     }
 
                     //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
@@ -325,6 +333,7 @@
 
     function addOrder(e) {
         event.preventDefault();
+        debugger;
         layer.open({
             title: '确认添加购物栏？' //显示标题栏
             , id: 'LAY_layuipro' //设定一个id，防止重复弹出
@@ -332,6 +341,7 @@
             , btn: ['确认']
             , closeBtn: 1
             , yes: function (index, layero) {
+                debugger;
                 //按钮【按钮一】的回调
                 var lockIndex = layer.load(1);//
                 $.ajax({
