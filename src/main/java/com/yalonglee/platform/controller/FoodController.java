@@ -26,7 +26,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @EnableWebMvc
@@ -51,9 +53,18 @@ public class FoodController {
     @ApiOperation(value = "展示菜品")
     @RequestMapping(value = "/foods.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<FoodVo> getFoods() {
+    public LayuiResult<FoodVo> getFoods(String type,String foodId) {
+        Map<String, Object> parames = new HashMap<>();
+        if ("1".equals(type)){
+            String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
+            Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
+            parames.put("restaurantId",restaurant.getId());
+        }
+        if(StringUtils.isNotBlank(foodId)){
+            parames.put("foodId",foodId);
+        }
         LayuiResult<FoodVo> layuiResult = new LayuiResult<>();
-        List<FoodVo> list = foodServiceI.foods();
+        List<FoodVo> list = foodServiceI.foods(parames);
         layuiResult.setData(list);
         layuiResult.setCode(0);
         layuiResult.setCount(10L);
@@ -83,6 +94,10 @@ public class FoodController {
     @ResponseBody
     public LayuiResult<OrderVo> getOrders() {
         LayuiResult<OrderVo> layuiResult = new LayuiResult<>();
+        List<OrderVo> list = orderServiceI.orders();
+        layuiResult.setData(list);
+        layuiResult.setCode(0);
+        layuiResult.setCount(10L);
         return layuiResult;
     }
 

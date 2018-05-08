@@ -19,6 +19,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         even: true, //开启隔行背景
         id: 'searchID',
         even: true, //开启隔行背景
+        where:{type:1},
         done: function (res) {
             //加载后回调
             layer.close(index);//关闭

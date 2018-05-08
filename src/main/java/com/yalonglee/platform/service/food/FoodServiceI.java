@@ -5,6 +5,7 @@ import com.yalonglee.platform.vo.food.FoodVo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>《一句话功能简述》
@@ -27,7 +28,7 @@ public interface FoodServiceI {
     /**
      * 菜单展示
      */
-    public List<FoodVo> foods();
+    public List<FoodVo> foods(Map<String, Object> parames);
 
     /**
      * 通过id获取food

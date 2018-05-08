@@ -9,7 +9,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
 
     table.render({
         elem: '#table',//table id
-        url: '/rbac/user',
+        url: '/food/orders.do',
         method: 'get', //方式
         page: true,//是否开启分页
         type: "json",
@@ -25,28 +25,32 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         },
         cols: [[ //标题栏
             {
-                field: 'username',
-                title: '用户名',
+                field: 'orderFood',
+                title: '订购菜品',
                 align: 'center',
                 width: '20%'
             }, {
-                field: 'locked',
-                title: '状态',
+                field: 'orderUser',
+                title: '订购人',
                 align: 'center',
                 width: '20%'
             }, {
-                fixed: 'right',
-                title: '操作',
+                field: 'orderTime',
+                title: '订购时间',
                 align: 'center',
-                toolbar: '#toobar',
                 width: '20%'
+            }, {
+                field: 'd.orderState.name',
+                title: '订单状态',
+                align: 'center',
+                width: '20%',
+                templet: '<div>{{d.orderState.name}}</div>'
             }]]
     });
 
 
     //查询按钮
     $('#queryByCondition').on('click', function () {
-        debugger;
         event.preventDefault();
         index = layer.load(1);//开启进度条
         var searchform = pubUtil.serializeObject($("#searchform"));//查询页面表单ID

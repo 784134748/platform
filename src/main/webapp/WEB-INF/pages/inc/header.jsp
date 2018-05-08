@@ -29,6 +29,6 @@
                 </dl>
             </shiro:hasRole>
         </li>
-        <li class="layui-nav-item"><a href="/rbac/logout.do">sign out</a></li>
+        <li class="layui-nav-item"><a href="/rbac/logout.do">退出</a></li>
     </ul>
 </div>

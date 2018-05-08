@@ -252,10 +252,10 @@
                             '        </div>\n' +
                             '    </div>\n' +
                             '</li>')
-                        count ++;
+                        count++;
                     });
 
-                    if(count % 4 !== 0){
+                    if (count % 4 !== 0) {
                         for (var i = 0; i < 4 - count % 4; i++) {
                             lis.push('<li class="single-member effect-3">\n' +
                                 '</li>')
@@ -313,10 +313,10 @@
                             '        </div>\n' +
                             '    </div>\n' +
                             '</li>')
-                        count ++;
+                        count++;
                     });
 
-                    if(count % 4 !== 0) {
+                    if (count % 4 !== 0) {
                         for (var i = 0; i < 4 - count % 4; i++) {
                             lis.push('<li class="single-member effect-3">\n' +
                                 '</li>')
@@ -333,7 +333,6 @@
 
     function addOrder(e) {
         event.preventDefault();
-        debugger;
         layer.open({
             title: '确认添加购物栏？' //显示标题栏
             , id: 'LAY_layuipro' //设定一个id，防止重复弹出
@@ -341,7 +340,6 @@
             , btn: ['确认']
             , closeBtn: 1
             , yes: function (index, layero) {
-                debugger;
                 //按钮【按钮一】的回调
                 var lockIndex = layer.load(1);//
                 $.ajax({
@@ -350,12 +348,14 @@
                     type: 'POST',//默认以get提交，以get提交如果是中文后台会出现乱码
                     dataType: 'json',
                     success: function (obj) {
+                        layer.msg(obj.msg);
+                        var index = layer.getFrameIndex("LAY_layuipro");
+                        layer.close(index);
                         layer.close(lockIndex);//关闭
                     }
                 });
             }
         });
-
     }
 </script>
 </body>

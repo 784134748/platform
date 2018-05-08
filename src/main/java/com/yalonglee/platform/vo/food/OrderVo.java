@@ -1,14 +1,8 @@
 package com.yalonglee.platform.vo.food;
 
 import com.yalonglee.common.base.strategy.BaseUUID;
-import com.yalonglee.platform.entity.food.Food;
 import com.yalonglee.platform.entity.food.OrderState;
-import com.yalonglee.platform.entity.permission.User;
 
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 /**
@@ -37,12 +31,12 @@ public class OrderVo extends BaseUUID {
     /**
      * 订购时间
      */
-    private String orderTime;
+    private Date orderTime;
 
     /**
      * 订购状态
      */
-    private Boolean orderState;
+    private OrderState orderState;
 
     public String getOrderFood() {
         return orderFood;
@@ -60,19 +54,19 @@ public class OrderVo extends BaseUUID {
         this.orderUser = orderUser;
     }
 
-    public String getOrderTime() {
+    public Date getOrderTime() {
         return orderTime;
     }
 
-    public void setOrderTime(String orderTime) {
+    public void setOrderTime(Date orderTime) {
         this.orderTime = orderTime;
     }
 
-    public Boolean getOrderState() {
+    public OrderState getOrderState() {
         return orderState;
     }
 
-    public void setOrderState(Boolean orderState) {
+    public void setOrderState(OrderState orderState) {
         this.orderState = orderState;
     }
 }

@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderServiceI {
 
     @Override
     public List<OrderVo> orders() {
-        String hql = "from foodOrder";
+        String hql = "select fo.orderFood.foodName as orderFood, fo.orderUser.username as orderUser, fo.orderTime as orderTime, fo.orderState as orderState from foodOrder fo";
         return orderDaoI.findVoListByHql(OrderVo.class, hql);
     }
 }

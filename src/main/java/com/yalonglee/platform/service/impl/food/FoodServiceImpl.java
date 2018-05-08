@@ -4,12 +4,15 @@ import com.yalonglee.platform.dao.food.FoodDaoI;
 import com.yalonglee.platform.entity.food.Food;
 import com.yalonglee.platform.service.food.FoodServiceI;
 import com.yalonglee.platform.vo.food.FoodVo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+
 
 /**
  * <p>《一句话功能简述》
@@ -35,14 +38,17 @@ public class FoodServiceImpl implements FoodServiceI {
     }
 
     @Override
-    public List<FoodVo> foods() {
+    public List<FoodVo> foods(Map<String, Object> parames) {
         String hql = "Select f.id as foodId, f.foodName as foodName, f.price as price, f.foodInfo as foodInfo, f.picturePath as picturePath from Food f";
         StringBuilder hql_where = new StringBuilder();
         hql_where.append(" where 1=1");
-//        if(){
-//            hql_where.append("");
-//        }
-        return foodDaoI.findVoListByHql(FoodVo.class, hql);
+        if (null != parames.get("restaurantId")) {
+            hql_where.append(" and f.restaurant.id = :restaurantId");
+        }
+        if (null != parames.get("foodId")) {
+            hql_where.append(" and f.id = :foodId");
+        }
+        return foodDaoI.findVoListByHql(FoodVo.class, hql + hql_where.toString(), parames);
 
     }
 
