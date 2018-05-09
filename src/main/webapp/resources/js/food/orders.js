@@ -9,7 +9,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
 
     table.render({
         elem: '#table',//table id
-        url: '/rbac/user',
+        url: '/food/orders.do',
         method: 'get', //方式
         page: true,//是否开启分页
         type: "json",
@@ -19,23 +19,33 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         even: true, //开启隔行背景
         id: 'searchID',
         even: true, //开启隔行背景
-        where:{type:"business"},
+        where:{type:"order"},
         done: function (res) {
             //加载后回调
             layer.close(index);//关闭
         },
         cols: [[ //标题栏
             {
-                field: 'username',
-                title: '用户名',
+                field: 'orderFood',
+                title: '订购菜品',
+                align: 'center',
+                width: '20%'
+            }, {
+                field: 'orderUser',
+                title: '订购人',
+                align: 'center',
+                width: '20%'
+            }, {
+                field: 'orderTime',
+                title: '订购时间',
                 align: 'center',
                 width: '20%'
             }, {
                 field: 'name',
-                title: '状态',
+                title: '订单状态',
                 align: 'center',
                 width: '20%',
-                templet: '<div>{{d.locked.name}}</div>'
+                templet: '<div>{{d.orderState.name}}</div>'
             }, {
                 fixed: 'right',
                 title: '操作',
@@ -63,24 +73,23 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
     table.on('tool(table)', function (obj) { //注：tool是工具条事件名，table是table原始容器的属性 lay-filter="对应的值"
         var data = obj.data;
         var layEvent = obj.event; //获得 lay-event 对应的值
-        if (layEvent === 'locked') {
+        if (layEvent === 'back') {
             accountLocked(data);
-        } else if (layEvent === 'unlocked') {
-            accountUnlocked(data);
         }
     });
 
 
     /**
-     * 账号锁定
+     * 退订
      * @param data
      */
     function accountLocked(data) {
+        debugger;
         event.preventDefault();
         $.ajax({
-            url: '/rbac/user',
+            url: '/food/fixOrderState.do',
             type: 'POST',
-            data: {locked: true, id: data.id},
+            data: {orderState: 4, orderId: data.id},
             dataType: 'json',
             success: function (res) {
                 if (res.flag == true) {
@@ -96,28 +105,5 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         return false;
     };
 
-    /**
-     * 账号解锁
-     */
-    function accountUnlocked(data) {
-        event.preventDefault();
-        $.ajax({
-            url: '/rbac/user',
-            type: 'POST',
-            data: {locked: false, id: data.id},
-            dataType: 'json',
-            success: function (res) {
-                if (res.flag == true) {
-                    layer.msg(res.msg);
-                    location.reload();
-                } else {
-                    layer.msg(res.msg);
-                    location.reload();
-                }
-            }
-        })
-        //防止页面跳转
-        return false;
-    };
 
 });

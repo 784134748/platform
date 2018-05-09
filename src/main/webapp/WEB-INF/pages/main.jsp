@@ -60,15 +60,15 @@
                     <li class="layui-nav-item">
                         <a class="fly-nav-avatar" href="javascript:;">
                             <cite class="layui-hide-xs"><shiro:principal/></cite>
-                            <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+                            <i class="layui-badge fly-badge-vip layui-hide-xs">用户！您好</i>
                             <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的订单</a>
+                                <a href="/food/userOrder.do" target="_blank"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的订单</a>
                             </dd>
                             <dd>
-                                <a href="user/message.html"><i class="iconfont icon-tongzhi"
+                                <a href="/food/userShop.do" target="_blank"><i class="iconfont icon-tongzhi"
                                                                style="top: 4px;"></i>购物车</a>
                             </dd>
                             <hr style="margin: 5px 0;">

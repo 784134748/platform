@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <html>
 <head>
-    <title>用户信息</title>
+    <title>我的订单</title>
     <link rel="stylesheet" href="${ctx}/resources/plugin/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="${ctx}/resources/css/dataUp.css" media="all">
     <link rel="stylesheet" href="${ctx}/resources/css/common.css" media="all">
@@ -38,12 +38,12 @@
 
 </body>
 <script src="${ctx}/resources/plugin/layui/layui.js" charset="utf-8"></script>
-<script src="${ctx}/resources/js/food/userInfo.js" charset="utf-8"></script>
+<script src="${ctx}/resources/js/food/orders.js" charset="utf-8"></script>
 <script type="text/html" id="toobar">
-    {{#  if(d.locked.value === 0){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="locked">锁定</a>
+    {{#  if(d.orderState.value == 1){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="back">退订</a>
     {{#  } else { }}
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="unlocked">解锁</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs layui-btn-disabled" lay-event="back">退订</a>
     {{#  } }}
 </script>
 </html>

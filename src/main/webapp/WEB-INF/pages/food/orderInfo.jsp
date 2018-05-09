@@ -40,10 +40,18 @@
 <script src="${ctx}/resources/plugin/layui/layui.js" charset="utf-8"></script>
 <script src="${ctx}/resources/js/food/orderInfo.js" charset="utf-8"></script>
 <script type="text/html" id="toobar">
-    {{#  if(d.locked == false){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="locked">锁定</a>
-    {{#  } else { }}
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="unlocked">解锁</a>
+    {{#  if(d.orderState.value == 1){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="onway">派送</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="ok">签收</a>
     {{#  } }}
+    {{#  if(d.orderState.value == 2){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-disabled" lay-event="onway">派送</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="ok">签收</a>
+    {{#  } }}
+    {{#  if(d.orderState.value == 3){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-disabled" lay-event="onway">派送</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs layui-btn-disabled" lay-event="ok" disabled>签收</a>
+    {{#  } }}
+
 </script>
 </html>

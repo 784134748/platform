@@ -16,34 +16,19 @@ import javax.persistence.AttributeConverter;
  * @see [相关类/方法]
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum OrderState {
+public enum FoodState {
+
     /**
-     * 待确认
+     * 上架
      */
-    WAIT(0, "待确认"),
-    /**
-     * 已付款
-     */
-    READY(1, "已确认"),
-    /**
-     * 派送中
-     */
-    ON_WAY(2, "派送中"),
-    /**
-     * 已签收
-     */
-    OK(3, "已签收"),
-    /**
-     * 退订
-     */
-    BACK(4, "退订"),
+    UP(0,"上架"),
+
     /**
      * 下架
      */
-    DOWN(5, "下架");
+    DOWN(1, "下架");
 
-
-    OrderState(Integer value, String name) {
+    FoodState(Integer value, String name) {
         this.value = value;
         this.name = name;
     }
@@ -68,15 +53,15 @@ public enum OrderState {
         this.name = name;
     }
 
-    public static class OrderStateConvert implements AttributeConverter<OrderState, Integer> {
+    public static class OrderStateConvert implements AttributeConverter<FoodState, Integer> {
         @Override
-        public Integer convertToDatabaseColumn(OrderState attribute) {
+        public Integer convertToDatabaseColumn(FoodState attribute) {
             return attribute == null ? null : attribute.getValue();
         }
 
         @Override
-        public OrderState convertToEntityAttribute(Integer dbData) {
-            for (OrderState type : OrderState.values()) {
+        public FoodState convertToEntityAttribute(Integer dbData) {
+            for (FoodState type : FoodState.values()) {
                 if (dbData.equals(type.getValue())) {
                     return type;
                 }

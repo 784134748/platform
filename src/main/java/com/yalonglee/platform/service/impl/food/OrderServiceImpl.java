@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>《一句话功能简述》
@@ -35,8 +36,50 @@ public class OrderServiceImpl implements OrderServiceI {
     }
 
     @Override
-    public List<OrderVo> orders() {
-        String hql = "select fo.orderFood.foodName as orderFood, fo.orderUser.username as orderUser, fo.orderTime as orderTime, fo.orderState as orderState from foodOrder fo";
-        return orderDaoI.findVoListByHql(OrderVo.class, hql);
+    public List<OrderVo> orders(Map<String, Object> parames) {
+        String hql = "select fo.id as id, fo.orderFood.foodName as orderFood, fo.orderUser.username as orderUser, fo.orderTime as orderTime, fo.orderState as orderState from foodOrder fo";
+        StringBuilder hql_where = new StringBuilder();
+        hql_where.append(" where 1=1");
+        //用户ID
+        if (null != parames.get("userId")) {
+            hql_where.append(" and fo.orderUser.id = :userId");
+        }
+        //餐厅ID
+        if (null != parames.get("restuarantId")) {
+            hql_where.append(" and fo.orderFood.resturant.id = :restuarantId");
+        }
+        //购物车
+        if(null != parames.get("orderType") && "wait".equals(parames.get("orderType"))){
+            if (null != parames.get("orderState")) {
+                hql_where.append(" and fo.orderState = :orderState");
+            }
+        }
+        //我的订单
+        if(null != parames.get("orderType") && "order".equals(parames.get("orderType"))){
+            if (null != parames.get("waitState")) {
+                hql_where.append(" and fo.orderState != :waitState");
+            }
+        }
+        //商家订单
+        if(null != parames.get("orderType") && "business".equals(parames.get("orderType"))){
+            if (null != parames.get("waitState")) {
+                hql_where.append(" and fo.orderState != :waitState");
+            }
+            if (null != parames.get("backState")) {
+                hql_where.append(" and fo.orderState != :backState");
+            }
+        }
+
+        return orderDaoI.findVoListByHql(OrderVo.class, hql + hql_where.toString(), parames);
+    }
+
+    @Override
+    public foodOrder getOrderById(Serializable id) {
+        return orderDaoI.get(id);
+    }
+
+    @Override
+    public void updateOrder(foodOrder order) {
+        orderDaoI.update(order);
     }
 }

@@ -1,6 +1,7 @@
 package com.yalonglee.platform.vo.permission;
 
 import com.yalonglee.common.annotation.Dict;
+import com.yalonglee.platform.entity.permission.AcountState;
 
 import java.util.Set;
 
@@ -33,7 +34,7 @@ public class UserVo {
     /**
      * 账号锁定
      */
-    private Boolean locked;
+    private AcountState locked;
     /**
      * user --> role 多对多处理
      */
@@ -63,11 +64,11 @@ public class UserVo {
         this.sex = sex;
     }
 
-    public Boolean getLocked() {
+    public AcountState getLocked() {
         return locked;
     }
 
-    public void setLocked(Boolean locked) {
+    public void setLocked(AcountState locked) {
         this.locked = locked;
     }
 

@@ -42,7 +42,9 @@ public class User extends BaseUUID {
     /**
      * 账号锁定
      */
-    private Boolean locked = Boolean.FALSE;
+    @Convert(converter = AcountState.OrderStateConvert.class)
+    private AcountState locked;
+
     /**
      * user --> role 多对多处理
      */
@@ -96,11 +98,11 @@ public class User extends BaseUUID {
         this.salt = salt;
     }
 
-    public Boolean getLocked() {
+    public AcountState getLocked() {
         return locked;
     }
 
-    public void setLocked(Boolean locked) {
+    public void setLocked(AcountState locked) {
         this.locked = locked;
     }
 

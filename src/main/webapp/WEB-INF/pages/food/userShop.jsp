@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <html>
 <head>
-    <title>用户信息</title>
+    <title>购物车</title>
     <link rel="stylesheet" href="${ctx}/resources/plugin/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="${ctx}/resources/css/dataUp.css" media="all">
     <link rel="stylesheet" href="${ctx}/resources/css/common.css" media="all">
@@ -38,12 +38,9 @@
 
 </body>
 <script src="${ctx}/resources/plugin/layui/layui.js" charset="utf-8"></script>
-<script src="${ctx}/resources/js/food/userInfo.js" charset="utf-8"></script>
+<script src="${ctx}/resources/js/food/shops.js" charset="utf-8"></script>
 <script type="text/html" id="toobar">
-    {{#  if(d.locked.value === 0){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="locked">锁定</a>
-    {{#  } else { }}
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="unlocked">解锁</a>
-    {{#  } }}
+    <a class="layui-btn layui-btn-xs" lay-event="sure">确认</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
 </script>
 </html>

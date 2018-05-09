@@ -6,6 +6,7 @@ import com.yalonglee.platform.entity.food.Food;
 import com.yalonglee.platform.entity.food.foodOrder;
 import com.yalonglee.platform.entity.food.OrderState;
 import com.yalonglee.platform.entity.food.Restaurant;
+import com.yalonglee.platform.entity.permission.AcountState;
 import com.yalonglee.platform.entity.permission.Role;
 import com.yalonglee.platform.entity.permission.User;
 import com.yalonglee.platform.service.food.FoodServiceI;
@@ -21,6 +22,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -92,9 +94,39 @@ public class FoodController {
     @ApiOperation(value = "展示订单")
     @RequestMapping(value = "/orders.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<OrderVo> getOrders() {
+    public LayuiResult<OrderVo> getOrders(String type) {
+        Map<String, Object> parames = new HashMap<>();
+        //订单
+        if("order".equals(type)){
+            String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
+            User user = userServiceI.getUserByUsername(currentUsername);
+            parames.put("userId",user.getId());
+            //展示非购物车内的订单
+            parames.put("orderState",OrderState.WAIT);
+            parames.put("orderType",type);
+        }
+        //购物车
+        if("wait".equals(type)){
+            String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
+            User user = userServiceI.getUserByUsername(currentUsername);
+            parames.put("userId",user.getId());
+            //仅展示未确认的订单
+            parames.put("waitState",OrderState.WAIT);
+            parames.put("orderType",type);
+
+        }
+        //商家展示
+        if("business".equals(type)){
+            String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
+            Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
+            parames.put("restaurantId",restaurant.getId());
+            //不展示购物车内订单和退订订单
+            parames.put("waitState",OrderState.WAIT);
+            parames.put("backState",OrderState.BACK);
+            parames.put("orderType",type);
+        }
         LayuiResult<OrderVo> layuiResult = new LayuiResult<>();
-        List<OrderVo> list = orderServiceI.orders();
+        List<OrderVo> list = orderServiceI.orders(parames);
         layuiResult.setData(list);
         layuiResult.setCode(0);
         layuiResult.setCount(10L);
@@ -112,7 +144,7 @@ public class FoodController {
         user.setUsername(addRestaurantVo.getUsername());
         user.setPassword(addRestaurantVo.getPassword());
         user.setSalt("1234");
-        user.setLocked(Boolean.FALSE);
+        user.setLocked(AcountState.NORMOL);
         Role role = roleServiceI.getRoleByRoleName("business");
         Restaurant restaurant = new Restaurant();
         restaurant.setRestaurantName(addRestaurantVo.getRestaurantName());
@@ -193,7 +225,7 @@ public class FoodController {
         Food food = foodServiceI.getFoodById(foodId);
         order.setOrderFood(food);
         order.setOrderUser(user);
-        order.setOrderState(OrderState.WAIT_PAY);
+        order.setOrderState(OrderState.WAIT);
         order.setOrderTime(new Date());
         try {
             orderServiceI.addOrder(order);
@@ -204,6 +236,48 @@ public class FoodController {
         }
         baseResult.setFlag(true);
         baseResult.setMsg("已加入购物车！");
+        return baseResult;
+
+    }
+
+    /**
+     * 修改订单状态
+     */
+    @ApiOperation(value = "修改订单状态")
+    @RequestMapping(value = "/fixOrderState.do", method = RequestMethod.POST)
+    public BaseResult addOrder(String orderState,String orderId) {
+        BaseResult baseResult = new BaseResult();
+        foodOrder foodOrder = orderServiceI.getOrderById(orderId);
+        //确认订单
+        if("1".equals(orderState)){
+            foodOrder.setOrderState(OrderState.READY);
+            baseResult.setMsg("已确认");
+            baseResult.setFlag(true);
+        }
+        //派送中
+        if("2".equals(orderState)){
+            foodOrder.setOrderState(OrderState.ON_WAY);
+            baseResult.setMsg("正在派送");
+            baseResult.setFlag(true);
+        }
+        //已签收
+        if("3".equals(orderState)){
+            foodOrder.setOrderState(OrderState.OK);
+            baseResult.setMsg("已签收");
+            baseResult.setFlag(true);
+        }
+        //退订
+        if("4".equals(orderState)){
+            foodOrder.setOrderState(OrderState.BACK);
+            baseResult.setMsg("退订成功");
+            baseResult.setFlag(true);
+        }
+        try {
+            orderServiceI.updateOrder(foodOrder);
+        }catch (Exception e){
+            baseResult.setFlag(false);
+            baseResult.setMsg("接口异常");
+        }
         return baseResult;
 
     }

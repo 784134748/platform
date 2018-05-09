@@ -226,7 +226,13 @@ public class RbacController {
     public BaseResult saveOrUpdateUser(String id,Boolean locked) {
         BaseResult baseResult = new BaseResult();
         User user = userServiceI.get(id);
-        user.setLocked(locked);
+        if(true == locked){
+            user.setLocked(AcountState.LOCKED);
+        }
+        if(false == locked){
+            user.setLocked(AcountState.NORMOL);
+        }
+
         try {
             userServiceI.saveOrUpdate(user);
         } catch (Exception e) {

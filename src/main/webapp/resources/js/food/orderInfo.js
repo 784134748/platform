@@ -19,6 +19,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         even: true, //开启隔行背景
         id: 'searchID',
         even: true, //开启隔行背景
+        where:{type:"business"},
         done: function (res) {
             //加载后回调
             layer.close(index);//关闭
@@ -40,11 +41,17 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
                 align: 'center',
                 width: '20%'
             }, {
-                field: 'd.orderState.name',
+                field: 'name',
                 title: '订单状态',
                 align: 'center',
                 width: '20%',
                 templet: '<div>{{d.orderState.name}}</div>'
+            }, {
+                fixed: 'right',
+                title: '操作',
+                align: 'center',
+                toolbar: '#toobar',
+                width: '20%'
             }]]
     });
 
@@ -66,9 +73,9 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
     table.on('tool(table)', function (obj) { //注：tool是工具条事件名，table是table原始容器的属性 lay-filter="对应的值"
         var data = obj.data;
         var layEvent = obj.event; //获得 lay-event 对应的值
-        if (layEvent === 'locked') {
+        if (layEvent === 'onway') {
             accountLocked(data);
-        } else if (layEvent === 'unlocked') {
+        } else if (layEvent === 'ok') {
             accountUnlocked(data);
         }
     });
@@ -81,9 +88,9 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
     function accountLocked(data) {
         event.preventDefault();
         $.ajax({
-            url: '/rbac/user',
+            url: '/food/fixOrderState.do',
             type: 'POST',
-            data: {locked: true, id: data.id},
+            data: {orderState: 2, orderId: data.id},
             dataType: 'json',
             success: function (res) {
                 if (res.flag == true) {
@@ -105,9 +112,9 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
     function accountUnlocked(data) {
         event.preventDefault();
         $.ajax({
-            url: '/rbac/user',
+            url: '/food/fixOrderState.do',
             type: 'POST',
-            data: {locked: false, id: data.id},
+            data: {orderState: 3, orderId: data.id},
             dataType: 'json',
             success: function (res) {
                 if (res.flag == true) {

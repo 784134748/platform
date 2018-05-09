@@ -5,6 +5,7 @@ import com.yalonglee.platform.vo.food.OrderVo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>《一句话功能简述》
@@ -27,6 +28,16 @@ public interface OrderServiceI {
     /**
      * 订单展示
      */
-    public List<OrderVo> orders();
+    public List<OrderVo> orders(Map<String, Object> parames);
+
+    /**
+     * 通过id获取Order
+     */
+    public foodOrder getOrderById(Serializable id);
+
+    /**
+     * 更新Order
+     */
+    public void updateOrder(foodOrder order);
 
 }

@@ -2,6 +2,7 @@ package com.yalonglee.platform.entity.food;
 
 import com.yalonglee.common.base.strategy.BaseUUID;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -45,8 +46,13 @@ public class Food extends BaseUUID {
     /**
      * 下单总数
      */
-
     private Long orderNum;
+
+    /**
+     * 菜品状态
+     */
+    @Convert(converter = FoodState.OrderStateConvert.class)
+    private FoodState foodState;
 
     /**
      * 菜品图片
@@ -91,6 +97,14 @@ public class Food extends BaseUUID {
 
     public void setOrderNum(Long orderNum) {
         this.orderNum = orderNum;
+    }
+
+    public FoodState getFoodState() {
+        return foodState;
+    }
+
+    public void setFoodState(FoodState foodState) {
+        this.foodState = foodState;
     }
 
     public String getPicturePath() {

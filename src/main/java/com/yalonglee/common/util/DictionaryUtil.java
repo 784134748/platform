@@ -3,6 +3,7 @@ package com.yalonglee.common.util;
 import com.yalonglee.common.annotation.Dict;
 import com.yalonglee.common.base.Dictionary;
 import com.yalonglee.platform.entity.data.DictionaryData;
+import com.yalonglee.platform.entity.permission.AcountState;
 import com.yalonglee.platform.vo.permission.UserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -229,14 +230,14 @@ public class DictionaryUtil {
         UserVo userVo1 = new UserVo();
         userVo1.setId("1");
         userVo1.setUsername("test");
-        userVo1.setLocked(true);
+        userVo1.setLocked(AcountState.NORMOL);
         userVo1.setSex("0");
         userVo1.setRoles(roles);
 
         UserVo userVo2 = new UserVo();
         userVo2.setId("2");
         userVo2.setUsername("test1");
-        userVo2.setLocked(false);
+        userVo2.setLocked(AcountState.LOCKED);
         userVo2.setSex("1");
         userVo2.setRoles(roles);
 

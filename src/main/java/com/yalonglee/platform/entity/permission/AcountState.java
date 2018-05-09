@@ -1,4 +1,4 @@
-package com.yalonglee.platform.entity.food;
+package com.yalonglee.platform.entity.permission;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -16,34 +16,18 @@ import javax.persistence.AttributeConverter;
  * @see [相关类/方法]
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum OrderState {
+public enum AcountState {
     /**
      * 待确认
      */
-    WAIT(0, "待确认"),
+    NORMOL(0, "正常"),
     /**
      * 已付款
      */
-    READY(1, "已确认"),
-    /**
-     * 派送中
-     */
-    ON_WAY(2, "派送中"),
-    /**
-     * 已签收
-     */
-    OK(3, "已签收"),
-    /**
-     * 退订
-     */
-    BACK(4, "退订"),
-    /**
-     * 下架
-     */
-    DOWN(5, "下架");
+    LOCKED(1, "锁定");
 
 
-    OrderState(Integer value, String name) {
+    AcountState(Integer value, String name) {
         this.value = value;
         this.name = name;
     }
@@ -68,15 +52,15 @@ public enum OrderState {
         this.name = name;
     }
 
-    public static class OrderStateConvert implements AttributeConverter<OrderState, Integer> {
+    public static class OrderStateConvert implements AttributeConverter<AcountState, Integer> {
         @Override
-        public Integer convertToDatabaseColumn(OrderState attribute) {
+        public Integer convertToDatabaseColumn(AcountState attribute) {
             return attribute == null ? null : attribute.getValue();
         }
 
         @Override
-        public OrderState convertToEntityAttribute(Integer dbData) {
-            for (OrderState type : OrderState.values()) {
+        public AcountState convertToEntityAttribute(Integer dbData) {
+            for (AcountState type : AcountState.values()) {
                 if (dbData.equals(type.getValue())) {
                     return type;
                 }
