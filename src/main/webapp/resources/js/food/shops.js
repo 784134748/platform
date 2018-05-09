@@ -31,8 +31,8 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
                 align: 'center',
                 width: '20%'
             }, {
-                field: 'orderUser',
-                title: '订购人',
+                field: 'orderPrice',
+                title: '订购价格',
                 align: 'center',
                 width: '20%'
             }, {

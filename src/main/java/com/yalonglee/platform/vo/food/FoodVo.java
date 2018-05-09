@@ -1,8 +1,10 @@
 package com.yalonglee.platform.vo.food;
 
 import com.yalonglee.common.base.strategy.BaseUUID;
+import com.yalonglee.platform.entity.food.FoodState;
 import com.yalonglee.platform.entity.food.Restaurant;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,12 +21,7 @@ import java.io.Serializable;
  * @version [V1.0, 2018/4/5]
  * @see [相关类/方法]
  */
-public class FoodVo {
-
-    /**
-     * ID
-     */
-    private Serializable foodId;
+public class FoodVo extends BaseUUID {
 
     /**
      * 所属餐厅
@@ -57,13 +54,10 @@ public class FoodVo {
      */
     private String picturePath;
 
-    public Serializable getFoodId() {
-        return foodId;
-    }
-
-    public void setFoodId(Serializable foodId) {
-        this.foodId = foodId;
-    }
+    /**
+     * 菜品状态
+     */
+    private FoodState foodState;
 
     public String getRestaurantId() {
         return restaurantId;
@@ -111,5 +105,13 @@ public class FoodVo {
 
     public void setPicturePath(String picturePath) {
         this.picturePath = picturePath;
+    }
+
+    public FoodState getFoodState() {
+        return foodState;
+    }
+
+    public void setFoodState(FoodState foodState) {
+        this.foodState = foodState;
     }
 }

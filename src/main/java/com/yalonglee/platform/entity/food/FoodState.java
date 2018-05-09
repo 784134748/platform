@@ -53,7 +53,7 @@ public enum FoodState {
         this.name = name;
     }
 
-    public static class OrderStateConvert implements AttributeConverter<FoodState, Integer> {
+    public static class FoodStateConvert implements AttributeConverter<FoodState, Integer> {
         @Override
         public Integer convertToDatabaseColumn(FoodState attribute) {
             return attribute == null ? null : attribute.getValue();

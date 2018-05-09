@@ -52,7 +52,7 @@ public enum AcountState {
         this.name = name;
     }
 
-    public static class OrderStateConvert implements AttributeConverter<AcountState, Integer> {
+    public static class AcountStateConvert implements AttributeConverter<AcountState, Integer> {
         @Override
         public Integer convertToDatabaseColumn(AcountState attribute) {
             return attribute == null ? null : attribute.getValue();

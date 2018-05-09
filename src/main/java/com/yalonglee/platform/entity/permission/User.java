@@ -42,7 +42,7 @@ public class User extends BaseUUID {
     /**
      * 账号锁定
      */
-    @Convert(converter = AcountState.OrderStateConvert.class)
+    @Convert(converter = AcountState.AcountStateConvert.class)
     private AcountState locked;
 
     /**

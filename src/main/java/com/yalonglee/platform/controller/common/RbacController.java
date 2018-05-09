@@ -121,6 +121,7 @@ public class RbacController {
         }
         Role role = roleServiceI.getRoleByRoleName("user");
         user.setSalt("1234");
+        user.setLocked(AcountState.NORMOL);
         user.getRoles().add(role);
         userServiceI.saveOrUpdate(user);
         result.setFlag(true);

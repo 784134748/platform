@@ -48,21 +48,21 @@
                        class="layui-input">
             </div>
         </div>
+    </shiro:hasRole>
+    <shiro:hasRole name="business">
         <div class="layui-form-item">
             <label class="layui-form-label">商户名称</label>
             <div class="layui-input-inline">
                 <input type="text" id="restaurantName" name="restaurantName" lay-verify="required" placeholder="请输入"
                        autocomplete="off"
-                       class="layui-input">
+                       class="layui-input databack">
             </div>
         </div>
-    </shiro:hasRole>
-    <shiro:hasRole name="business">
         <div class="layui-form-item">
             <label class="layui-form-label">商户简介</label>
             <div class="layui-input-inline">
             <textarea id="restaurantInfo" name="restaurantInfo" lay-verify="required"
-                      autocomplete="off" class="layui-input" style="height: 218px;width: 501px;"></textarea>
+                      autocomplete="off" class="layui-input databack" style="height: 218px;width: 501px;"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -70,7 +70,7 @@
             <div class="layui-input-inline">
                 <input type="text" id="bossPicturePath" name="bossPicturePath" lay-verify="required" placeholder="图片地址"
                        autocomplete="off" readonly="readonly"
-                       class="layui-input">
+                       class="layui-input databack">
             </div>
         </div>
         <div class="layui-form-item">
@@ -145,6 +145,31 @@
         var form = layui.form,
             $ = layui.$;
 
+        $.ajax({
+            url: '/food/restuarants.do?type=databack',
+            type: 'get',//默认以get提交，以get提交如果是中文后台会出现乱码
+            dataType: 'json',
+            success: function (obj) {
+                debugger;
+                if (obj.flag) {
+                    //获取传参
+                    var data = obj.data[0];
+                    var inputArray = $(".databack");// 取到所有的input text
+                    debugger;
+                    inputArray.each(function () {
+                        var input = $(this);// 循环中的每一个input元素
+                        var name = input.attr("name");
+                        if (data[name] == 0) {
+                            input.val(data[name]);
+                        } else if (data[name] != "" && data[name] != null) {
+                            input.val(data[name]);
+                        }
+                    });
+                    form.render();//重新渲染
+                } else {
+                }
+            }
+        });
 
         /**
          * 自定义校验

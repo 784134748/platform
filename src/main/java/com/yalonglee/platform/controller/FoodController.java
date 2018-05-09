@@ -2,10 +2,7 @@ package com.yalonglee.platform.controller;
 
 import com.yalonglee.common.bean.BaseResult;
 import com.yalonglee.common.bean.LayuiResult;
-import com.yalonglee.platform.entity.food.Food;
-import com.yalonglee.platform.entity.food.foodOrder;
-import com.yalonglee.platform.entity.food.OrderState;
-import com.yalonglee.platform.entity.food.Restaurant;
+import com.yalonglee.platform.entity.food.*;
 import com.yalonglee.platform.entity.permission.AcountState;
 import com.yalonglee.platform.entity.permission.Role;
 import com.yalonglee.platform.entity.permission.User;
@@ -23,6 +20,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.hibernate.criterion.Order;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -55,20 +53,24 @@ public class FoodController {
     @ApiOperation(value = "展示菜品")
     @RequestMapping(value = "/foods.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<FoodVo> getFoods(String type,String foodId) {
+    public LayuiResult<FoodVo> getFoods(String type, String foodId, String restaurantId) {
         Map<String, Object> parames = new HashMap<>();
-        if ("1".equals(type)){
+        if ("1".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
             Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
-            parames.put("restaurantId",restaurant.getId());
+            parames.put("restaurantId", restaurant.getId());
         }
-        if(StringUtils.isNotBlank(foodId)){
-            parames.put("foodId",foodId);
+        if (StringUtils.isNotBlank(foodId)) {
+            parames.put("foodId", foodId);
+        }
+        if (StringUtils.isNotBlank(restaurantId)) {
+            parames.put("restaurantId", restaurantId);
         }
         LayuiResult<FoodVo> layuiResult = new LayuiResult<>();
         List<FoodVo> list = foodServiceI.foods(parames);
         layuiResult.setData(list);
         layuiResult.setCode(0);
+        layuiResult.setFlag(true);
         layuiResult.setCount(10L);
         return layuiResult;
     }
@@ -79,9 +81,21 @@ public class FoodController {
     @ApiOperation(value = "展示店铺")
     @RequestMapping(value = "/restuarants.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<RestaurantVo> getRestuarants() {
+    public LayuiResult<RestaurantVo> getRestuarants(String type) {
         LayuiResult<RestaurantVo> layuiResult = new LayuiResult<>();
-        List<RestaurantVo> list = restaurantServiceI.restaurants();
+        Map<String, Object> parames = new HashMap<>();
+        if("databack".equals(type)){
+            String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
+            Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
+            if(null == restaurant){
+                layuiResult.setFlag(false);
+                layuiResult.setCode(-1);
+                return layuiResult;
+            }
+            parames.put("restaurantId",restaurant.getId());
+        }
+        List<RestaurantVo> list = restaurantServiceI.restaurants(parames);
+        layuiResult.setFlag(true);
         layuiResult.setData(list);
         layuiResult.setCode(0);
         layuiResult.setCount(10L);
@@ -97,33 +111,33 @@ public class FoodController {
     public LayuiResult<OrderVo> getOrders(String type) {
         Map<String, Object> parames = new HashMap<>();
         //订单
-        if("order".equals(type)){
+        if ("order".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
             User user = userServiceI.getUserByUsername(currentUsername);
-            parames.put("userId",user.getId());
+            parames.put("userId", user.getId());
             //展示非购物车内的订单
-            parames.put("orderState",OrderState.WAIT);
-            parames.put("orderType",type);
+            parames.put("orderState", OrderState.WAIT);
+            parames.put("orderType", type);
         }
         //购物车
-        if("wait".equals(type)){
+        if ("wait".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
             User user = userServiceI.getUserByUsername(currentUsername);
-            parames.put("userId",user.getId());
+            parames.put("userId", user.getId());
             //仅展示未确认的订单
-            parames.put("waitState",OrderState.WAIT);
-            parames.put("orderType",type);
+            parames.put("waitState", OrderState.WAIT);
+            parames.put("orderType", type);
 
         }
         //商家展示
-        if("business".equals(type)){
+        if ("business".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
             Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
-            parames.put("restaurantId",restaurant.getId());
+            parames.put("restaurantId", restaurant.getId());
             //不展示购物车内订单和退订订单
-            parames.put("waitState",OrderState.WAIT);
-            parames.put("backState",OrderState.BACK);
-            parames.put("orderType",type);
+            parames.put("waitState", OrderState.WAIT);
+            parames.put("backState", OrderState.BACK);
+            parames.put("orderType", type);
         }
         LayuiResult<OrderVo> layuiResult = new LayuiResult<>();
         List<OrderVo> list = orderServiceI.orders(parames);
@@ -172,6 +186,7 @@ public class FoodController {
         String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
         Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
         if (null != restaurant) {
+            restaurant.setRestaurantName(addRestaurantVo.getRestaurantName());
             restaurant.setRestaurantInfo(addRestaurantVo.getRestaurantInfo());
             restaurant.setBossPicturePath(addRestaurantVo.getBossPicturePath());
             try {
@@ -187,15 +202,29 @@ public class FoodController {
     }
 
     /**
-     * 新增菜品
+     * 新增/编辑菜品
      */
-    @ApiOperation(value = "新增菜品")
+    @ApiOperation(value = "新增/编辑菜品")
     @RequestMapping(value = "/addFood.do", method = RequestMethod.PUT)
     public BaseResult addFood(@RequestBody Food food) {
         BaseResult baseResult = new BaseResult();
         String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
         Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
         if (null != restaurant) {
+            if (StringUtils.isNotBlank(food.getId())) {
+                try {
+                    Food food_update = foodServiceI.getFoodById(food.getId());
+                    BeanUtils.copyProperties(food, food_update, new String[]{"id", "orderNum", "foodState", "restaurant"});
+                    foodServiceI.updateFood(food_update);
+                    baseResult.setFlag(true);
+                    baseResult.setMsg("更新成功");
+                    return baseResult;
+                } catch (Exception e) {
+                    baseResult.setFlag(true);
+                    baseResult.setMsg("更新失败");
+                    return baseResult;
+                }
+            }
             food.setRestaurant(restaurant);
             foodServiceI.addFood(food);
             baseResult.setFlag(true);
@@ -214,30 +243,32 @@ public class FoodController {
     @RequestMapping(value = "/addOrder.do", method = RequestMethod.POST)
     public BaseResult addOrder(String foodId) {
         BaseResult baseResult = new BaseResult();
-        String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
-        if(StringUtils.isBlank(currentUsername)){
-            baseResult.setFlag(false);
-            baseResult.setMsg("请先登录");
+        if (StringUtils.isNotBlank(foodId)) {
+            String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
+            if (StringUtils.isBlank(currentUsername)) {
+                baseResult.setFlag(false);
+                baseResult.setMsg("请先登录");
+                return baseResult;
+            }
+            User user = userServiceI.getUserByUsername(currentUsername);
+            foodOrder order = new foodOrder();
+            Food food = foodServiceI.getFoodById(foodId);
+            order.setOrderFood(food);
+            order.setOrderUser(user);
+            order.setOrderState(OrderState.WAIT);
+            order.setOrderTime(new Date());
+            try {
+                orderServiceI.addOrder(order);
+            } catch (Exception e) {
+                baseResult.setFlag(false);
+                baseResult.setMsg("加入购物车失败！");
+                return baseResult;
+            }
+            baseResult.setFlag(true);
+            baseResult.setMsg("已加入购物车！");
             return baseResult;
         }
-        User user = userServiceI.getUserByUsername(currentUsername);
-        foodOrder order = new foodOrder();
-        Food food = foodServiceI.getFoodById(foodId);
-        order.setOrderFood(food);
-        order.setOrderUser(user);
-        order.setOrderState(OrderState.WAIT);
-        order.setOrderTime(new Date());
-        try {
-            orderServiceI.addOrder(order);
-        }catch (Exception e){
-            baseResult.setFlag(false);
-            baseResult.setMsg("加入购物车失败！");
-            return baseResult;
-        }
-        baseResult.setFlag(true);
-        baseResult.setMsg("已加入购物车！");
         return baseResult;
-
     }
 
     /**
@@ -245,41 +276,75 @@ public class FoodController {
      */
     @ApiOperation(value = "修改订单状态")
     @RequestMapping(value = "/fixOrderState.do", method = RequestMethod.POST)
-    public BaseResult addOrder(String orderState,String orderId) {
+    public BaseResult fixOrderState(String orderState, String orderId) {
         BaseResult baseResult = new BaseResult();
-        foodOrder foodOrder = orderServiceI.getOrderById(orderId);
-        //确认订单
-        if("1".equals(orderState)){
-            foodOrder.setOrderState(OrderState.READY);
-            baseResult.setMsg("已确认");
-            baseResult.setFlag(true);
-        }
-        //派送中
-        if("2".equals(orderState)){
-            foodOrder.setOrderState(OrderState.ON_WAY);
-            baseResult.setMsg("正在派送");
-            baseResult.setFlag(true);
-        }
-        //已签收
-        if("3".equals(orderState)){
-            foodOrder.setOrderState(OrderState.OK);
-            baseResult.setMsg("已签收");
-            baseResult.setFlag(true);
-        }
-        //退订
-        if("4".equals(orderState)){
-            foodOrder.setOrderState(OrderState.BACK);
-            baseResult.setMsg("退订成功");
-            baseResult.setFlag(true);
-        }
-        try {
-            orderServiceI.updateOrder(foodOrder);
-        }catch (Exception e){
-            baseResult.setFlag(false);
-            baseResult.setMsg("接口异常");
+        if (StringUtils.isNotBlank(orderId)) {
+            foodOrder foodOrder = orderServiceI.getOrderById(orderId);
+            //确认订单
+            if ("1".equals(orderState)) {
+                foodOrder.setOrderState(OrderState.READY);
+                baseResult.setMsg("已确认");
+                baseResult.setFlag(true);
+            }
+            //派送中
+            if ("2".equals(orderState)) {
+                foodOrder.setOrderState(OrderState.ON_WAY);
+                baseResult.setMsg("正在派送");
+                baseResult.setFlag(true);
+            }
+            //已签收
+            if ("3".equals(orderState)) {
+                foodOrder.setOrderState(OrderState.OK);
+                baseResult.setMsg("已签收");
+                baseResult.setFlag(true);
+            }
+            //退订
+            if ("4".equals(orderState)) {
+                foodOrder.setOrderState(OrderState.BACK);
+                baseResult.setMsg("退订成功");
+                baseResult.setFlag(true);
+            }
+            try {
+                orderServiceI.updateOrder(foodOrder);
+            } catch (Exception e) {
+                baseResult.setFlag(false);
+                baseResult.setMsg("接口异常");
+            }
+            return baseResult;
         }
         return baseResult;
+    }
 
+    /**
+     * 修改菜品状态
+     */
+    @ApiOperation(value = "修改菜品状态")
+    @RequestMapping(value = "/fixFoodState.do", method = RequestMethod.POST)
+    public BaseResult fixFoodState(String foodState, String foodId) {
+        BaseResult baseResult = new BaseResult();
+        if (StringUtils.isNotBlank(foodId)) {
+            Food food = foodServiceI.getFoodById(foodId);
+            //下架
+            if ("0".equals(foodState)) {
+                food.setFoodState(FoodState.UP);
+                baseResult.setMsg("已上架");
+                baseResult.setFlag(true);
+            }
+            //上架
+            if ("1".equals(foodState)) {
+                food.setFoodState(FoodState.DOWN);
+                baseResult.setMsg("已下架");
+                baseResult.setFlag(true);
+            }
+            try {
+                foodServiceI.updateFood(food);
+            } catch (Exception e) {
+                baseResult.setFlag(false);
+                baseResult.setMsg("接口异常");
+            }
+            return baseResult;
+        }
+        return baseResult;
     }
 
 }

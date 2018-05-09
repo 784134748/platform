@@ -19,7 +19,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         even: true, //开启隔行背景
         id: 'searchID',
         even: true, //开启隔行背景
-        where:{type:"order"},
+        where: {type: "order"},
         done: function (res) {
             //加载后回调
             layer.close(index);//关闭
@@ -38,6 +38,11 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
             }, {
                 field: 'orderTime',
                 title: '订购时间',
+                align: 'center',
+                width: '20%'
+            }, {
+                field: 'orderPrice',
+                title: '订购价格',
                 align: 'center',
                 width: '20%'
             }, {

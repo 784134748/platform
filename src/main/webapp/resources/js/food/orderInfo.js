@@ -40,6 +40,11 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
                 title: '订购时间',
                 align: 'center',
                 width: '20%'
+            },{
+                field: 'orderPrice',
+                title: '订购价格',
+                align: 'center',
+                width: '20%'
             }, {
                 field: 'name',
                 title: '订单状态',

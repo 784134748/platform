@@ -64,7 +64,7 @@
 
     <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"
           p:indentOutput="true"
-          p:simpleDateFormat="yyyy-MM-dd"
+          p:simpleDateFormat="yyyy-MM-dd HH:mm:ss"
           p:modulesToInstall="com.fasterxml.jackson.module.paramnames.ParameterNamesModule"/>
 
     <!-- Springfox Swagger2 -->

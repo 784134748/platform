@@ -51,7 +51,7 @@ public class Food extends BaseUUID {
     /**
      * 菜品状态
      */
-    @Convert(converter = FoodState.OrderStateConvert.class)
+    @Convert(converter = FoodState.FoodStateConvert.class)
     private FoodState foodState;
 
     /**

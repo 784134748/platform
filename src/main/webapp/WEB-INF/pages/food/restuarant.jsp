@@ -99,35 +99,28 @@
     <ul class="flow-default" id="LAY_demo1"></ul>
 
     <div class="layui-container" style="border-radius: 5px;border:1px solid #FF5722;margin-top: 2px">
-        <!--店铺-->
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-            <legend>店铺</legend>
-        </fieldset>
-    </div>
-    <!--信息流，懒加载-->
-    <ul class="flow-default" id="LAY_demo2"></ul>
 
-    <div class="layui-footer">
-        <div class="fly-panel">
-            <div class="fly-panel-main">
-                <a href="http://layim.layui.com/?from=fly" target="_blank" class="fly-zanzhu"
-                   time-limit="2017.09.25-2099.01.01" style="background-color:#FF5722;">谁知盘中餐，粒粒皆辛苦。</a>
+        <div class="layui-footer">
+            <div class="fly-panel">
+                <div class="fly-panel-main">
+                    <a href="http://layim.layui.com/?from=fly" target="_blank" class="fly-zanzhu"
+                       time-limit="2017.09.25-2099.01.01" style="background-color:#FF5722;">谁知盘中餐，粒粒皆辛苦。</a>
+                </div>
+            </div>
+            <div class="fly-panel fly-link">
+                <h3 class="fly-panel-title">友情链接</h3>
+                <dl class="fly-panel-main">
+                    <dd>
+                        <a href="mailto:xianxin@layui-inc.com?subject=%E7%94%B3%E8%AF%B7Fly%E7%A4%BE%E5%8C%BA%E5%8F%8B%E9%93%BE"
+                           class="fly-link">申请友链</a>
+                    <dd>
+                </dl>
+                <dl class="fly-panel-main">
+                    <dd><a href="http://www.layui.com/" target="_blank">layui</a>
+                </dl>
             </div>
         </div>
-        <div class="fly-panel fly-link">
-            <h3 class="fly-panel-title">友情链接</h3>
-            <dl class="fly-panel-main">
-                <dd>
-                    <a href="mailto:xianxin@layui-inc.com?subject=%E7%94%B3%E8%AF%B7Fly%E7%A4%BE%E5%8C%BA%E5%8F%8B%E9%93%BE"
-                       class="fly-link">申请友链</a>
-                <dd>
-            </dl>
-            <dl class="fly-panel-main">
-                <dd><a href="http://www.layui.com/" target="_blank">layui</a>
-            </dl>
-        </div>
     </div>
-</div>
 </div>
 
 
@@ -209,129 +202,71 @@
         var flow = layui.flow
             , $ = layui.$;
 
-        flow.load({
-            elem: '#LAY_demo1' //流加载容器
-            , scrollElem: '#LAY_demo2' //滚动条所在元素，一般不用填，此处只是演示需要。
-            , isAuto: false
-            , isLazyimg: true
-            , done: function (page, next) { //加载下一页
-                //模拟插入
-                // setTimeout(function () {
-                // var lis = [];
-                // for (var i = 0; i < 8; i++) {
-                // lis.push('<li class="single-member effect-3">\n' +
-                // '    <div class="member-image">\n' +
-                // '        <img src="/resources/images/member_270x210.jpg" alt="Member">\n' +
-                // '    </div>\n' +
-                // '    <div class="member-info">\n' +
-                // '        <h3>大盘鸡</h3>\n' +
-                // '        <h5>￥11/份</h5>\n' +
-                // '        <p>Lorem tempor incididunt ut labore et dolore magna aliqua.</p>\n' +
-                // '        <div class="social-touch">\n' +
-                // '            <a class="fb-touch" href="#"><h2>下单</h2></a>\n' +
-                // '        </div>\n' +
-                // '    </div>\n' +
-                // '</li>')
-                // }
-                // next(lis.join(''), page < 8); //假设总页数为 8
-                // }, 500);
-                var lis = [];
-                var count = 0;
-                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-                $.get('/food/foods.do?page=' + page, function (res) {
-                    //假设你的列表返回在data集合中
-                    layui.each(res.data, function (index, item) {
-                        lis.push('<li class="single-member effect-3">\n' +
-                            '    <div class="member-image">\n' +
-                            '        <img src="/file/imageView.do?picturePath=' + item.picturePath + '" alt="Member">\n' +
-                            '    </div>\n' +
-                            '    <div class="member-info">\n' +
-                            '        <h3>' + item.foodName + '</h3>\n' +
-                            '        <h5>￥' + item.price + '/份</h5>\n' +
-                            '        <p>' + item.foodInfo + '</p>\n' +
-                            '        <div class="social-touch">\n' +
-                            '            <button class="fb-touch" onclick="addOrder(this.id)" id="' + item.id + '"><h2>加入购物车</h2></button>\n' +
-                            '        </div>\n' +
-                            '    </div>\n' +
-                            '</li>')
-                        count++;
-                    });
-
-                    if (count % 4 !== 0) {
-                        for (var i = 0; i < 4 - count % 4; i++) {
+        //获取传参
+        if (getRequestParam().restaurantId != null) {
+            var restaurantId = JSON.parse(decodeURIComponent(getRequestParam().restaurantId));
+            flow.load({
+                elem: '#LAY_demo1' //流加载容器
+                , scrollElem: '#LAY_demo2' //滚动条所在元素，一般不用填，此处只是演示需要。
+                , isAuto: false
+                , isLazyimg: true
+                , done: function (page, next) { //加载下一页
+                    //模拟插入
+                    // setTimeout(function () {
+                    // var lis = [];
+                    // for (var i = 0; i < 8; i++) {
+                    // lis.push('<li class="single-member effect-3">\n' +
+                    // '    <div class="member-image">\n' +
+                    // '        <img src="/resources/images/member_270x210.jpg" alt="Member">\n' +
+                    // '    </div>\n' +
+                    // '    <div class="member-info">\n' +
+                    // '        <h3>大盘鸡</h3>\n' +
+                    // '        <h5>￥11/份</h5>\n' +
+                    // '        <p>Lorem tempor incididunt ut labore et dolore magna aliqua.</p>\n' +
+                    // '        <div class="social-touch">\n' +
+                    // '            <a class="fb-touch" href="#"><h2>下单</h2></a>\n' +
+                    // '        </div>\n' +
+                    // '    </div>\n' +
+                    // '</li>')
+                    // }
+                    // next(lis.join(''), page < 8); //假设总页数为 8
+                    // }, 500);
+                    var lis = [];
+                    var count = 0;
+                    //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                    $.get('/food/foods.do?page=' + page + '&&restaurantId=' + restaurantId, function (res) {
+                        //假设你的列表返回在data集合中
+                        layui.each(res.data, function (index, item) {
                             lis.push('<li class="single-member effect-3">\n' +
+                                '    <div class="member-image">\n' +
+                                '        <img src="/file/imageView.do?picturePath=' + item.picturePath + '" alt="Member">\n' +
+                                '    </div>\n' +
+                                '    <div class="member-info">\n' +
+                                '        <h3>' + item.foodName + '</h3>\n' +
+                                '        <h5>￥' + item.price + '/份</h5>\n' +
+                                '        <p>' + item.foodInfo + '</p>\n' +
+                                '        <div class="social-touch">\n' +
+                                '            <button class="fb-touch" onclick="addOrder(this.id)" id="' + item.id + '"><h2>加入购物车</h2></button>\n' +
+                                '        </div>\n' +
+                                '    </div>\n' +
                                 '</li>')
-                        }
-                    }
+                            count++;
+                        });
 
-                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
-                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
-                    next(lis.join(''), page < res.pages);
-                });
-            }
-        });
-        flow.load({
-            elem: '#LAY_demo2' //流加载容器
-            , scrollElem: '#LAY_demo2' //滚动条所在元素，一般不用填，此处只是演示需要。
-            , isAuto: false
-            , isLazyimg: true
-            , done: function (page, next) { //加载下一页
-                //模拟插入
-                // setTimeout(function () {
-                //     var lis = [];
-                //     for (var i = 0; i < 8; i++) {
-                //         lis.push('<li class="single-member effect-1">\n' +
-                //             // '    <div class="member-image">\n' +
-                //             // '        <img src="/resources/images/member_140x145.jpg" alt="Member">\n' +
-                //             // '    </div>\n' +
-                //             // '    <div class="member-info">\n' +
-                //             // '        <h3>Sophia</h3>\n' +
-                //             // '        <h5>ShowGilr</h5>\n' +
-                //             // '        <p>Lorem ipsum dolor sit amet, consectetur adipiscin</p>\n' +
-                //             // '        <div class="social-touch">\n' +
-                //             // '            <a class="fb-touch" href="#"><h2>进店看看</h2></a>\n' +
-                //             // '        </div>\n' +
-                //             // '    </div>\n' +
-                //             '</li>')
-                //     }
-                //     next(lis.join(''), page < 8); //假设总页数为 8
-                // }, 500);
-                var lis = [];
-                var count = 0;
-                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-                $.get('/food/restuarants.do?page=' + page, function (res) {
-                    debugger;
-                    //假设你的列表返回在data集合中
-                    layui.each(res.data, function (index, item) {
-                        lis.push('<li class="single-member effect-1">\n' +
-                            '    <div class="member-image">\n' +
-                            '        <img src="/file/imageView.do?picturePath=' + item.bossPicturePath + '" alt="Member">\n' +
-                            '    </div>\n' +
-                            '    <div class="member-info">\n' +
-                            '        <h3>' + item.restaurantName + '</h3>\n' +
-                            '        <h5>' + item.boss + '</h5>\n' +
-                            '        <p>' + item.restaurantInfo + '</p>\n' +
-                            '        <div class="social-touch">\n' +
-                            '            <a class="fb-touch" href="/food/restuarant.do?restaurantId=' + encodeURIComponent(JSON.stringify(item.id)) + '"><h2>进店看看</h2></a>\n' +
-                            '        </div>\n' +
-                            '    </div>\n' +
-                            '</li>')
-                        count++;
+                        if (count % 4 !== 0) {
+                            for (var i = 0; i < 4 - count % 4; i++) {
+                                lis.push('<li class="single-member effect-3">\n' +
+                                    '</li>')
+                            }
+                        }
+
+                        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                        next(lis.join(''), page < res.pages);
                     });
-
-                    if (count % 4 !== 0) {
-                        for (var i = 0; i < 4 - count % 4; i++) {
-                            lis.push('<li class="single-member effect-3">\n' +
-                                '</li>')
-                        }
-                    }
-
-                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
-                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
-                    next(lis.join(''), page < res.pages);
-                });
-            }
-        });
+                }
+            });
+        }
     });
 
     function addOrder(e) {
@@ -359,6 +294,22 @@
                 });
             }
         });
+    }
+
+    function getRequestParam() {
+        var urlInfo = window.location.href;
+        var argsIndex = urlInfo.indexOf("?");
+        var args = urlInfo.substring((argsIndex + 1)).split("&");
+        var argsInfo = "{";
+        for (var i = 0; i < args.length; i++) {
+            var argResult = args[i].split("=");
+            argsInfo = argsInfo + "'" + argResult[0] + "':'" + argResult[1] + "'";
+            if (i != args.length - 1) {
+                argsInfo += ',';
+            }
+        }
+        argsInfo += "}";
+        return eval('(' + argsInfo + ')');
     }
 </script>
 </body>

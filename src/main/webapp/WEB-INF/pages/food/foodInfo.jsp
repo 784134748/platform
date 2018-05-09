@@ -43,10 +43,11 @@
 <script src="${ctx}/resources/plugin/layui/layui.js" charset="utf-8"></script>
 <script src="${ctx}/resources/js/food/foodInfo.js" charset="utf-8"></script>
 <script type="text/html" id="toobar">
-    {{#  if(d.locked == false){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="locked">锁定</a>
+    {{#  if(d.foodState.value == 1){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="locked">上架</a>
     {{#  } else { }}
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="unlocked">解锁</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="unlocked">下架</a>
     {{#  } }}
+    <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="edit">编辑</a>
 </script>
 </html>

@@ -5,6 +5,7 @@ import com.yalonglee.platform.vo.food.RestaurantVo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>《一句话功能简述》
@@ -32,7 +33,7 @@ public interface RestaurantServiceI {
     /**
      * 餐厅列表
      */
-    public List<RestaurantVo> restaurants();
+    public List<RestaurantVo> restaurants(Map<String, Object> parames);
 
     /**
      * 通过用户ID获取餐厅

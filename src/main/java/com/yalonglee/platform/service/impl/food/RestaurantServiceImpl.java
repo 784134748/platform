@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>《一句话功能简述》
@@ -44,15 +45,21 @@ public class RestaurantServiceImpl implements RestaurantServiceI {
     }
 
     @Override
-    public List<RestaurantVo> restaurants() {
-        String hql = "select u.username as boss, r.restaurantName as restaurantName, r.restaurantInfo as restaurantInfo, r.bossPicturePath as bossPicturePath from Restaurant r left join r.boss u";
-        return restaurantDaoI.findVoListByHql(RestaurantVo.class, hql);
+    public List<RestaurantVo> restaurants(Map<String, Object> parames) {
+        String hql = "select u.username as boss,r.id as id, r.restaurantName as restaurantName, r.restaurantInfo as restaurantInfo, r.bossPicturePath as bossPicturePath from Restaurant r left join r.boss u";
+        StringBuilder hql_where = new StringBuilder();
+        hql_where.append(" where 1=1");
+        //用户ID
+        if (null != parames.get("restaurantId")) {
+            hql_where.append(" and r.id = :restaurantId");
+        }
+        return restaurantDaoI.findVoListByHql(RestaurantVo.class, hql + hql_where.toString(), parames);
     }
 
     @Override
     public Restaurant getResturantByUserId(String username) {
         String hql_user = "from User u where u.username = ?";
-        User user = userDaoI.getEntityByHql(hql_user,username);
+        User user = userDaoI.getEntityByHql(hql_user, username);
         String hql_res = "from Restaurant r where r.boss.id = ?";
         return restaurantDaoI.getEntityByHql(hql_res, user.getId());
     }

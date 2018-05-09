@@ -106,20 +106,22 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
             accountLocked(data);
         } else if (layEvent === 'unlocked') {
             accountUnlocked(data);
+        } else if (layEvent === 'edit') {
+            editFood(data);
         }
     });
 
 
     /**
-     * 账号锁定
+     * 菜品上架
      * @param data
      */
     function accountLocked(data) {
         event.preventDefault();
         $.ajax({
-            url: '/rbac/user',
+            url: '/food/fixFoodState.do',
             type: 'POST',
-            data: {locked: true, id: data.id},
+            data: {foodState: 0, foodId: data.id},
             dataType: 'json',
             success: function (res) {
                 if (res.flag == true) {
@@ -136,14 +138,14 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
     };
 
     /**
-     * 账号解锁
+     * 菜品下架
      */
     function accountUnlocked(data) {
         event.preventDefault();
         $.ajax({
-            url: '/rbac/user',
+            url: '/food/fixFoodState.do',
             type: 'POST',
-            data: {locked: false, id: data.id},
+            data: {foodState: 1, foodId: data.id},
             dataType: 'json',
             success: function (res) {
                 if (res.flag == true) {
@@ -157,6 +159,28 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         })
         //防止页面跳转
         return false;
+    };
+
+    /**
+     * 菜品编辑
+     */
+    function editFood(data) {
+        event.preventDefault();
+        var index = layer.open({
+            type: 2,
+            title: '编辑菜品',
+            shadeClose: true,//点击遮罩关闭
+            anim: public_anim,
+            btnAlign: 'c',
+            shade: false,//是否有遮罩，可以设置成false
+            area: ['480px', '600px'],
+            fixed: true,
+            boolean: true,
+            id: "addID",
+            content: ['/food/addFood.do?obj=' + encodeURIComponent(JSON.stringify(data)), 'yes'], //iframe的url，no代表不显示滚动条
+            success: function (layero, lockIndex) {
+            }
+        })
     };
 
 });

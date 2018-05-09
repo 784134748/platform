@@ -34,4 +34,9 @@ public interface FoodServiceI {
      * 通过id获取food
      */
     public Food getFoodById(Serializable id);
+
+    /**
+     * 更新food
+     */
+    public void updateFood(Food food);
 }

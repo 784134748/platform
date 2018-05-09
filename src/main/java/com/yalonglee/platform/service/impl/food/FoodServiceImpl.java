@@ -4,7 +4,6 @@ import com.yalonglee.platform.dao.food.FoodDaoI;
 import com.yalonglee.platform.entity.food.Food;
 import com.yalonglee.platform.service.food.FoodServiceI;
 import com.yalonglee.platform.vo.food.FoodVo;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +38,7 @@ public class FoodServiceImpl implements FoodServiceI {
 
     @Override
     public List<FoodVo> foods(Map<String, Object> parames) {
-        String hql = "Select f.id as foodId, f.foodName as foodName, f.price as price, f.foodInfo as foodInfo, f.picturePath as picturePath from Food f";
+        String hql = "Select f.id as id, f.foodState as foodState, f.foodName as foodName, f.price as price, f.foodInfo as foodInfo, f.picturePath as picturePath from Food f";
         StringBuilder hql_where = new StringBuilder();
         hql_where.append(" where 1=1");
         if (null != parames.get("restaurantId")) {
@@ -55,5 +54,10 @@ public class FoodServiceImpl implements FoodServiceI {
     @Override
     public Food getFoodById(Serializable id) {
         return foodDaoI.get(id);
+    }
+
+    @Override
+    public void updateFood(Food food) {
+        foodDaoI.update(food);
     }
 }

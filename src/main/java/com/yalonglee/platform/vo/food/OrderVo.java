@@ -29,6 +29,11 @@ public class OrderVo extends BaseUUID {
     private String orderUser;
 
     /**
+     * 订购金额
+     */
+    private double orderPrice;
+
+    /**
      * 订购时间
      */
     private Date orderTime;
@@ -52,6 +57,14 @@ public class OrderVo extends BaseUUID {
 
     public void setOrderUser(String orderUser) {
         this.orderUser = orderUser;
+    }
+
+    public double getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(double orderPrice) {
+        this.orderPrice = orderPrice;
     }
 
     public Date getOrderTime() {
