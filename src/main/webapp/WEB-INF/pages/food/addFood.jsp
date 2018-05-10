@@ -26,7 +26,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">菜品名称</label>
         <div class="layui-input-inline">
-            <input type="text" id="foodName" name="foodName" lay-verify="required" placeholder="请输入"
+            <input type="text" id="foodName" name="foodName" maxlength="10" lay-verify="required" placeholder="请输入"
                    autocomplete="off"
                    class="layui-input databack">
         </div>
@@ -34,15 +34,15 @@
     <div class="layui-form-item">
         <label class="layui-form-label">菜品价格</label>
         <div class="layui-input-inline">
-            <input type="number" id="price" name="price" lay-verify="required" placeholder="请输入"
+            <input type="number" id="price" name="price" maxlength="10" lay-verify="required" placeholder="请输入"
                    autocomplete="off"
                    class="layui-input databack">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">菜品描述</label>
+        <label class="layui-form-label">菜品简述</label>
         <div class="layui-input-inline">
-            <textarea id="foodInfo" name="foodInfo" lay-verify="required"
+            <textarea id="foodInfo" name="foodInfo" maxlength="15" lay-verify="required"
                       autocomplete="off" class="layui-input databack" style="height: 118px;width: 300px;"></textarea>
         </div>
     </div>

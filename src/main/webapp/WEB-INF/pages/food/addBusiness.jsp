@@ -19,7 +19,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-inline">
-                <input type="text" id="username" name="username" lay-verify="required" placeholder="请输入"
+                <input type="text" id="username" name="username" maxlength="10" lay-verify="required" placeholder="请输入"
                        autocomplete="off"
                        class="layui-input">
             </div>
@@ -35,7 +35,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-inline">
-                <input type="password" id="pwd" name="password" lay-verify="required" placeholder="请输入"
+                <input type="password" id="pwd" name="password" minlength="6" maxlength="10" lay-verify="required" placeholder="请输入"
                        autocomplete="off"
                        class="layui-input">
             </div>
@@ -43,7 +43,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">验证密码</label>
             <div class="layui-input-inline">
-                <input type="password" id="ckpwd" name="checkPassword" lay-verify="required|check" placeholder="请输入"
+                <input type="password" id="ckpwd" name="checkPassword" minlength="6" maxlength="10" lay-verify="required|check" placeholder="请输入"
                        autocomplete="off"
                        class="layui-input">
             </div>
@@ -53,7 +53,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">商户名称</label>
             <div class="layui-input-inline">
-                <input type="text" id="restaurantName" name="restaurantName" lay-verify="required" placeholder="请输入"
+                <input type="text" id="restaurantName" maxlength="10" name="restaurantName" lay-verify="required" placeholder="请输入"
                        autocomplete="off"
                        class="layui-input databack">
             </div>
@@ -61,7 +61,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">商户简介</label>
             <div class="layui-input-inline">
-            <textarea id="restaurantInfo" name="restaurantInfo" lay-verify="required"
+            <textarea id="restaurantInfo" name="restaurantInfo" maxlength="15" lay-verify="required"
                       autocomplete="off" class="layui-input databack" style="height: 218px;width: 501px;"></textarea>
             </div>
         </div>
