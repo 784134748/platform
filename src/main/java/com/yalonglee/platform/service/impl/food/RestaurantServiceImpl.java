@@ -1,5 +1,6 @@
 package com.yalonglee.platform.service.impl.food;
 
+import com.yalonglee.common.base.Page;
 import com.yalonglee.platform.dao.food.RestaurantDaoI;
 import com.yalonglee.platform.dao.permission.UserDaoI;
 import com.yalonglee.platform.entity.food.Restaurant;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,8 +45,10 @@ public class RestaurantServiceImpl implements RestaurantServiceI {
     }
 
     @Override
-    public List<RestaurantVo> restaurants(Map<String, Object> parames) {
-        String hql = "select u.username as boss,r.id as id, r.restaurantName as restaurantName, r.restaurantInfo as restaurantInfo, r.bossPicturePath as bossPicturePath from Restaurant r left join r.boss u";
+    public Page<RestaurantVo> restaurants(Map<String, Object> parames, Page<RestaurantVo> page) {
+        String hql_select = "select u.username as boss,r.id as id, r.restaurantName as restaurantName, r.restaurantInfo as restaurantInfo, r.bossPicturePath as bossPicturePath";
+        String hql_count = "Select count(*)";
+        String hql_from = " from Restaurant r left join r.boss u";
         StringBuilder hql_where = new StringBuilder();
         hql_where.append(" where 1=1");
         //商户ID
@@ -61,7 +63,9 @@ public class RestaurantServiceImpl implements RestaurantServiceI {
         if (null != parames.get("username")) {
             hql_where.append(" and u.username like :username");
         }
-        return restaurantDaoI.findVoListByHql(RestaurantVo.class, hql + hql_where.toString(), parames);
+        Long count = restaurantDaoI.count(hql_count + hql_from + hql_where, parames);
+        page.setTotalCount(count);
+        return restaurantDaoI.findVoPageByHql(RestaurantVo.class, page, hql_select + hql_from + hql_where.toString(), parames);
     }
 
     @Override

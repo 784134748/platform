@@ -1,5 +1,6 @@
 package com.yalonglee.platform.service.impl.permission;
 
+import com.yalonglee.common.base.Page;
 import com.yalonglee.platform.dao.permission.UserDaoI;
 import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.service.permission.UserServiceI;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -82,13 +82,17 @@ public class UserServiceImpl implements UserServiceI {
     }
 
     @Override
-    public List<UserVo> getUsers(Map<String, Object> parames) {
-        String hql = "select u.id as id, u.username as username, u.locked as locked from User u";
+    public Page<UserVo> getUsers(Map<String, Object> parames, Page<UserVo> page) {
+        String hql_select = "select u.id as id, u.username as username, u.address as address, u.telephone as telephone, u.number as number, u.sex as sex, u.locked as locked";
+        String hql_count = "Select count(*)";
+        String hql_from = " from User u";
         StringBuilder hql_where = new StringBuilder();
         hql_where.append(" where 1=1");
         if (null != parames.get("username")) {
             hql_where.append(" and u.username like :username");
         }
-        return userDaoI.findVoListByHql(UserVo.class, hql + hql_where.toString(), parames);
+        Long count = userDaoI.count(hql_count + hql_from + hql_where, parames);
+        page.setTotalCount(count);
+        return userDaoI.findVoPageByHql(UserVo.class, page, hql_select + hql_from + hql_where.toString(), parames);
     }
 }

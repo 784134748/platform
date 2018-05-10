@@ -1,5 +1,6 @@
 package com.yalonglee.platform.controller;
 
+import com.yalonglee.common.base.Page;
 import com.yalonglee.common.bean.BaseResult;
 import com.yalonglee.common.bean.LayuiResult;
 import com.yalonglee.platform.entity.food.*;
@@ -19,7 +20,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -53,10 +52,15 @@ public class FoodController {
     @ApiOperation(value = "展示菜品")
     @RequestMapping(value = "/foods.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<FoodVo> getFoods(String type, String foodId, String restaurantId, String foodName) {
+    public LayuiResult<FoodVo> getFoods(int limit, int page, String type, String foodId, String restaurantId, String foodName) {
         Map<String, Object> parames = new HashMap<>();
+        Page<FoodVo> pagevo = new Page<>();
+        pagevo.setPageSize(limit);
+        pagevo.setCurrentPageNo(page);
+        parames.put("limit", limit);
+        parames.put("page", page);
         if (StringUtils.isNotBlank(foodName)) {
-            parames.put("foodName", foodName);
+            parames.put("foodName", "%" + foodName + "%");
         }
         if ("1".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
@@ -70,11 +74,11 @@ public class FoodController {
             parames.put("restaurantId", restaurantId);
         }
         LayuiResult<FoodVo> layuiResult = new LayuiResult<>();
-        List<FoodVo> list = foodServiceI.foods(parames);
-        layuiResult.setData(list);
+        Page<FoodVo> page_result = foodServiceI.foods(parames, pagevo);
+        layuiResult.setData(page_result.getResult());
         layuiResult.setCode(0);
         layuiResult.setFlag(true);
-        layuiResult.setCount(10L);
+        layuiResult.setCount(page_result.getTotalCount());
         return layuiResult;
     }
 
@@ -84,14 +88,17 @@ public class FoodController {
     @ApiOperation(value = "展示店铺")
     @RequestMapping(value = "/restuarants.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<RestaurantVo> getRestuarants(String type, String restaurantName, String username) {
+    public LayuiResult<RestaurantVo> getRestuarants(int limit, int page, String type, String restaurantName, String username) {
         LayuiResult<RestaurantVo> layuiResult = new LayuiResult<>();
         Map<String, Object> parames = new HashMap<>();
+        Page<RestaurantVo> pagevo = new Page<>();
+        pagevo.setPageSize(limit);
+        pagevo.setCurrentPageNo(page);
         if (StringUtils.isNotBlank(restaurantName)) {
-            parames.put("restaurantName", restaurantName);
+            parames.put("restaurantName", "%" + restaurantName + "%");
         }
         if (StringUtils.isNotBlank(username)) {
-            parames.put("username", username);
+            parames.put("username", "%" + username + "%");
         }
         if ("databack".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
@@ -103,11 +110,11 @@ public class FoodController {
             }
             parames.put("restaurantId", restaurant.getId());
         }
-        List<RestaurantVo> list = restaurantServiceI.restaurants(parames);
+        Page<RestaurantVo> page_result = restaurantServiceI.restaurants(parames, pagevo);
         layuiResult.setFlag(true);
-        layuiResult.setData(list);
+        layuiResult.setData(page_result.getResult());
         layuiResult.setCode(0);
-        layuiResult.setCount(10L);
+        layuiResult.setCount(page_result.getTotalCount());
         return layuiResult;
     }
 
@@ -117,13 +124,16 @@ public class FoodController {
     @ApiOperation(value = "展示订单")
     @RequestMapping(value = "/orders.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<OrderVo> getOrders(String type, String foodName, String username) {
+    public LayuiResult<OrderVo> getOrders(int limit, int page, String type, String foodName, String username) {
         Map<String, Object> parames = new HashMap<>();
+        Page<OrderVo> pagevo = new Page<>();
+        pagevo.setPageSize(limit);
+        pagevo.setCurrentPageNo(page);
         if (StringUtils.isNotBlank(foodName)) {
-            parames.put("foodName", foodName);
+            parames.put("foodName", "%" + foodName + "%");
         }
         if (StringUtils.isNotBlank(username)) {
-            parames.put("username", username);
+            parames.put("username", "%" + username + "%");
         }
         //订单
         if ("order".equals(type)) {
@@ -158,10 +168,10 @@ public class FoodController {
             }
         }
         LayuiResult<OrderVo> layuiResult = new LayuiResult<>();
-        List<OrderVo> list = orderServiceI.orders(parames);
-        layuiResult.setData(list);
+        Page<OrderVo> page_result = orderServiceI.orders(parames, pagevo);
+        layuiResult.setData(page_result.getResult());
         layuiResult.setCode(0);
-        layuiResult.setCount(10L);
+        layuiResult.setCount(page_result.getTotalCount());
         return layuiResult;
     }
 
@@ -269,6 +279,11 @@ public class FoodController {
                 return baseResult;
             }
             User user = userServiceI.getUserByUsername(currentUsername);
+            if (StringUtils.isBlank(user.getTelephone()) || StringUtils.isBlank(user.getAddress()) || StringUtils.isBlank(user.getNumber())) {
+                baseResult.setFlag(false);
+                baseResult.setMsg("请先完善个人信息");
+                return baseResult;
+            }
             foodOrder order = new foodOrder();
             Food food = foodServiceI.getFoodById(foodId);
             order.setOrderFood(food);

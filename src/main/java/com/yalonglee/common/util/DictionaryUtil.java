@@ -233,14 +233,12 @@ public class DictionaryUtil {
         userVo1.setUsername("test");
         userVo1.setLocked(AcountState.NORMOL);
         userVo1.setSex(SexType.MAN);
-        userVo1.setRoles(roles);
 
         UserVo userVo2 = new UserVo();
         userVo2.setId("2");
         userVo2.setUsername("test1");
         userVo2.setLocked(AcountState.LOCKED);
         userVo2.setSex(SexType.MAN);
-        userVo2.setRoles(roles);
 
         List<UserVo> list = new ArrayList<>();
         list.add(userVo1);

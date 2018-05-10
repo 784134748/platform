@@ -35,7 +35,7 @@ public class UserVo extends BaseUUID {
     /**
      * 联系方式
      */
-    private String adress;
+    private String address;
     /**
      * 学生证件
      */
@@ -52,10 +52,6 @@ public class UserVo extends BaseUUID {
      * 账号锁定
      */
     private AcountState locked;
-    /**
-     * user --> role 多对多处理
-     */
-    private Set<String> roles;
 
     public String getUsername() {
         return username;
@@ -81,12 +77,12 @@ public class UserVo extends BaseUUID {
         this.telephone = telephone;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getNumber() {
@@ -121,11 +117,4 @@ public class UserVo extends BaseUUID {
         this.locked = locked;
     }
 
-    public Set<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
-    }
 }

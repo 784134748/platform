@@ -25,23 +25,37 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
             layer.close(index);//关闭
         },
         cols: [[ //标题栏
-            {
-                field: 'username',
+            {   field: 'username',
                 title: '用户名',
                 align: 'center',
-                width: '20%'
+                width: '16%'
+            },{
+                field: 'telephone',
+                title: '联系方式',
+                align: 'center',
+                width: '16%'
+            },{
+                field: 'address',
+                title: '宿舍楼栋',
+                align: 'center',
+                width: '16%'
+            },{
+                field: 'number',
+                title: '学生证件',
+                align: 'center',
+                width: '16%'
             }, {
                 field: 'name',
                 title: '状态',
                 align: 'center',
-                width: '20%',
+                width: '16%',
                 templet: '<div>{{d.locked.name}}</div>'
             }, {
                 fixed: 'right',
                 title: '操作',
                 align: 'center',
                 toolbar: '#toobar',
-                width: '20%'
+                width: '10%'
             }]]
     });
 

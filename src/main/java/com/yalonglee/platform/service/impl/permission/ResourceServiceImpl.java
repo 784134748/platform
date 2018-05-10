@@ -1,10 +1,8 @@
 package com.yalonglee.platform.service.impl.permission;
 
 import com.yalonglee.platform.dao.permission.ResourceDaoI;
-import com.yalonglee.platform.dao.permission.ResourceDaoI;
 import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.entity.permission.Resource;
-import com.yalonglee.platform.service.permission.ResourceServiceI;
 import com.yalonglee.platform.service.permission.ResourceServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

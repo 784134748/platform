@@ -675,13 +675,13 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public NativeQuery createNativeQuery(Page<T> page, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
         NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
                 nativeQuery.setParameter(i, params[i]);
             }
         }
-        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        nativeQuery.setMaxResults(page.getPageSize());
         return nativeQuery;
     }
 
@@ -689,13 +689,13 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public NativeQuery createNativeQuery(Page<T> page, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
         NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
         if (params != null && !params.isEmpty()) {
             for (int i = 0; i < params.size(); i++) {
                 nativeQuery.setParameter(i, params.get(i));
             }
         }
-        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        nativeQuery.setMaxResults(page.getPageSize());
         return nativeQuery;
     }
 
@@ -703,6 +703,8 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public NativeQuery createNativeQuery(Page<T> page, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
         NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
         if (params == null || params.isEmpty()) {
             return nativeQuery;
         }
@@ -717,8 +719,6 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
                 }
             }
         }
-        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        nativeQuery.setMaxResults(page.getPageSize());
         return nativeQuery;
     }
 
@@ -726,9 +726,9 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql) {
         Assert.hasText(sql, "sql is null");
         NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
-        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
         nativeQuery.setMaxResults(page.getPageSize());
+        nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         return nativeQuery;
     }
 
@@ -736,14 +736,14 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, Object... params) {
         Assert.hasText(sql, "sql is null");
         NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
         nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
                 nativeQuery.setParameter(i, params[i]);
             }
         }
-        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        nativeQuery.setMaxResults(page.getPageSize());
         return nativeQuery;
     }
 
@@ -751,14 +751,14 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, List<Object> params) {
         Assert.hasText(sql, "sql is null");
         NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
         nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params != null && !params.isEmpty()) {
             for (int i = 0; i < params.size(); i++) {
                 nativeQuery.setParameter(i, params.get(i));
             }
         }
-        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        nativeQuery.setMaxResults(page.getPageSize());
         return nativeQuery;
     }
 
@@ -766,6 +766,8 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public NativeQuery createNativeQuery(Class clazz, Page<?> page, String sql, Map<String, Object> params) {
         Assert.hasText(sql, "sql is null");
         NativeQuery nativeQuery = this.getCurrentSession().createNativeQuery(sql);
+        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        nativeQuery.setMaxResults(page.getPageSize());
         nativeQuery.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params == null || params.isEmpty()) {
             return nativeQuery;
@@ -781,8 +783,6 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
                 }
             }
         }
-        nativeQuery.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        nativeQuery.setMaxResults(page.getPageSize());
         return nativeQuery;
     }
 
@@ -907,13 +907,13 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public Query createQuery(Page<T> page, String hql, Object... params) {
         Assert.hasText(hql, "hql is null");
         Query query = this.getCurrentSession().createQuery(hql);
+        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        query.setMaxResults(page.getPageSize());
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
                 query.setParameter(i, params[i]);
             }
         }
-        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        query.setMaxResults(page.getPageSize());
         return query;
     }
 
@@ -921,13 +921,13 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public Query createQuery(Page<T> page, String hql, List<Object> params) {
         Assert.hasText(hql, "hql is null");
         Query query = this.getCurrentSession().createQuery(hql);
+        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        query.setMaxResults(page.getPageSize());
         if (params != null && !params.isEmpty()) {
             for (int i = 0; i < params.size(); i++) {
                 query.setParameter(i, params.get(i));
             }
         }
-        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        query.setMaxResults(page.getPageSize());
         return query;
     }
 
@@ -935,6 +935,8 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public Query createQuery(Page<T> page, String hql, Map<String, Object> params) {
         Assert.hasText(hql, "hql is null");
         Query query = this.getCurrentSession().createQuery(hql);
+        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        query.setMaxResults(page.getPageSize());
         if (params == null || params.isEmpty()) {
             return query;
         }
@@ -949,8 +951,6 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
                 }
             }
         }
-        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        query.setMaxResults(page.getPageSize());
         return query;
     }
 
@@ -958,9 +958,9 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public Query createQuery(Class clazz, Page<?> page, String hql) {
         Assert.hasText(hql, "hql is null");
         Query query = this.getCurrentSession().createQuery(hql);
-        query.setResultTransformer(Transformers.aliasToBean(clazz));
         query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
         query.setMaxResults(page.getPageSize());
+        query.setResultTransformer(Transformers.aliasToBean(clazz));
         return query;
     }
 
@@ -968,14 +968,14 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public Query createQuery(Class clazz, Page<?> page, String hql, Object... params) {
         Assert.hasText(hql, "hql is null");
         Query query = this.getCurrentSession().createQuery(hql);
+        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        query.setMaxResults(page.getPageSize());
         query.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
                 query.setParameter(i, params[i]);
             }
         }
-        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        query.setMaxResults(page.getPageSize());
         return query;
     }
 
@@ -983,14 +983,14 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public Query createQuery(Class clazz, Page<?> page, String hql, List<Object> params) {
         Assert.hasText(hql, "hql is null");
         Query query = this.getCurrentSession().createQuery(hql);
+        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        query.setMaxResults(page.getPageSize());
         query.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params != null && !params.isEmpty()) {
             for (int i = 0; i < params.size(); i++) {
                 query.setParameter(i, params.get(i));
             }
         }
-        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        query.setMaxResults(page.getPageSize());
         return query;
     }
 
@@ -998,6 +998,8 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
     public Query createQuery(Class clazz, Page<?> page, String hql, Map<String, Object> params) {
         Assert.hasText(hql, "hql is null");
         Query query = this.getCurrentSession().createQuery(hql);
+        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
+        query.setMaxResults(page.getPageSize());
         query.setResultTransformer(Transformers.aliasToBean(clazz));
         if (params == null || params.isEmpty()) {
             return query;
@@ -1013,8 +1015,6 @@ public abstract class BaseDaoImpl<T> implements BaseDaoI<T> {
                 }
             }
         }
-        query.setFirstResult((page.getCurrentPageNo() - 1) * page.getPageSize());
-        query.setMaxResults(page.getPageSize());
         return query;
     }
 

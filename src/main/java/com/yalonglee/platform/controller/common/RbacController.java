@@ -1,10 +1,8 @@
 package com.yalonglee.platform.controller.common;
 
-import com.sun.org.apache.xpath.internal.operations.Mult;
+import com.yalonglee.common.base.Page;
 import com.yalonglee.common.bean.BaseResult;
 import com.yalonglee.common.bean.LayuiResult;
-import com.yalonglee.common.bean.MultiResult;
-import com.yalonglee.common.bean.dto.ResultRows;
 import com.yalonglee.platform.dto.permission.*;
 import com.yalonglee.platform.entity.example.basic.SexType;
 import com.yalonglee.platform.entity.food.Restaurant;
@@ -25,10 +23,7 @@ import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import sun.security.krb5.internal.PAData;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -112,7 +107,7 @@ public class RbacController {
     @ApiOperation(value = "注册普通用户")
     @RequestMapping(value = "/register.do", method = RequestMethod.PUT)
     @ResponseBody
-    public BaseResult register(@RequestBody User user, @RequestParam String type, @RequestParam String sexType) {
+    public BaseResult register(@RequestBody User user, @RequestParam(required = false) String type, @RequestParam(required = false) String sexType) {
         BaseResult result = new BaseResult();
         User user1 = userServiceI.getUserByUsername(user.getUsername());
         if ("perfect".equals(type)) {
@@ -331,16 +326,19 @@ public class RbacController {
     @ApiOperation(value = "获取用户列表")
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<UserVo> getUsers(UserDto userDto, String username) {
+    public LayuiResult<UserVo> getUsers(int limit, int page, UserDto userDto, String username) {
         LayuiResult<UserVo> layuiResult = new LayuiResult<>();
+        Page<UserVo> pagevo = new Page<>();
+        pagevo.setPageSize(limit);
+        pagevo.setCurrentPageNo(page);
         Map<String, Object> parames = new HashMap<>();
         if (StringUtils.isNotBlank(username)) {
-            parames.put("username", username);
+            parames.put("username", "%" + username + "%");
         }
-        List<UserVo> list = userServiceI.getUsers(parames);
-        layuiResult.setData(list);
+        Page<UserVo> page_result = userServiceI.getUsers(parames, pagevo);
+        layuiResult.setData(page_result.getResult());
         layuiResult.setCode(0);
-        layuiResult.setCount(10L);
+        layuiResult.setCount(page_result.getTotalCount());
         return layuiResult;
     }
 

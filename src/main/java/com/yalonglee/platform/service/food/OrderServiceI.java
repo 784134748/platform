@@ -1,10 +1,10 @@
 package com.yalonglee.platform.service.food;
 
+import com.yalonglee.common.base.Page;
 import com.yalonglee.platform.entity.food.foodOrder;
 import com.yalonglee.platform.vo.food.OrderVo;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,7 +28,7 @@ public interface OrderServiceI {
     /**
      * 订单展示
      */
-    public List<OrderVo> orders(Map<String, Object> parames);
+    public Page<OrderVo> orders(Map<String, Object> parames,Page<OrderVo> page);
 
     /**
      * 通过id获取Order

@@ -6,7 +6,9 @@ layui.use(['layer', 'form', 'table'], function () {
     /**
      * 自定义校验
      */
-    form.verify({});
+    form.verify({
+
+    });
 
     /**
      * 监听提交

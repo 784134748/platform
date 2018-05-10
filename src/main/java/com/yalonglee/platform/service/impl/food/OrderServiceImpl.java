@@ -1,5 +1,6 @@
 package com.yalonglee.platform.service.impl.food;
 
+import com.yalonglee.common.base.Page;
 import com.yalonglee.platform.dao.food.OrderDaoI;
 import com.yalonglee.platform.entity.food.foodOrder;
 import com.yalonglee.platform.service.food.OrderServiceI;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,8 +36,10 @@ public class OrderServiceImpl implements OrderServiceI {
     }
 
     @Override
-    public List<OrderVo> orders(Map<String, Object> parames) {
-        String hql = "select fo.id as id,fo.orderFood.price as orderPrice, fo.orderFood.foodName as orderFood, fo.orderUser.username as orderUser, fo.orderUser.telephone as telephone, fo.orderUser.address as orderAddress, fo.orderUser.number as studentNumber, fo.orderTime as orderTime, fo.orderState as orderState from foodOrder fo";
+    public Page<OrderVo> orders(Map<String, Object> parames, Page<OrderVo> page) {
+        String hql_select = "select fo.id as id,fo.orderFood.price as orderPrice, fo.orderFood.foodName as orderFood, fo.orderUser.username as orderUser, fo.orderUser.telephone as telephone, fo.orderUser.address as orderAddress, fo.orderUser.number as studentNumber, fo.orderTime as orderTime, fo.orderState as orderState";
+        String hql_count = "Select count(*)";
+        String hql_from = " from foodOrder fo";
         StringBuilder hql_where = new StringBuilder();
         hql_where.append(" where 1=1");
         //用户ID
@@ -57,19 +59,19 @@ public class OrderServiceImpl implements OrderServiceI {
             hql_where.append(" and fo.orderUser.username like :username");
         }
         //购物车
-        if(null != parames.get("orderType") && "wait".equals(parames.get("orderType"))){
+        if (null != parames.get("orderType") && "wait".equals(parames.get("orderType"))) {
             if (null != parames.get("waitState")) {
                 hql_where.append(" and fo.orderState = :waitState");
             }
         }
         //我的订单
-        if(null != parames.get("orderType") && "order".equals(parames.get("orderType"))){
+        if (null != parames.get("orderType") && "order".equals(parames.get("orderType"))) {
             if (null != parames.get("waitState")) {
                 hql_where.append(" and fo.orderState != :waitState");
             }
         }
         //商家订单
-        if(null != parames.get("orderType") && "business".equals(parames.get("orderType"))){
+        if (null != parames.get("orderType") && "business".equals(parames.get("orderType"))) {
             if (null != parames.get("waitState")) {
                 hql_where.append(" and fo.orderState != :waitState");
             }
@@ -77,8 +79,9 @@ public class OrderServiceImpl implements OrderServiceI {
                 hql_where.append(" and fo.orderState != :backState");
             }
         }
-
-        return orderDaoI.findVoListByHql(OrderVo.class, hql + hql_where.toString(), parames);
+        Long count = orderDaoI.count(hql_count + hql_from + hql_where, parames);
+        page.setTotalCount(count);
+        return orderDaoI.findVoPageByHql(OrderVo.class, page, hql_select + hql_from + hql_where.toString(), parames);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.yalonglee.platform.service.permission;
 
+import com.yalonglee.common.base.Page;
 import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.vo.permission.UserVo;
 
@@ -91,6 +92,6 @@ public interface UserServiceI {
      * 获取用户列表
      * @return
      */
-    public List<UserVo> getUsers(Map<String,Object> parames);
+    public Page<UserVo> getUsers(Map<String,Object> parames,Page<UserVo> page);
 
 }

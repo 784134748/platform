@@ -234,7 +234,7 @@
                     var lis = [];
                     var count = 0;
                     //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-                    $.get('/food/foods.do?page=' + page + '&&restaurantId=' + restaurantId, function (res) {
+                    $.get('/food/foods.do?limit=8&&page=' + page + '&&restaurantId=' + restaurantId, function (res) {
                         //假设你的列表返回在data集合中
                         layui.each(res.data, function (index, item) {
                             lis.push('<li class="single-member effect-3">\n' +
