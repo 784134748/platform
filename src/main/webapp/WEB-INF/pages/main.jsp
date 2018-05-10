@@ -31,7 +31,7 @@
             </a>
             <ul class="layui-nav fly-nav layui-hide-xs">
                 <li class="layui-nav-item layui-this">
-                    <a href="/"><i class="iconfont icon-jiaoliu"></i>今日反馈</a>
+                    <a href="/"><i class="iconfont icon-jiaoliu"></i>新闻公告</a>
                 </li>
                 <li class="layui-nav-item">
                     <a href="case/case.html"><i class="iconfont icon-iconmingxinganli"></i>质量监管</a>
@@ -65,11 +65,15 @@
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="/food/userOrder.do" target="_blank"><i class="iconfont icon-tongzhi"
+                                <a href="/food/userOrder.do" target="_blank"><i class="layui-icon layui-icon-notice"
                                                                                 style="top: 4px;"></i>我的订单</a>
                             </dd>
                             <dd>
-                                <a href="/food/userShop.do" target="_blank"><i class="iconfont icon-tongzhi"
+                                <a href="/rbac/userinfo.do" target="_blank"><i class="layui-icon layui-icon-user"
+                                                                               style="top: 4px;"></i>个人中心</a>
+                            </dd>
+                            <dd>
+                                <a href="/food/userShop.do" target="_blank"><i class="layui-icon layui-icon-cart"
                                                                                style="top: 4px;"></i>购物车</a>
                             </dd>
                             <hr style="margin: 5px 0;">
@@ -300,7 +304,6 @@
                 var count = 0;
                 //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
                 $.get('/food/restuarants.do?page=' + page, function (res) {
-                    debugger;
                     //假设你的列表返回在data集合中
                     layui.each(res.data, function (index, item) {
                         lis.push('<li class="single-member effect-1">\n' +

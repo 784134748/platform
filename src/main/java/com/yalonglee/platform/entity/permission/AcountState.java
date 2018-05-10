@@ -60,6 +60,9 @@ public enum AcountState {
 
         @Override
         public AcountState convertToEntityAttribute(Integer dbData) {
+            if(null == dbData){
+                return null;
+            }
             for (AcountState type : AcountState.values()) {
                 if (dbData.equals(type.getValue())) {
                     return type;

@@ -64,7 +64,13 @@ public class UserRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String username = token.getUsername();
         String password = String.valueOf(token.getPassword());
-        User user = userServiceI.getUserByUsername(username);
+        User user = new User();
+        try{
+            user = userServiceI.getUserByUsername(username);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         //UnknownAccountException
         if (null == user) {
             throw new UnknownAccountException();

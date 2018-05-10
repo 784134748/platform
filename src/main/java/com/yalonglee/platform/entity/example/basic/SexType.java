@@ -17,11 +17,11 @@ public enum SexType {
     /**
      * 男
      */
-    YES(1, "男"),
+    MAN(1, "男"),
     /**
      * 女
      */
-    NO(-1, "女");
+    WOMAN(0, "女");
 
     SexType(Integer value, String name) {
         this.value = value;
@@ -56,6 +56,9 @@ public enum SexType {
 
         @Override
         public SexType convertToEntityAttribute(Integer dbData) {
+            if(null == dbData){
+                return null;
+            }
             for (SexType type : SexType.values()) {
                 if (dbData.equals(type.getValue())) {
                     return type;

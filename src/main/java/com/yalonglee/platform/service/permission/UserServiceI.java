@@ -5,6 +5,7 @@ import com.yalonglee.platform.vo.permission.UserVo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -90,6 +91,6 @@ public interface UserServiceI {
      * 获取用户列表
      * @return
      */
-    public List<UserVo> getUsers();
+    public List<UserVo> getUsers(Map<String,Object> parames);
 
 }

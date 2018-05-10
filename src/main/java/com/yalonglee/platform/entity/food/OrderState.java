@@ -76,6 +76,9 @@ public enum OrderState {
 
         @Override
         public OrderState convertToEntityAttribute(Integer dbData) {
+            if(null == dbData){
+                return null;
+            }
             for (OrderState type : OrderState.values()) {
                 if (dbData.equals(type.getValue())) {
                     return type;

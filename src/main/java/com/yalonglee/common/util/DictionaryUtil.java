@@ -3,6 +3,7 @@ package com.yalonglee.common.util;
 import com.yalonglee.common.annotation.Dict;
 import com.yalonglee.common.base.Dictionary;
 import com.yalonglee.platform.entity.data.DictionaryData;
+import com.yalonglee.platform.entity.example.basic.SexType;
 import com.yalonglee.platform.entity.permission.AcountState;
 import com.yalonglee.platform.vo.permission.UserVo;
 import org.apache.commons.lang3.StringUtils;
@@ -231,14 +232,14 @@ public class DictionaryUtil {
         userVo1.setId("1");
         userVo1.setUsername("test");
         userVo1.setLocked(AcountState.NORMOL);
-        userVo1.setSex("0");
+        userVo1.setSex(SexType.MAN);
         userVo1.setRoles(roles);
 
         UserVo userVo2 = new UserVo();
         userVo2.setId("2");
         userVo2.setUsername("test1");
         userVo2.setLocked(AcountState.LOCKED);
-        userVo2.setSex("1");
+        userVo2.setSex(SexType.MAN);
         userVo2.setRoles(roles);
 
         List<UserVo> list = new ArrayList<>();

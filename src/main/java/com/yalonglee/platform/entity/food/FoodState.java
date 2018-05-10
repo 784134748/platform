@@ -61,6 +61,9 @@ public enum FoodState {
 
         @Override
         public FoodState convertToEntityAttribute(Integer dbData) {
+            if(null == dbData){
+                return null;
+            }
             for (FoodState type : FoodState.values()) {
                 if (dbData.equals(type.getValue())) {
                     return type;

@@ -89,7 +89,6 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
      * @param data
      */
     function accountLocked(data) {
-        debugger;
         event.preventDefault();
         $.ajax({
             url: '/food/fixOrderState.do',

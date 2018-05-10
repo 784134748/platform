@@ -53,8 +53,11 @@ public class FoodController {
     @ApiOperation(value = "展示菜品")
     @RequestMapping(value = "/foods.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<FoodVo> getFoods(String type, String foodId, String restaurantId) {
+    public LayuiResult<FoodVo> getFoods(String type, String foodId, String restaurantId, String foodName) {
         Map<String, Object> parames = new HashMap<>();
+        if (StringUtils.isNotBlank(foodName)) {
+            parames.put("foodName", foodName);
+        }
         if ("1".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
             Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
@@ -81,18 +84,24 @@ public class FoodController {
     @ApiOperation(value = "展示店铺")
     @RequestMapping(value = "/restuarants.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<RestaurantVo> getRestuarants(String type) {
+    public LayuiResult<RestaurantVo> getRestuarants(String type, String restaurantName, String username) {
         LayuiResult<RestaurantVo> layuiResult = new LayuiResult<>();
         Map<String, Object> parames = new HashMap<>();
-        if("databack".equals(type)){
+        if (StringUtils.isNotBlank(restaurantName)) {
+            parames.put("restaurantName", restaurantName);
+        }
+        if (StringUtils.isNotBlank(username)) {
+            parames.put("username", username);
+        }
+        if ("databack".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
             Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
-            if(null == restaurant){
+            if (null == restaurant) {
                 layuiResult.setFlag(false);
                 layuiResult.setCode(-1);
                 return layuiResult;
             }
-            parames.put("restaurantId",restaurant.getId());
+            parames.put("restaurantId", restaurant.getId());
         }
         List<RestaurantVo> list = restaurantServiceI.restaurants(parames);
         layuiResult.setFlag(true);
@@ -108,8 +117,14 @@ public class FoodController {
     @ApiOperation(value = "展示订单")
     @RequestMapping(value = "/orders.do", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<OrderVo> getOrders(String type) {
+    public LayuiResult<OrderVo> getOrders(String type, String foodName, String username) {
         Map<String, Object> parames = new HashMap<>();
+        if (StringUtils.isNotBlank(foodName)) {
+            parames.put("foodName", foodName);
+        }
+        if (StringUtils.isNotBlank(username)) {
+            parames.put("username", username);
+        }
         //订单
         if ("order".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
@@ -133,11 +148,14 @@ public class FoodController {
         if ("business".equals(type)) {
             String currentUsername = (String) SecurityUtils.getSubject().getPrincipal();
             Restaurant restaurant = restaurantServiceI.getResturantByUserId(currentUsername);
-            parames.put("restaurantId", restaurant.getId());
-            //不展示购物车内订单和退订订单
-            parames.put("waitState", OrderState.WAIT);
-            parames.put("backState", OrderState.BACK);
-            parames.put("orderType", type);
+            //非管理员的商户
+            if (null != restaurant) {
+                parames.put("restaurantId", restaurant.getId());
+                //不展示购物车内订单和退订订单
+                parames.put("waitState", OrderState.WAIT);
+                parames.put("backState", OrderState.BACK);
+                parames.put("orderType", type);
+            }
         }
         LayuiResult<OrderVo> layuiResult = new LayuiResult<>();
         List<OrderVo> list = orderServiceI.orders(parames);

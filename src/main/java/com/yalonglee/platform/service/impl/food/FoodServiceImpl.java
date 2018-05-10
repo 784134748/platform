@@ -41,11 +41,17 @@ public class FoodServiceImpl implements FoodServiceI {
         String hql = "Select f.id as id, f.foodState as foodState, f.foodName as foodName, f.price as price, f.foodInfo as foodInfo, f.picturePath as picturePath from Food f";
         StringBuilder hql_where = new StringBuilder();
         hql_where.append(" where 1=1");
+        //商户ID
         if (null != parames.get("restaurantId")) {
             hql_where.append(" and f.restaurant.id = :restaurantId");
         }
+        //菜品ID
         if (null != parames.get("foodId")) {
             hql_where.append(" and f.id = :foodId");
+        }
+        //菜品名称
+        if (null != parames.get("foodName")) {
+            hql_where.append(" and f.foodName like :foodName");
         }
         return foodDaoI.findVoListByHql(FoodVo.class, hql + hql_where.toString(), parames);
 

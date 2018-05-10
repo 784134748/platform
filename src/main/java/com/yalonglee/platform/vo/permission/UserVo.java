@@ -1,6 +1,8 @@
 package com.yalonglee.platform.vo.permission;
 
 import com.yalonglee.common.annotation.Dict;
+import com.yalonglee.common.base.strategy.BaseUUID;
+import com.yalonglee.platform.entity.example.basic.SexType;
 import com.yalonglee.platform.entity.permission.AcountState;
 
 import java.util.Set;
@@ -16,21 +18,36 @@ import java.util.Set;
  * @version [V1.0, 2018/3/20]
  * @see [相关类/方法]
  */
-public class UserVo {
+public class UserVo extends BaseUUID {
 
-    /**
-     * 用户ID
-     */
-    private String id;
     /**
      * 邮箱 | 登录帐号
      */
     private String username;
     /**
+     * 密码
+     */
+    private String password;
+    /**
+     * 联系方式
+     */
+    private String telephone;
+    /**
+     * 联系方式
+     */
+    private String adress;
+    /**
+     * 学生证件
+     */
+    private String number;
+    /**
      * 性别
      */
-    @Dict(value = "sex")
-    private String sex;
+    private SexType sex;
+    /**
+     * salt
+     */
+    private String salt;
     /**
      * 账号锁定
      */
@@ -40,14 +57,6 @@ public class UserVo {
      */
     private Set<String> roles;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -56,12 +65,52 @@ public class UserVo {
         this.username = username;
     }
 
-    public String getSex() {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public SexType getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(SexType sex) {
         this.sex = sex;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public AcountState getLocked() {

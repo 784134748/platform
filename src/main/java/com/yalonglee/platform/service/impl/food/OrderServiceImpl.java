@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderServiceI {
 
     @Override
     public List<OrderVo> orders(Map<String, Object> parames) {
-        String hql = "select fo.id as id,fo.orderFood.price as orderPrice, fo.orderFood.foodName as orderFood, fo.orderUser.username as orderUser, fo.orderTime as orderTime, fo.orderState as orderState from foodOrder fo";
+        String hql = "select fo.id as id,fo.orderFood.price as orderPrice, fo.orderFood.foodName as orderFood, fo.orderUser.username as orderUser, fo.orderUser.telephone as telephone, fo.orderUser.address as orderAddress, fo.orderUser.number as studentNumber, fo.orderTime as orderTime, fo.orderState as orderState from foodOrder fo";
         StringBuilder hql_where = new StringBuilder();
         hql_where.append(" where 1=1");
         //用户ID
@@ -46,7 +46,15 @@ public class OrderServiceImpl implements OrderServiceI {
         }
         //餐厅ID
         if (null != parames.get("restaurantId")) {
-            hql_where.append(" and fo.orderFood.resturant.id = :restaurantId");
+            hql_where.append(" and fo.orderFood.restaurant.id = :restaurantId");
+        }
+        //菜品名称
+        if (null != parames.get("foodName")) {
+            hql_where.append(" and fo.orderFood.foodName like :foodName");
+        }
+        //订购人
+        if (null != parames.get("username")) {
+            hql_where.append(" and fo.orderUser.username like :username");
         }
         //购物车
         if(null != parames.get("orderType") && "wait".equals(parames.get("orderType"))){

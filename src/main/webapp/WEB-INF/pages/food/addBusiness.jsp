@@ -150,12 +150,10 @@
             type: 'get',//默认以get提交，以get提交如果是中文后台会出现乱码
             dataType: 'json',
             success: function (obj) {
-                debugger;
                 if (obj.flag) {
                     //获取传参
                     var data = obj.data[0];
                     var inputArray = $(".databack");// 取到所有的input text
-                    debugger;
                     inputArray.each(function () {
                         var input = $(this);// 循环中的每一个input元素
                         var name = input.attr("name");

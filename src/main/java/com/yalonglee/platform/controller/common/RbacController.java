@@ -6,6 +6,7 @@ import com.yalonglee.common.bean.LayuiResult;
 import com.yalonglee.common.bean.MultiResult;
 import com.yalonglee.common.bean.dto.ResultRows;
 import com.yalonglee.platform.dto.permission.*;
+import com.yalonglee.platform.entity.example.basic.SexType;
 import com.yalonglee.platform.entity.food.Restaurant;
 import com.yalonglee.platform.entity.permission.*;
 import com.yalonglee.platform.service.food.RestaurantServiceI;
@@ -23,15 +24,15 @@ import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import sun.security.krb5.internal.PAData;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>《一句话功能简述》
@@ -111,9 +112,30 @@ public class RbacController {
     @ApiOperation(value = "注册普通用户")
     @RequestMapping(value = "/register.do", method = RequestMethod.PUT)
     @ResponseBody
-    public BaseResult register(@RequestBody @Valid User user) {
+    public BaseResult register(@RequestBody User user, @RequestParam String type, @RequestParam String sexType) {
         BaseResult result = new BaseResult();
         User user1 = userServiceI.getUserByUsername(user.getUsername());
+        if ("perfect".equals(type)) {
+            user1.setAddress(user.getAddress());
+            user1.setNumber(user.getNumber());
+            user1.setTelephone(user.getTelephone());
+            if ("男".equals(sexType)) {
+                user1.setSex(SexType.MAN);
+            }
+            if ("女".equals(sexType)) {
+                user1.setSex(SexType.WOMAN);
+            }
+            try {
+                userServiceI.saveOrUpdate(user1);
+                result.setFlag(true);
+                result.setMsg("完善成功");
+                return result;
+            } catch (Exception e) {
+                result.setFlag(false);
+                result.setMsg("接口异常");
+                return result;
+            }
+        }
         if (null != user1) {
             result.setFlag(false);
             result.setMsg("当前用户已存在");
@@ -217,6 +239,7 @@ public class RbacController {
 
     /**
      * 新增/修改用户
+     *
      * @param id
      * @param locked
      * @return
@@ -224,13 +247,13 @@ public class RbacController {
     @ApiOperation(value = "新增/修改用户")
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult saveOrUpdateUser(String id,Boolean locked) {
+    public BaseResult saveOrUpdateUser(String id, Boolean locked) {
         BaseResult baseResult = new BaseResult();
         User user = userServiceI.get(id);
-        if(true == locked){
+        if (true == locked) {
             user.setLocked(AcountState.LOCKED);
         }
-        if(false == locked){
+        if (false == locked) {
             user.setLocked(AcountState.NORMOL);
         }
 
@@ -308,9 +331,13 @@ public class RbacController {
     @ApiOperation(value = "获取用户列表")
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     @ResponseBody
-    public LayuiResult<UserVo> getUsers(UserDto userDto) {
+    public LayuiResult<UserVo> getUsers(UserDto userDto, String username) {
         LayuiResult<UserVo> layuiResult = new LayuiResult<>();
-        List<UserVo> list = userServiceI.getUsers();
+        Map<String, Object> parames = new HashMap<>();
+        if (StringUtils.isNotBlank(username)) {
+            parames.put("username", username);
+        }
+        List<UserVo> list = userServiceI.getUsers(parames);
         layuiResult.setData(list);
         layuiResult.setCode(0);
         layuiResult.setCount(10L);

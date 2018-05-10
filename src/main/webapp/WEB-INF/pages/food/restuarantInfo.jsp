@@ -21,9 +21,15 @@
     <form name="searchform" id="searchform" class="layui-form" method="post" action="">
         <div class="layui-form-item layui-row query-condition dotted">
             <div class="layui-col-md3 layui-col-sm3">
-                <label class="layui-form-label">用户名</label>
+                <label class="layui-form-label">商户名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="username" maxlength="10" placeholder="输入用户名" class="layui-input">
+                    <input type="text" name="restaurantName" maxlength="10" placeholder="输入商户名称" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md3 layui-col-sm3">
+                <label class="layui-form-label">账号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" maxlength="10" placeholder="输入账号" class="layui-input">
                 </div>
             </div>
             <div class="layui-col-md4 layui-col-sm4 layui-col-md-offset5 clearfix">

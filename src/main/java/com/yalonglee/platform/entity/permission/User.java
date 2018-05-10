@@ -2,6 +2,7 @@ package com.yalonglee.platform.entity.permission;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yalonglee.common.base.strategy.BaseUUID;
+import com.yalonglee.platform.entity.example.basic.SexType;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NaturalId;
 
@@ -35,6 +36,24 @@ public class User extends BaseUUID {
      */
     @NotEmpty(message = "密码不能为空")
     private String password;
+    /**
+     * 联系方式
+     */
+    private String telephone;
+    /**
+     * 宿舍楼栋
+     */
+    private String address;
+    /**
+     * 学生证件
+     */
+    private String number;
+    /**
+     * 性别
+     */
+    @Convert(converter = SexType.SexTypeConvert.class)
+    @Column(name = "sex")
+    private SexType sex;
     /**
      * salt
      */
@@ -104,6 +123,38 @@ public class User extends BaseUUID {
 
     public void setLocked(AcountState locked) {
         this.locked = locked;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public SexType getSex() {
+        return sex;
+    }
+
+    public void setSex(SexType sex) {
+        this.sex = sex;
     }
 
     public List<Group> getGroups() {

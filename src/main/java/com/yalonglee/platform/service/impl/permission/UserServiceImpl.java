@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -81,8 +82,13 @@ public class UserServiceImpl implements UserServiceI {
     }
 
     @Override
-    public List<UserVo> getUsers() {
+    public List<UserVo> getUsers(Map<String, Object> parames) {
         String hql = "select u.id as id, u.username as username, u.locked as locked from User u";
-        return userDaoI.findVoListByHql(UserVo.class, hql);
+        StringBuilder hql_where = new StringBuilder();
+        hql_where.append(" where 1=1");
+        if (null != parames.get("username")) {
+            hql_where.append(" and u.username like :username");
+        }
+        return userDaoI.findVoListByHql(UserVo.class, hql + hql_where.toString(), parames);
     }
 }

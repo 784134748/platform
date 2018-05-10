@@ -39,6 +39,21 @@ public class OrderVo extends BaseUUID {
     private Date orderTime;
 
     /**
+     * 联系方式
+     */
+    private String telephone;
+
+    /**
+     * 宿舍地址
+     */
+    private String orderAddress;
+
+    /**
+     * 学生证件
+     */
+    private String studentNumber;
+
+    /**
      * 订购状态
      */
     private OrderState orderState;
@@ -73,6 +88,30 @@ public class OrderVo extends BaseUUID {
 
     public void setOrderTime(Date orderTime) {
         this.orderTime = orderTime;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(String orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
     }
 
     public OrderState getOrderState() {

@@ -59,6 +59,9 @@ public enum BasicType {
 
         @Override
         public BasicType convertToEntityAttribute(Integer dbData) {
+            if(null == dbData){
+                return null;
+            }
             for (BasicType type : BasicType.values()) {
                 if (dbData.equals(type.getValue())) {
                     return type;

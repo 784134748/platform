@@ -49,9 +49,17 @@ public class RestaurantServiceImpl implements RestaurantServiceI {
         String hql = "select u.username as boss,r.id as id, r.restaurantName as restaurantName, r.restaurantInfo as restaurantInfo, r.bossPicturePath as bossPicturePath from Restaurant r left join r.boss u";
         StringBuilder hql_where = new StringBuilder();
         hql_where.append(" where 1=1");
-        //用户ID
+        //商户ID
         if (null != parames.get("restaurantId")) {
             hql_where.append(" and r.id = :restaurantId");
+        }
+        //商户名称
+        if (null != parames.get("restaurantName")) {
+            hql_where.append(" and r.restaurantName like :restaurantName");
+        }
+        //用户名
+        if (null != parames.get("username")) {
+            hql_where.append(" and u.username like :username");
         }
         return restaurantDaoI.findVoListByHql(RestaurantVo.class, hql + hql_where.toString(), parames);
     }

@@ -99,7 +99,6 @@
                             //获取传参
                             var data = obj.data[0];
                             var inputArray = $(".databack");// 取到所有的input text
-                            debugger;
                             inputArray.each(function () {
                                 var input = $(this);// 循环中的每一个input元素
                                 var name = input.attr("name");
