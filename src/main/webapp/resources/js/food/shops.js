@@ -76,7 +76,7 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         if (layEvent === 'sure') {
             accountLocked(data);
         } else if (layEvent === 'delete') {
-            accountUnlocked(data);
+            deleteOrder(data);
         }
     });
 
@@ -107,14 +107,15 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
     };
 
     /**
-     * 删除订单
+     * 删除
+     * @param data
      */
-    function accountUnlocked(data) {
+    function deleteOrder(data) {
         event.preventDefault();
         $.ajax({
             url: '/food/fixOrderState.do',
             type: 'POST',
-            data: {orderState: 0, orderId: data.id},
+            data: {orderState: 5, orderId: data.id},
             dataType: 'json',
             success: function (res) {
                 if (res.flag == true) {

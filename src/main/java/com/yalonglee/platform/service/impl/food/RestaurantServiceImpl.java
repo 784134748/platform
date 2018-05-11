@@ -46,7 +46,7 @@ public class RestaurantServiceImpl implements RestaurantServiceI {
 
     @Override
     public Page<RestaurantVo> restaurants(Map<String, Object> parames, Page<RestaurantVo> page) {
-        String hql_select = "select u.username as boss,r.id as id, r.restaurantName as restaurantName, r.restaurantInfo as restaurantInfo, r.bossPicturePath as bossPicturePath";
+        String hql_select = "select u.username as boss,r.id as id, r.restaurantName as restaurantName, r.restaurantState as restaurantState, r.restaurantInfo as restaurantInfo, r.bossPicturePath as bossPicturePath";
         String hql_count = "Select count(*)";
         String hql_from = " from Restaurant r left join r.boss u";
         StringBuilder hql_where = new StringBuilder();
@@ -74,5 +74,10 @@ public class RestaurantServiceImpl implements RestaurantServiceI {
         User user = userDaoI.getEntityByHql(hql_user, username);
         String hql_res = "from Restaurant r where r.boss.id = ?";
         return restaurantDaoI.getEntityByHql(hql_res, user.getId());
+    }
+
+    @Override
+    public Restaurant getResturantByRestaurantId(String restaurantId) {
+        return restaurantDaoI.get(restaurantId);
     }
 }

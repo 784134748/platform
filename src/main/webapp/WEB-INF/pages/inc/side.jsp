@@ -17,12 +17,6 @@
                         <dd><a href="javascript:iframeByUrl('/food/restuarantInfo.do');">商户信息</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">通知公告</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:iframeByUrl('/food/noticeInfo.do');">通知公告</a></dd>
-                    </dl>
-                </li>
             </shiro:hasAnyRoles>
             <shiro:hasRole name="business">
                 <li class="layui-nav-item layui-nav-itemed">

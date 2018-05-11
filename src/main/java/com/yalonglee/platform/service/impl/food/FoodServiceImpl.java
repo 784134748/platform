@@ -55,6 +55,14 @@ public class FoodServiceImpl implements FoodServiceI {
         if (null != parames.get("foodName")) {
             hql_where.append(" and f.foodName like :foodName");
         }
+        //菜品状态
+        if (null != parames.get("foodState")) {
+            hql_where.append(" and f.foodState = :foodState");
+        }
+        //店铺状态
+//        if (null != parames.get("restaurantState")) {
+//            hql_where.append(" and f.restaurant.restaurantState = :restaurantState");
+//        }
         Long count = foodDaoI.count(hql_count + hql_from + hql_where, parames);
         page.setTotalCount(count);
         return foodDaoI.findVoPageByHql(FoodVo.class, page, hql_select + hql_from + hql_where.toString(), parames);

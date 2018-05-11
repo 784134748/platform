@@ -72,6 +72,8 @@ public class FoodController {
         }
         if (StringUtils.isNotBlank(restaurantId)) {
             parames.put("restaurantId", restaurantId);
+        }else{
+            parames.put("foodState",FoodState.UP);
         }
         LayuiResult<FoodVo> layuiResult = new LayuiResult<>();
         Page<FoodVo> page_result = foodServiceI.foods(parames, pagevo);
@@ -190,6 +192,7 @@ public class FoodController {
         Role role = roleServiceI.getRoleByRoleName("business");
         Restaurant restaurant = new Restaurant();
         restaurant.setRestaurantName(addRestaurantVo.getRestaurantName());
+        restaurant.setRestaurantState(RestaurantState.OPEN);
         user.getRoles().add(role);
         restaurant.setBoss(user);
         try {
@@ -205,7 +208,7 @@ public class FoodController {
     }
 
     /**
-     * 新增店铺
+     * 完善商户信息
      */
     @ApiOperation(value = "完善商户信息")
     @RequestMapping(value = "/updateRestuarant.do", method = RequestMethod.PUT)
@@ -337,6 +340,17 @@ public class FoodController {
                 baseResult.setMsg("退订成功");
                 baseResult.setFlag(true);
             }
+            //删除
+            if ("5".equals(orderState)) {
+                try{
+                    orderServiceI.deleteOrder(foodOrder);
+                    baseResult.setMsg("删除成功");
+                    baseResult.setFlag(true);
+                }catch (Exception e){
+                    baseResult.setMsg("删除失败");
+                    baseResult.setFlag(false);
+                }
+            }
             try {
                 orderServiceI.updateOrder(foodOrder);
             } catch (Exception e) {
@@ -371,6 +385,38 @@ public class FoodController {
             }
             try {
                 foodServiceI.updateFood(food);
+            } catch (Exception e) {
+                baseResult.setFlag(false);
+                baseResult.setMsg("接口异常");
+            }
+            return baseResult;
+        }
+        return baseResult;
+    }
+
+    /**
+     * 修改商户状态
+     */
+    @ApiOperation(value = "修改商户状态")
+    @RequestMapping(value = "/fixRestaurantState.do", method = RequestMethod.POST)
+    public BaseResult fixRestaurantState(String restaurantState, String restaurantId) {
+        BaseResult baseResult = new BaseResult();
+        if (StringUtils.isNotBlank(restaurantId)) {
+            Restaurant restaurant = restaurantServiceI.getResturantByRestaurantId(restaurantId);
+            //开启
+            if ("0".equals(restaurantState)) {
+                restaurant.setRestaurantState(RestaurantState.OPEN);
+                baseResult.setMsg("已开启");
+                baseResult.setFlag(true);
+            }
+            //关闭
+            if ("1".equals(restaurantState)) {
+                restaurant.setRestaurantState(RestaurantState.CLOSE);
+                baseResult.setMsg("已关闭");
+                baseResult.setFlag(true);
+            }
+            try {
+                restaurantServiceI.updateRestaurant(restaurant);
             } catch (Exception e) {
                 baseResult.setFlag(false);
                 baseResult.setMsg("接口异常");

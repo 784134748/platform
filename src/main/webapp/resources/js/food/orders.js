@@ -29,27 +29,27 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
                 field: 'orderFood',
                 title: '订购菜品',
                 align: 'center',
-                width: '20%'
+                width: '16%'
             }, {
                 field: 'orderUser',
                 title: '订购人',
                 align: 'center',
-                width: '20%'
+                width: '16%'
             }, {
                 field: 'orderTime',
                 title: '订购时间',
                 align: 'center',
-                width: '20%'
+                width: '16%'
             }, {
                 field: 'orderPrice',
                 title: '订购价格',
                 align: 'center',
-                width: '20%'
+                width: '16%'
             }, {
                 field: 'name',
                 title: '订单状态',
                 align: 'center',
-                width: '20%',
+                width: '16%',
                 templet: '<div>{{d.orderState.name}}</div>'
             }, {
                 fixed: 'right',

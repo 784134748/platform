@@ -40,4 +40,9 @@ public interface OrderServiceI {
      */
     public void updateOrder(foodOrder order);
 
+    /**
+     * 删除Order
+     */
+    public void deleteOrder(foodOrder order);
+
 }

@@ -39,4 +39,9 @@ public interface RestaurantServiceI {
      * 通过用户ID获取餐厅
      */
     public Restaurant getResturantByUserId(String username);
+
+    /**
+     * 通过ID获取餐厅
+     */
+    public Restaurant getResturantByRestaurantId(String restaurantId);
 }

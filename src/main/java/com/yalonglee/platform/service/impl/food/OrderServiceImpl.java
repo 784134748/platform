@@ -66,8 +66,8 @@ public class OrderServiceImpl implements OrderServiceI {
         }
         //我的订单
         if (null != parames.get("orderType") && "order".equals(parames.get("orderType"))) {
-            if (null != parames.get("waitState")) {
-                hql_where.append(" and fo.orderState != :waitState");
+            if (null != parames.get("orderState")) {
+                hql_where.append(" and fo.orderState != :orderState");
             }
         }
         //商家订单
@@ -92,5 +92,10 @@ public class OrderServiceImpl implements OrderServiceI {
     @Override
     public void updateOrder(foodOrder order) {
         orderDaoI.update(order);
+    }
+
+    @Override
+    public void deleteOrder(foodOrder order) {
+        orderDaoI.delete(order);
     }
 }

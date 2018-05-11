@@ -3,6 +3,7 @@ package com.yalonglee.platform.entity.food;
 import com.yalonglee.common.base.strategy.BaseUUID;
 import com.yalonglee.platform.entity.permission.User;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
@@ -42,6 +43,12 @@ public class Restaurant extends BaseUUID {
      */
     private String bossPicturePath;
 
+    /**
+     * 商户状态
+     */
+    @Convert(converter = RestaurantState.RestaurantStateConvert.class)
+    private RestaurantState restaurantState;
+
     public User getBoss() {
         return boss;
     }
@@ -72,5 +79,13 @@ public class Restaurant extends BaseUUID {
 
     public void setBossPicturePath(String bossPicturePath) {
         this.bossPicturePath = bossPicturePath;
+    }
+
+    public RestaurantState getRestaurantState() {
+        return restaurantState;
+    }
+
+    public void setRestaurantState(RestaurantState restaurantState) {
+        this.restaurantState = restaurantState;
     }
 }

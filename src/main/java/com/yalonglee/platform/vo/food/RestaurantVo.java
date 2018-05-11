@@ -1,6 +1,8 @@
 package com.yalonglee.platform.vo.food;
 
 import com.yalonglee.common.base.strategy.BaseUUID;
+import com.yalonglee.platform.entity.food.RestaurantState;
+
 /**
  * <p>《一句话功能简述》
  * <p><功能详细描述>
@@ -34,6 +36,11 @@ public class RestaurantVo extends BaseUUID {
      */
     private String bossPicturePath;
 
+    /**
+     * 商户状态
+     */
+    private RestaurantState restaurantState;
+
     public String getBoss() {
         return boss;
     }
@@ -64,5 +71,13 @@ public class RestaurantVo extends BaseUUID {
 
     public void setBossPicturePath(String bossPicturePath) {
         this.bossPicturePath = bossPicturePath;
+    }
+
+    public RestaurantState getRestaurantState() {
+        return restaurantState;
+    }
+
+    public void setRestaurantState(RestaurantState restaurantState) {
+        this.restaurantState = restaurantState;
     }
 }

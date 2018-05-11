@@ -40,6 +40,12 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
                 align: 'center',
                 width: '20%'
             }, {
+                field: 'name',
+                title: '商户状态',
+                align: 'center',
+                width: '16%',
+                templet: '<div>{{d.restaurantState.name}}</div>'
+            },{
                 fixed: 'right',
                 title: '操作',
                 align: 'center',
@@ -107,17 +113,16 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         }
     });
 
-
     /**
-     * 账号锁定
+     * 商户开启
      * @param data
      */
     function accountLocked(data) {
         event.preventDefault();
         $.ajax({
-            url: '/rbac/user',
+            url: '/food/fixRestaurantState.do',
             type: 'POST',
-            data: {locked: true, id: data.id},
+            data: {restaurantState: 0, restaurantId: data.id},
             dataType: 'json',
             success: function (res) {
                 if (res.flag == true) {
@@ -134,14 +139,14 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
     };
 
     /**
-     * 账号解锁
+     * 商户关闭
      */
     function accountUnlocked(data) {
         event.preventDefault();
         $.ajax({
-            url: '/rbac/user',
+            url: '/food/fixRestaurantState.do',
             type: 'POST',
-            data: {locked: false, id: data.id},
+            data: {restaurantState: 1, restaurantId: data.id},
             dataType: 'json',
             success: function (res) {
                 if (res.flag == true) {

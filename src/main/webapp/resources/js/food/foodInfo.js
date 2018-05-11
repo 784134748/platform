@@ -110,7 +110,6 @@ layui.use(['form', 'layer', 'table', 'carousel', 'upload', 'element'], function 
         }
     });
 
-
     /**
      * 菜品上架
      * @param data

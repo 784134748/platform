@@ -2,23 +2,12 @@
 <module version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/com/yalonglee/common/config/swagger/SwaggerConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/dispatcher-servlet.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/dozer-mapper/dozer-bean-mappings.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/dozer-config.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/dozer-mapper/dozer-global-configuration.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/dozer-mapper/more-dozer-bean-mappings.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/shiro-config.xml</file>
-        </fileset>
-      </configuration>
+      <configuration />
     </facet>
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
