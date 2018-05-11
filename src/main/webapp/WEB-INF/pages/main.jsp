@@ -270,7 +270,7 @@
 
                     //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
                     //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
-                    next(lis.join(''), page < res.pages);
+                    next(lis.join(''), page < res.count/8);
                 });
             }
         });
@@ -331,7 +331,7 @@
 
                     //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
                     //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
-                    next(lis.join(''), page < res.pages);
+                    next(lis.join(''), page < res.count/8);
                 });
             }
         });
@@ -354,7 +354,7 @@
                     type: 'POST',//默认以get提交，以get提交如果是中文后台会出现乱码
                     dataType: 'json',
                     success: function (obj) {
-                        layer.msg(obj.msg);
+                        layer.alert(obj.msg, {icon: 6});
                         var index = layer.getFrameIndex("LAY_layuipro");
                         layer.close(index);
                         layer.close(lockIndex);//关闭
@@ -366,6 +366,4 @@
 </script>
 </body>
 </html>
-
-
 

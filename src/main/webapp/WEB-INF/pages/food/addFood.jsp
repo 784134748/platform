@@ -18,7 +18,7 @@
     <div class="layui-form-item layui-hide">
         <label class="layui-form-label">菜品ID</label>
         <div class="layui-input-inline">
-            <input type="text" id="id" name="id" lay-verify="required" placeholder="请输入"
+            <input type="text" id="id" name="id" placeholder="请输入"
                    autocomplete="off"
                    class="layui-input databack">
         </div>

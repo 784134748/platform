@@ -265,6 +265,7 @@ public class FoodController {
                 }
             }
             food.setRestaurant(restaurant);
+            food.setFoodState(FoodState.UP);
             foodServiceI.addFood(food);
             baseResult.setFlag(true);
             baseResult.setMsg("新增成功");
