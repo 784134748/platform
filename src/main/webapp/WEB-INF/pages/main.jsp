@@ -34,10 +34,10 @@
                     <a href="/"><i class="iconfont icon-jiaoliu"></i>新闻公告</a>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="case/case.html"><i class="iconfont icon-iconmingxinganli"></i>质量监管</a>
+                    <a href="/"><i class="iconfont icon-iconmingxinganli"></i>质量监管</a>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>联系方式</a>
+                    <a href="/" target="_blank"><i class="iconfont icon-ui"></i>联系方式</a>
                 </li>
             </ul>
 

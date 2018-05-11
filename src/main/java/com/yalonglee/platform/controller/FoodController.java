@@ -55,10 +55,10 @@ public class FoodController {
     public LayuiResult<FoodVo> getFoods(int limit, int page, String type, String foodId, String restaurantId, String foodName) {
         Map<String, Object> parames = new HashMap<>();
         Page<FoodVo> pagevo = new Page<>();
-        pagevo.setPageSize(limit);
-        pagevo.setCurrentPageNo(page);
-        parames.put("limit", limit);
-        parames.put("page", page);
+        if(page >= 0){
+            pagevo.setPageSize(limit);
+            pagevo.setCurrentPageNo(page);
+        }
         if (StringUtils.isNotBlank(foodName)) {
             parames.put("foodName", "%" + foodName + "%");
         }
@@ -95,8 +95,10 @@ public class FoodController {
         LayuiResult<RestaurantVo> layuiResult = new LayuiResult<>();
         Map<String, Object> parames = new HashMap<>();
         Page<RestaurantVo> pagevo = new Page<>();
-        pagevo.setPageSize(limit);
-        pagevo.setCurrentPageNo(page);
+        if(page >= 0){
+            pagevo.setPageSize(limit);
+            pagevo.setCurrentPageNo(page);
+        }
         if (StringUtils.isNotBlank(restaurantName)) {
             parames.put("restaurantName", "%" + restaurantName + "%");
         }
@@ -133,8 +135,10 @@ public class FoodController {
     public LayuiResult<OrderVo> getOrders(int limit, int page, String type, String foodName, String username) {
         Map<String, Object> parames = new HashMap<>();
         Page<OrderVo> pagevo = new Page<>();
-        pagevo.setPageSize(limit);
-        pagevo.setCurrentPageNo(page);
+        if(page >= 0){
+            pagevo.setPageSize(limit);
+            pagevo.setCurrentPageNo(page);
+        }
         if (StringUtils.isNotBlank(foodName)) {
             parames.put("foodName", "%" + foodName + "%");
         }

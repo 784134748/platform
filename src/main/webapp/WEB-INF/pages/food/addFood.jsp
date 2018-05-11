@@ -90,7 +90,7 @@
                 var data = JSON.parse(decodeURIComponent(getRequestParam().obj));
                 //数据回显
                 $.ajax({
-                    url: '/food/foods.do',
+                    url: '/food/foods.do?limit=10&&page=0',
                     type: 'get',//默认以get提交，以get提交如果是中文后台会出现乱码
                     data: {foodId: data.id},
                     dataType: 'json',
