@@ -63,6 +63,10 @@ public class RestaurantServiceImpl implements RestaurantServiceI {
         if (null != parames.get("username")) {
             hql_where.append(" and u.username like :username");
         }
+        //商户状态
+        if (null != parames.get("restaurantState")) {
+            hql_where.append(" and r.restaurantState = :restaurantState");
+        }
         Long count = restaurantDaoI.count(hql_count + hql_from + hql_where, parames);
         page.setTotalCount(count);
         return restaurantDaoI.findVoPageByHql(RestaurantVo.class, page, hql_select + hql_from + hql_where.toString(), parames);

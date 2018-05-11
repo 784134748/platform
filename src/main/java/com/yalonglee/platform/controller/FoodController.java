@@ -74,6 +74,7 @@ public class FoodController {
             parames.put("restaurantId", restaurantId);
         }else{
             parames.put("foodState",FoodState.UP);
+            parames.put("restaurantState", RestaurantState.OPEN);
         }
         LayuiResult<FoodVo> layuiResult = new LayuiResult<>();
         Page<FoodVo> page_result = foodServiceI.foods(parames, pagevo);
@@ -111,6 +112,9 @@ public class FoodController {
                 return layuiResult;
             }
             parames.put("restaurantId", restaurant.getId());
+        }
+        if ("index".equals(type)) {
+            parames.put("restaurantState", RestaurantState.OPEN);
         }
         Page<RestaurantVo> page_result = restaurantServiceI.restaurants(parames, pagevo);
         layuiResult.setFlag(true);
