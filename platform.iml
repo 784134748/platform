@@ -2,7 +2,18 @@
 <module version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/dozer-mapper/dozer-bean-mappings.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/dozer-config.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/dozer-mapper/dozer-global-configuration.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/dozer-mapper/more-dozer-bean-mappings.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/shiro-config.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/yalonglee/common/config/swagger/SwaggerConfig.java</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="web" name="Web">
       <configuration>
